@@ -1,0 +1,41 @@
+.dialog-warp{padding:15px;display: none;}
+.dialog-warp li{margin:15px 0;list-style-type: none;}
+
+.dialog-warp input[type=text],
+.dialog-warp input[type=password],
+.dialog-warp textarea{width:180px;height:25px; line-height:25px;padding-left:5px;border:1px solid #dadada;}
+.toolbar{padding:10px 0 10px 20px;}
+.toolbar span{display: inline-block;padding:0 12px;margin-right:10px;color:white;
+    font-size:13px;cursor: pointer;line-height:30px;}
+.toolbar .color-green{background-color: #1ab394;border-color: #1ab394;}
+.toolbar .color-blue{background-color: #1c84c6;border-color: #1c84c6;}
+.toolbar .color-red{background-color: #ed5565;border-color: #ed5565;}
+.toolbar input[type=text]{width:200px;height:28px;border:1px solid #dadada;}
+
+/*角色配置弹窗*/
+.roleConfigMain{height:auto; padding:10px 20px;display: none;}
+.roleConfigMain:after{content: '';display: block;clear:both;}
+.roleConfigMain select{width:150px;height:200px;font-family: 微软雅黑;font-size:13px;}
+.roleConfigMain div{float:left;}
+.selectPlace li{list-style-type: none;text-align: center;margin:5px 0;font-size:14px;color:#666666;}
+.roleConfigMain .split{line-height: 250px;margin:0 10px ;color:#666666;}
+.right_main{width:300px; height:400px;padding:10px 30px; overflow: auto;display: none;}
+.right_main .loading{line-height:400px;color:#666666;text-align: center;}
+#module_dialog input[type=radio]{margin:0 5px !important;}
+
+
+/*值班人 -> 添加处理结果面板*/
+#watcher_add_panel .toggle_panle>li{padding:0;}
+#watcher_add_panel .phenomenon,
+#watcher_add_panel .ph_detail,
+#watcher_add_panel .result,
+#watcher_add_panel .re_detial{float:left;}
+#watcher_add_panel .toggle_panle .else ul li{padding-top:5px;}
+#watcher_add_panel .ph_detail,
+#watcher_add_panel .re_detial{border:1px solid #aaa;}
+.w_a_list input{margin-left:20px;}
+#watcher_add_panel .detail span{vertical-align:top;}
+#watcher_add_panel .detail textarea{resize:both !important;}
+.send_sel_title{margin-left: 10px;}
+.cksj,.zgyc{display: none;}
+/**********/

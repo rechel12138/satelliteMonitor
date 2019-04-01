@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.htzh.htdxjk.mapper.BalarmfxMapper">
+
+    <select id="getBalarmfxByParma" parameterType="map" resultType="map">
+        SELECT * FROM htdxjk_balarmfx ba
+        <if test="alarmlevel == null || alarmlevel == ''">
+            WHERE ba.balarmfx_alarmlevel != '轻度'
+        </if>
+        ORDER BY ba.balarmfx_atplastmodifydatetime DESC
+    </select>
+
+
+    <!--<select id="getBalarmfxUnion" parameterType="map" resultType="map">-->
+    <!--SELECT-->
+    <!--*-->
+    <!--FROM-->
+    <!--(-->
+    <!--SELECT-->
+    <!--sat.bsat_code,-->
+    <!--ys.bsjmxys_begintime bjsj,-->
+    <!--'三级门限延时' stype,-->
+    <!--ys.bsjmxys_responetime,-->
+    <!--ys.bsjmxys_endtime,-->
+    <!--ys.bsjmxys_alarmmsg,-->
+    <!--ys.bsjmxys_alarmvalue,-->
+    <!--ys.bsjmxys_alarmlevel,-->
+    <!--'' bjlb,-->
+    <!--'' cljg,-->
+    <!--fx.balarmfx_type,-->
+    <!--fx.balarmfx_response-->
+    <!--FROM-->
+    <!--htdxjk_bsjmxys ys-->
+    <!--LEFT JOIN-->
+    <!--htdxjk.htdxjk_bsat sat-->
+    <!--ON-->
+    <!--ys.bsjmxys_satid=sat.bsat_id-->
+    <!--LEFT JOIN-->
+    <!--htdxjk_balarmfx fx-->
+    <!--ON-->
+    <!--ys.bsjmxys_satid=fx.balarmfx_satid-->
+    <!--UNION ALL-->
+    <!--SELECT-->
+    <!--sat.bsat_code,-->
+    <!--fx1.balarmfx_begintime bjsj,-->
+    <!--fx1.balarmfx_source,-->
+    <!--fx1.balarmfx_responetime,-->
+    <!--fx1.balarmfx_endtime,-->
+    <!--fx1.balarmfx_alarmmsg,-->
+    <!--fx1.balarmfx_alarmvalue,-->
+    <!--fx1.balarmfx_alarmlevel,-->
+    <!--fx1.balarmfx_type bjlb,-->
+    <!--fx1.balarmfx_response cljg,-->
+    <!--fx2.balarmfx_type,-->
+    <!--fx2.balarmfx_response-->
+    <!--FROM-->
+    <!--htdxjk_balarmfx fx1-->
+    <!--LEFT JOIN-->
+    <!--htdxjk_balarmfx fx2-->
+    <!--ON-->
+    <!--fx1.balarmfx_satid=fx2.balarmfx_satid-->
+    <!--LEFT JOIN-->
+    <!--htdxjk.htdxjk_bsat sat-->
+    <!--ON-->
+    <!--fx1.balarmfx_satid=sat.bsat_id-->
+    <!--WHERE-->
+    <!--fx1.balarmfx_source='三级门限实时'-->
+    <!--AND fx1.balarmfx_iden='预判'-->
+    <!--AND fx2.balarmfx_iden='实判'-->
+    <!--UNION ALL-->
+    <!--SELECT-->
+    <!--sat.bsat_code,-->
+    <!--fx1.balarmfx_begintime bjsj,-->
+    <!--fx1.balarmfx_source,-->
+    <!--fx1.balarmfx_responetime,-->
+    <!--fx1.balarmfx_endtime,-->
+    <!--fx1.balarmfx_alarmmsg,-->
+    <!--fx1.balarmfx_alarmvalue,-->
+    <!--fx1.balarmfx_alarmlevel,-->
+    <!--fx1.balarmfx_type bjlb,-->
+    <!--fx1.balarmfx_response cljg,-->
+    <!--fx2.balarmfx_type,-->
+    <!--fx2.balarmfx_response-->
+    <!--FROM-->
+    <!--htdxjk_balarmfx fx1-->
+    <!--LEFT JOIN-->
+    <!--htdxjk_balarmfx fx2-->
+    <!--ON-->
+    <!--fx1.balarmfx_satid=fx2.balarmfx_satid-->
+    <!--LEFT JOIN-->
+    <!--htdxjk.htdxjk_bsat sat-->
+    <!--ON-->
+    <!--fx1.balarmfx_satid=sat.bsat_id-->
+    <!--WHERE-->
+    <!--fx1.balarmfx_source='多星智能诊断系统实时报警'-->
+    <!--AND fx1.balarmfx_iden='预判'-->
+    <!--AND fx2.balarmfx_iden='实判') tab-->
+    <!--WHERE-->
+    <!--tab.bsat_code IN ('#{bsatCodes}')-->
+    <!--and tab.bsjmxys_alarmlevel in ('#{levels}')-->
+    <!--AND (-->
+    <!--tab.bsjmxys_alarmmsg LIKE '%#{keyword}%'-->
+    <!--OR tab.balarmfx_response LIKE '%#{keyword}%'-->
+    <!--OR tab.cljg LIKE '%#{keyword}%')-->
+    <!--&lt;!&ndash;<if test="desc='desc'">&ndash;&gt;-->
+    <!--&lt;!&ndash;order by ${order} desc&ndash;&gt;-->
+    <!--&lt;!&ndash;</if>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<if test="desc='asc'">&ndash;&gt;-->
+    <!--&lt;!&ndash;order by ${order} asc&ndash;&gt;-->
+    <!--&lt;!&ndash;</if>&ndash;&gt;-->
+
+    <!--</select>-->
+
+
+    <select id="getStatistical" resultType="AlarmStatisticalModel" parameterType="map">
+        SELECT ba.balarmfx_type AS balarmfxType,COUNT(ba.balarmfx_type) as count
+        FROM htdxjk_balarmfx ba
+	    INNER JOIN htdxjk_bsat bs ON ba.balarmfx_satid = bs.bsat_id
+	    INNER JOIN htdxjk_suser s ON bs.bsat_admin_subs_id = s.su_id
+        WHERE  s.su_atpid = #{userId}
+        and ba.balarmfx_atplastmodifydatetime BETWEEN DATE_SUB(NOW(),INTERVAL #{dayNum} DAY) and NOW()
+        GROUP BY ba.balarmfx_type
+    </select>
+
+    <select id="countBalarm" parameterType="map" resultType="int">
+        SELECT COUNT(1) as count
+        FROM htdxjk_balarmfx ba
+	    INNER JOIN htdxjk_bsat bs ON ba.balarmfx_satid = bs.bsat_id
+	    INNER JOIN htdxjk_suser s ON bs.bsat_admin_subs_id = s.su_id
+        WHERE  s.su_atpid = #{userId}
+        and ba.balarmfx_atplastmodifydatetime BETWEEN DATE_SUB(NOW(),INTERVAL #{dayNum} DAY) and NOW()
+    </select>
+
+
+    <select id="getBySatIdParamEzui" parameterType="map" resultType="map">
+        SELECT
+        b.*,
+        bsat.*,
+        s.su_chinesename AS dutyName,
+        s.su_tele_phone_num AS dutyTel,
+        s.su_work_phone_num AS dutyWorkTel,
+        s1.su_chinesename AS replaceName,
+        s1.su_tele_phone_num AS replaceTel,
+        s1.su_work_phone_num AS replaceWorkTel
+        FROM
+        htdxjk_balarmfx b
+        LEFT JOIN htdxjk_bsat bsat ON b.balarmfx_satid = bsat.bsat_atpid
+        LEFT JOIN htdxjk_suser s ON bsat.bsat_admin_subs_id = s.su_atpid
+        LEFT JOIN htdxjk_suser s1 ON bsat.bsat_admin_id = s1.su_atpid
+        LEFT JOIN htdxjk_bdwgl bd ON bsat.bsat_admin_subs_id = bd.bdwgl_zrr
+        LEFT JOIN htdxjk_bdwgl bd1 ON bsat.bsat_admin_id = bd1.bdwgl_dtr
+        WHERE
+        b.balarmfx_satid = #{satId}
+        <if test="beginTime != '' and endTime != '' ">
+            AND b.balarmfx_begintime<![CDATA[>= ]]> #{beginTime} AND b.balarmfx_endtime <![CDATA[<= ]]> #{endTime}
+        </if>
+        <if test="alarmType != '' and alarmType != null">
+            AND b.balarmfx_type = #{alarmType}
+        </if>
+        <if test="alarmSource != '' and alarmSource != null">
+            AND b.balarmfx_source = #{alarmSource}
+        </if>
+        ORDER BY b.balarmfx_begintime desc
+    </select>
+
+    <!--分类分析功能-->
+    <select id="findAlarmListByParam" resultType="AlarmModel" parameterType="map">
+        SELECT
+        a.*,
+        s.su_chinesename AS confirmUser,
+        bsat.bsat_code AS bsatCode,
+        b.balarmfx_type as realConfirmType,
+        b.balarmfx_remark as relRemark
+        <include refid="condition"></include>
+
+        limit #{offset},#{rows}
+    </select>
+
+    <select id="getCount" resultType="int" parameterType="map">
+        SELECT count(1)
+        <include refid="condition"></include>
+    </select>
+
+    <sql id="condition">
+        FROM (
+        SELECT bs.bsjmxss_atpid as atpId,
+        bs.bsjmxss_begintime as alarmBeginTime,
+        bs.bsjmxss_endtime as alarmEndTime,
+        '三级门限实时报警' as alarmSource,
+        bs.bsjmxss_responetime as confirmTime,
+        bs.bsjmxss_alarmmsg as alarmMsg,
+        bs.bsjmxss_alarmvalue as alarmVal,
+        bs.bsjmxss_alarmlevel as alarmLevel,
+        bs.bsjmxss_pre_judge_type as confirmType,
+        bs.bsjmxss_pre_judge_remark as remark,
+        bs.bsjmxss_satid as satId,
+        '预判' as iden,
+        bs.bsjmxss_atpcreatedatetime as createTime,
+        bs.bsjmxss_atplastmodifydatetime as modifyTime,
+        bs.bsjmxss_username as userNameId
+        from htdxjk_bsjmxss bs
+        UNION ALL
+        SELECT
+        bsj.bsjmxys_atpid AS atpId,
+        bsj.bsjmxys_begintime AS alarmBeginTime,
+        bsj.bsjmxys_endtime AS alarmEndTime,
+        '三级门限延时报警' AS alarmSource,
+        bsj.bsjmxys_responetime AS confirmTime,
+        bsj.bsjmxys_alarmmsg AS alarmMsg,
+        bsj.bsjmxys_alarmvalue AS alarmVal,
+        bsj.bsjmxys_alarmlevel AS alarmLevel,
+        bsj.bsjmxys_pre_judge_type AS confirmType,
+        bsj.bsjmxys_pre_judge_remark AS remark,
+        bsj.bsjmxys_satid AS satId,
+        '预判' AS iden,
+        bsj.bsjmxys_atpcreatedatetime AS createTime,
+        bsj.bsjmxys_atplastmodifydatetime AS modifyTime,
+        bsj.bsjmxys_username as userNameId
+        FROM
+        htdxjk_bsjmxys bsj
+        UNION ALL
+        SELECT
+        bd.bdxznzdxtssbj_atpid as atpId,
+        bd.bdxznzdxtssbj_begintime as alarmBeginTime,
+        bd.bdxznzdxtssbj_endtime as alarmEndTime,
+        '多星智能诊断系统实时报警' as alarmSource,
+        bd.bdxznzdxtssbj_record_time as confirmTime,
+        bd.bdxznzdxtssbj_explain as alarmMsg,
+        bd.bdxznzdxtssbj_val_level as alarmVal,
+        bd.bdxznzdxtssbj_alarm_level as alarmLevel,
+        bd.bdxznzdxtssbj_pre_judge_type AS confirmType,
+        bd.bdxznzdxtssbj_pre_judge_remark AS remark,
+        bd.bdxznzdxtssbj_sat_id AS satId,
+        '预判' AS iden,
+        bd.bdxznzdxtssbj_atpcreatedatetime AS createTime,
+        bd.bdxznzdxtssbj_atplastmodifydatetime AS modifyTime,
+        bd.bdxznzdxtssbj_confirm_user as userNameId
+        from htdxjk_bdxznzdxtssbj bd
+        ) a
+        LEFT JOIN htdxjk_bsat bsat ON a.satId = bsat.bsat_atpid
+        LEFT JOIN ( SELECT * FROM ( SELECT * FROM htdxjk_balarmfx ORDER BY balarmfx_atpcreatedatetime DESC ) a GROUP BY a.balarmfx_alarmid ) b ON a.atpId = b.balarmfx_alarmid
+        LEFT JOIN htdxjk_suser s ON a.userNameId = s.su_atpid
+        WHERE 1 = 1
+        <if test="dayNum != 0">
+            AND a.alarmBeginTime <![CDATA[ >= ]]> date_sub(date_format(NOW(), '%Y-%m-%d 00:00:00' ),interval #{dayNum}
+            day)
+        </if>
+        <if test="keyWord != null and keyWord != ''">
+            AND (a.alarmLevel like concat("%",#{keyWord},"%") or
+            a.alarmBeginTime like concat("%",#{keyWord},"%") or
+            a.alarmEndTime like concat("%",#{keyWord},"%") or
+            a.alarmSource like concat("%",#{keyWord},"%") or
+            a.alarmMsg like concat("%",#{keyWord},"%") or
+            a.alarmVal like concat("%",#{keyWord},"%") or
+            a.confirmType like concat("%",#{keyWord},"%") or
+            a.remark like concat("%",#{keyWord},"%") OR
+            bsat.bsat_code like concat("%",#{keyWord},"%"))
+        </if>
+        <if test="alarmlevel.size > 0">
+            and a.alarmLevel in
+            <foreach collection="alarmlevel" item="item" index="index" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+        </if>
+        <if test="param != null and param.size > 0">
+            <if test="sort == 'bsatCode'">
+                and a.satId in
+                <foreach collection="param" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="sort == 'alarmSource'">
+                and a.alarmSource in
+                <foreach collection="param" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </if>
+        <if test="bsatCode != null and bsatCode != ''">
+            AND bsat.bsat_code like concat("%",#{bsatCode},"%")
+        </if>
+        <if test="alarmSource != null and alarmSource != ''">
+            AND a.alarmSource like concat("%",#{alarmSource},"%")
+        </if>
+        <if test="startTime != null and startTime != '' and endTime != null and endTime != ''">
+            AND a.alarmBeginTime BETWEEN #{startTime} and #{endTime}
+        </if>
+        <if test="showQr == 1">
+            AND a.confirmType IS NULL OR a.confirmType = ""
+        </if>
+
+        and bsat.bsat_admin_subs_id = #{userId}
+        ORDER BY a.alarmBeginTime DESC
+        <if test="sort == 'bsatCode' and order == 'desc'">
+            ,bsat.bsat_code DESC
+        </if>
+        <if test="sort == 'bsatCode' and order == 'asc'">
+            ,bsat.bsat_code ASC
+        </if>
+        <if test="sort == 'alarmSource' and order == 'desc'">
+            ,a.alarmSource DESC
+        </if>
+        <if test="sort == 'alarmSource' and order == 'asc'">
+            ,a.alarmSource ASC
+        </if>
+    </sql>
+
+    <sql id="condition2">
+        FROM (
+        SELECT
+        bfx.balarmfx_atpid AS atpId,
+        bfx.balarmfx_begintime AS alarmBeginTime,
+        bfx.balarmfx_endtime AS alarmEndTime,
+        bfx.balarmfx_source AS alarmSource,
+        bfx.balarmfx_savetime AS confirmTime,
+        bfx.balarmfx_alarmmsg AS alarmMsg,
+        bfx.balarmfx_alarmvalue AS alarmVal,
+        bfx.balarmfx_alarmlevel AS alarmLevel,
+        bfx.balarmfx_type AS confirmType,
+        bfx.balarmfx_remark AS remark,
+        bfx.balarmfx_satid AS satId,
+        bfx.balarmfx_iden AS iden,
+        bfx.balarmfx_username AS userId,
+        bfx.balarmfx_atpcreatedatetime AS createTime,
+        bfx.balarmfx_atplastmodifydatetime AS modifyTime,
+        bfx.balarmfx_alarmid as alarmId
+        FROM
+        htdxjk_balarmfx bfx UNION ALL
+        SELECT
+        bsj.bsjmxys_atpid AS atpId,
+        bsj.bsjmxys_begintime AS alarmBeginTime,
+        bsj.bsjmxys_endtime AS alarmEndTime,
+        "延时报警" AS alarmSource,
+        bsj.bsjmxys_createtime AS confirmTime,
+        bsj.bsjmxys_alarmmsg AS alarmMsg,
+        bsj.bsjmxys_alarmvalue AS alarmVal,
+        bsj.bsjmxys_alarmlevel AS alarmLevel,
+        '' AS confirmType,
+        '' AS remark,
+        bsj.bsjmxys_satid AS satId,
+        '预判' AS iden,
+        bsj.bsjmxys_username AS userId,
+        bsj.bsjmxys_atpcreatedatetime AS createTime,
+        bsj.bsjmxys_atplastmodifydatetime AS modifyTime,
+        bsj.bsjmxys_atpid as alarmId
+        FROM
+        htdxjk_bsjmxys bsj UNION ALL
+        SELECT
+        bf.balarmfxyy_atpid AS atpId,
+        bf.balarmfxyy_begintime AS alarmBeginTime,
+        bf.balarmfxyy_endtime AS alarmEndTime,
+        "延时报警" AS alarmSource,
+        bf.balarmfxyy_responetime AS confirmTime,
+        bf.balarmfxyy_alarmmsg AS alarmMsg,
+        bf.balarmfxyy_alarmvalue AS alarmVal,
+        bf.balarmfxyy_alarmlevel AS alarmLevel,
+        bf.balarmfxyy_type AS confirmType,
+        bf.balarmfxyy_remark AS remark,
+        bf.balarmfxyy_satid AS satId,
+        '实判' AS iden,
+        bf.balarmfxyy_username AS userId,
+        bf.balarmfxyy_atpcreatedatetime AS createTime,
+        bf.balarmfxyy_atplastmodifydatetime AS modifyTime,
+        bf.balarmfxyy_alarmid as alarmId
+        FROM
+        htdxjk_balarmfxyy bf
+        ) a
+        LEFT JOIN htdxjk_bsat bsat ON a.satId = bsat.bsat_atpid
+        LEFT JOIN htdxjk_suser s ON a.userId = s.su_atpid
+        WHERE bsat.bsat_admin_subs_id = #{userId}
+        AND a.modifyTime <![CDATA[ >= ]]> date_sub(NOW(),interval 1 day)
+        <if test="keyWord != null and keyWord != ''">
+            AND a.alarmLevel like concat("%",#{keyWord},"%") or
+            a.alarmBeginTime like concat("%",#{keyWord},"%") or
+            a.alarmEndTime like concat("%",#{keyWord},"%") or
+            a.alarmSource like concat("%",#{keyWord},"%") or
+            a.alarmMsg like concat("%",#{keyWord},"%") or
+            a.alarmVal like concat("%",#{keyWord},"%") or
+            a.confirmType like concat("%",#{keyWord},"%") or
+            a.remark like concat("%",#{keyWord},"%")
+        </if>
+        <if test="alarmlevel != null and alarmlevel != ''">
+            AND a.alarmLevel like concat("%",#{alarmlevel},"%")
+        </if>
+        <if test="bsatCode != null and bsatCode != ''">
+            AND bsat.bsat_code like concat("%",#{bsatCode},"%")
+        </if>
+        <if test="alarmSource != null and alarmSource != ''">
+            AND a.alarmSource like concat("%",#{alarmSource},"%")
+        </if>
+        <if test="startTime != null and startTime != '' and endTime != null and endTime != ''">
+            AND a.alarmTime BETWEEN #{startTime} and #{endTime}
+        </if>
+
+    </sql>
+
+
+    <select id="findByAlarmId" parameterType="String" resultType="Balarmfx">
+        select * from htdxjk_balarmfx WHERE balarmfx_alarmid = #{alarmId}
+    </select>
+
+    <!--值班人统计卫星报警-->
+    <select id="alarmStatistical" resultType="DutyAlarmStatisticalModel" parameterType="int">
+        SELECT
+            bsat.bsat_code as bsatCode,
+            count( a.atpId ) as num
+        FROM
+            (
+        SELECT
+            bs.bsjmxss_atpid AS atpId,
+            bs.bsjmxss_satid AS satId
+        FROM
+            htdxjk_bsjmxss bs
+        WHERE bs.bsjmxss_begintime <![CDATA[ >= ]]> date_sub(NOW(),interval #{dayNum} day)
+        UNION ALL
+        SELECT
+            bsj.bsjmxys_atpid AS atpId,
+            bsj.bsjmxys_satid AS satId
+        FROM
+            htdxjk_bsjmxys bsj
+        WHERE bsj.bsjmxys_begintime <![CDATA[ >= ]]> date_sub(NOW(),interval #{dayNum} day)
+        UNION ALL
+        SELECT
+            bd.bdxznzdxtssbj_atpid AS atpId,
+            bd.bdxznzdxtssbj_sat_id AS satId
+        FROM
+            htdxjk_bdxznzdxtssbj bd
+        WHERE bd.bdxznzdxtssbj_begintime <![CDATA[ >= ]]> date_sub(NOW(),interval #{dayNum} day)
+            ) a
+            LEFT JOIN htdxjk_bsat bsat ON a.satId = bsat.bsat_atpid
+        GROUP BY
+            a.satId
+    </select>
+
+
+    <select id="countZrrIndexType" resultType="map" parameterType="map">
+        SELECT
+        fx.balarmfx_type        typename ,
+        COUNT(fx.balarmfx_type) mycount
+        FROM
+        htdxjk_balarmfx fx
+        WHERE
+        fx.balarmfx_satid IN
+        (
+        SELECT
+        bs.bsat_atpid
+        FROM
+        htdxjk_suser su
+        LEFT JOIN
+        htdxjk_bsat bs
+        ON
+        su.su_atpid = bs.bsat_admin_subs_id
+        WHERE
+        su.su_atpid=#{userId} )
+        <![CDATA[
+        AND fx.balarmfx_begintime>=#{startTime}
+        AND fx.balarmfx_endtime<=#{endTime}
+        ]]>
+        GROUP BY
+        fx.balarmfx_type
+    </select>
+
+
+    <select id="getBjFlfxCount" parameterType="map" resultType="map">
+        SELECT
+        bs.bsat_code,count(1) mycount
+        FROM
+        htdxjk_balarmfx fx
+        RIGHT JOIN
+        htdxjk_bsat bs
+        ON
+        fx.balarmfx_satid=bs.bsat_atpid
+        WHERE
+        fx.balarmfx_satid IN
+        (
+        SELECT
+        bs.bsat_atpid
+        FROM
+        htdxjk_suser su
+        LEFT JOIN
+        htdxjk_bsat bs
+        ON
+        su.su_atpid = bs.bsat_admin_subs_id
+        WHERE
+        su.su_atpid=#{userId})
+        <![CDATA[
+        AND fx.balarmfx_begintime>=#{startTime}
+        AND fx.balarmfx_endtime<=#{endTime}
+        ]]>
+        GROUP BY bs.bsat_code
+
+    </select>
+</mapper>

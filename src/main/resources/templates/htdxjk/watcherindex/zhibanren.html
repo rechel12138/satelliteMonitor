@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>值班人</title>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/platform.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/custom/green/uimaker/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/custom/green/uimaker/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/all.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/watcherindex/zhibanren.css">
+</head>
+<body style="height:100%;overflow:scroll;">
+    <div>
+        <div id="toolbar_wrap">
+            <span class="title">今日备忘事项</span><!--<span id="change_shifts">值班交接（待）</span>--><span id="btn_Add">+添加备忘录</span><span id="btn_search">搜索</span>
+        </div>
+        <table id="todotable"></table>
+    </div>
+    <div>
+        <div class="watcher_list"><span class="title">值班列表</span><span id="new_btn">+新建</span></div>
+        <table id="watcher"></table>
+    </div>
+    <div class="bar_graph">
+        <div>
+            <span class="title">近期卫星报警信息</span>
+            <select name="" id="alarm_date_list">
+                <option value="1">一天</option>
+                <option value="3" selected>三天</option>
+                <option value="7">一周</option>
+            </select>
+        </div>
+        <div id="recentAlarmChart" style="width:1300px;height:350px;"></div>
+    </div>
+
+</body>
+</html>
+
+<!--值班记录弹窗-->
+<div class="dialog-warp" id="watchRecords" style="height:600px;width:1600px">
+    <table id="watchRecordList"></table>
+</div>
+
+<!--添加备忘弹窗-->
+<ul class="dialog-warp" id="addMemo">
+    <li>
+        <span>显示日期：</span>
+        <input id="show_date" type="text">
+    </li>
+    <li>
+        <span>显示周期：</span>
+        <span>共显示</span>
+        <input id="show_period" class="easyui-numberspinner" style="width:80px;"
+               required data-options="min:1,max:365,editable:true" value="1">
+        <span>天</span>
+    </li>
+    <li>
+        <span>型号：</span>
+        <select name="" id="addMemo_tl">
+            <!--<option value="ce-231346524">ce-231346524</option>-->
+            <!--<option value="2">2</option>-->
+            <!--<option value="3">3</option>-->
+        </select>
+    </li>
+    <li><span>标题：</span><input type="text" id="addMemo_title"></li>
+    <li><span style="vertical-align: top;">详情：</span><textarea name="" id="addMemo_detail" cols="30" rows="10" style="resize:both"></textarea></li>
+    <li style="line-height: 30px !important;">备注：需要多天连续提醒值班员的事项可在“显示周期”中选择持续时间（天）</li>
+</ul>
+
+<!--搜索值班记录/备忘事项弹窗-->
+<div id="search_panel" class="dialog-warp" style="width:630px;">
+    <p>搜索模式
+        <select name="" id="w_s_list">
+            <option value="1">搜索备忘事项</option>
+            <option value="2">搜索值班记录</option>
+        </select>
+    </p>
+    <ul >
+        <li class="forWatchRecord" style="display: none;">
+            <ul>
+                <li style="width:610px;position:relative;">
+                    <input type="checkbox" name="" id="watcher_date" cus_prop1="startTime" cus_prop2="endTime">值班日期
+                    <select name="" id="date_option" style="margin-right:10px;vertical-align: middle;">
+                        <option value="zdy">-之间-</option>
+                        <option value="1">最近一天</option>
+                        <option value="3">最近三天</option>
+                        <option value="7">最近一周</option>
+                    </select>
+                    <span class="calendar_box_back" style="position: absolute;width: 186px;height: 20px;z-index: 100;background-color: #000;
+    opacity:0.3;filter: Alpha(opacity=30);display: none;left: 29.2%;top: 1px;"></span>
+                    <span class="calendar_box_back" style="position: absolute;width: 186px;height: 20px;z-index: 100;background-color: #000;
+    opacity:0.3;filter: Alpha(opacity=30);display: none;left: 66.6%;top: 1px;"></span>
+                    <input id="duty_date_start" type="text"><span style="margin-right:10px">>></span><input id="duty_date_end" type="text">
+                </li>
+                <li>
+                    <input type="checkbox" name="" id="fwr_sel_1" cus_prop="dutyPerson1">值班人1
+                    <select name="" id="watcher_sel_first"></select>
+                </li>
+                <li>
+                    <input type="checkbox" name="" id="fwr_sel_2" cus_prop="dutyPerson2">值班人2
+                    <select name="" id="watcher_sel_second"></select>
+                </li>
+            </ul>
+        </li>
+        <li class="forMemo">
+            <ul>
+                <li><input type="checkbox" name="" cus_prop="startTime">日期<input type="text" id="bwsx_datetime"></li>
+                <li><input type="checkbox" name="" cus_prop="title">标题<select name="" id="bwl_title"></select></li>
+                <li><input type="checkbox" name="" cus_prop="detail">详述<select name="" id="bwl_msg"></select></li>
+                <li><input type="checkbox" name="" cus_prop="satcode">型号<select name="" id="bw_satellite_type"></select></li>
+                <!--<li><input type="checkbox" name="">状态
+                    <select name="" id="bwl_state">
+                        <option value="">open</option>
+                        <option value="">close</option>
+                    </select>
+                </li>-->
+            </ul>
+        </li>
+    </ul>
+    <div>
+        <input type="checkbox" name="" id="fwr_sel_3" cus_prop="addperson">添加人
+        <select name="" id="sel_adder"></select>
+    </div>
+</div>
+
+<!--新建值班列表弹窗-->
+<ul class="dialog-warp" id="add_duty_panel">
+    <li style="width:260px;">值班日期<input id="add_duty_date" type="text"></li>
+    <li>值班人1
+        <select name="" id="watcher_first_list">
+            <option value="张三">张三</option>
+            <option value="李四">李四</option>
+        </select>
+    </li>
+    <li>值班人2
+        <select name="" id="watcher_second_list">
+            <option value="张三">张三</option>
+            <option value="李四">李四</option>
+        </select>
+    </li>
+    <li>星期
+        <select name="" id="add_week_list">
+            <option value="一">一</option>
+            <option value="二">二</option>
+            <option value="三">三</option>
+            <option value="四">四</option>
+            <option value="五">五</option>
+            <option value="六">六</option>
+            <option value="日">日</option>
+        </select>
+    </li>
+</ul>
+
+<!--添加处理结果弹窗-->
+<ul class="dialog-warp" id="watcher_add_panel" style="width:400px;">
+    <li>
+        <span>型号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <select name="" id="watcher_add_type_list"></select>
+    </li>
+    <li>
+        <span>异常类型：</span>
+        <select name="" id="handle_type">
+            <option value="2">报警处理</option>
+            <option value="1">在轨异常</option>
+            <option value="3">测控事件</option>
+            <option value="2">链路中断</option>
+            <option value="2">来电记录</option>
+            <option value="2">特殊空间环境情况</option>
+            <option value="2">接待参观</option>
+            <option value="2">其他</option>
+        </select>
+    </li>
+    <li class="toggle_panle">
+        <ul class="else">
+            <li class="clearfix">
+                <div class="phenomenon">现象：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <ul class="ph_detail" style="padding:10px;">
+                    <li class="occ_time">发生时间<input type="text" id="occurrence_time"></li>
+                    <li class="detail"><span>详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;述</span><textarea name="" id="ph_txt" cols="20" rows="3"></textarea></li>
+                </ul>
+            </li>
+            <li class="clearfix">
+                <div class="result">处理结果：</div>
+                <ul class="re_detial" style="padding:10px;">
+                    <li class="stop_time">结束时间<input type="text" id="hangdle_time"></li>
+                    <li class="detail"><span>详&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;述</span><textarea name="" id="re_txt" cols="20" rows="3"></textarea></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="cksj">
+            <li class="cj_stime"><span>测控计划开始时间：</span><input type="text" id="tck_stime"></li>
+            <li class="cj_etime"><span>测控计划结束时间：</span><input type="text" id="tck_etime"></li>
+            <li><span style="vertical-align: top;">描述信息</span><textarea name="" id="tck_msxx" cols="30" rows="10" style="resize:both"></textarea></li>
+        </ul>
+        <ul class="zgyc">
+            <li>异常等级：
+                <select name="" id="abnormal_level">
+                    <option value="轻度">轻度</option>
+                    <option value="轻度">关键性</option>
+                    <option value="非主要">非主要</option>
+                    <option value="灾难性">灾难性</option>
+                </select>
+            </li>
+        </ul>
+    </li>
+    <li class="w_a_list">该事件是否需要追踪：<input type="radio" name="w_a_blean" value="是">是<input type="radio" name="w_a_blean" value="否">否</li>
+    <li class="isTaraceToggle">发送给：<input type="radio" class="send_sel_title" name="w_a_sel" value="next">下一岗值班人<!--<input type="radio" name="w_a_sel"  class="send_sel_title" id="send_sel_title">责任人-->
+        <!--<select name="" id="sendToList">
+            <option value="张三">张三</option>
+            <option value="李四">李四</option>
+            <option value="张三疯">张三疯</option>
+        </select>-->
+    </li>
+</ul>
+
+<!--搜索处理结果弹窗-->
+<ul class="dialog-warp" id="sel_handle_res" style="width:450px;padding:0 15px;">
+    <li><input type="checkbox" name="" custom_prop="satcode"><span>型号</span><select name="" id="sel_sat_type"></select></li>
+    <li><input type="checkbox" name="" id="infotype" custom_prop="bzbsw_infotype">
+        <span>异常类型</span>
+        <select name="" id="sel_yclx">
+            <option value="报警处理">报警处理</option>
+            <option value="在轨异常">在轨异常</option>
+            <option value="测控事件">测控事件</option>
+            <option value="链路中断">链路中断</option>
+            <option value="来电记录">来电记录</option>
+            <option value="特殊空间环境情况">特殊空间环境情况</option>
+            <option value="接待参观">接待参观</option>
+            <option value="其他">其他</option>
+        </select>
+    </li>
+    <li><input type="checkbox" name="" custom_prop="phemdesc"><span>现象</span><select name="" id="selPhemList"></select></li>
+    <li><input type="checkbox" name="" custom_prop="resltdesc"><span>处理结果</span><select name="" id="selHandleRes"></select></li>
+    <li><input type="checkbox" name="" custom_prop="addPerson"><span>添加人</span><select name="" id="selAdder"></select></li>
+    <li><input type="checkbox" name="" custom_prop="state"><span>状态</span><select name="" id="selState"></select></li>
+    <li><input type="checkbox" name="" custom_prop="sendto">
+        <span>发送给</span>
+        <select name="" id="selSendTo">
+            <option value="">下一岗值班人</option>
+        </select>
+    </li>
+</ul>
+<script type="text/javascript" src="/vender/custom/green/jquery.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/vender/echarts.common.min.js"></script>
+<script type="text/javascript" src="/js/base.js"></script>
+<script type="text/javascript" src="/js/watcherindex/zhibanren.js"></script>

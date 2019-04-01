@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BsjmxysMapper">
+    <select id="findAlarmListByParam" resultType="map" parameterType="map">
+         SELECT
+                a.*,
+                s.su_chinesename AS confirmUser,
+                bsat.bsat_code AS bsatCode
+            <include refid="condition"></include>
+        limit #{offset},#{rows}
+    </select>
+
+    <select id="getCount" resultType="int" parameterType="map">
+        SELECT count(1)
+        <include refid="condition"></include>
+    </select>
+
+    <select id="getByAtpId" parameterType="String" resultType="AlarmInfoModel">
+        SELECT
+        bs.bsjmxys_begintime as beginTime,
+        bs.bsjmxys_satid as satId,
+        bsat.bsat_code as bsatCode,
+        s.su_atpid as dutyId,
+        s.su_chinesename as dutyName
+        FROM htdxjk_bsjmxys bs
+        LEFT JOIN htdxjk_bsat bsat ON bs.bsjmxys_satid = bsat.bsat_atpid
+        LEFT JOIN htdxjk_suser s on bsat.bsat_admin_subs_id = s.su_atpid
+        WHERE bs.bsjmxys_atpid = #{alarmId}
+    </select>
+    <sql id="condition">
+        FROM (
+                SELECT
+                    bfx.balarmfx_atpid AS atpId,
+                    bfx.balarmfx_begintime AS alarmBeginTime,
+                    bfx.balarmfx_endtime AS alarmEndTime,
+                    bfx.balarmfx_source AS alarmSource,
+                    bfx.balarmfx_savetime AS confirmTime,
+                    bfx.balarmfx_alarmmsg AS alarmMsg,
+                    bfx.balarmfx_alarmvalue AS alarmVal,
+                    bfx.balarmfx_alarmlevel AS alarmLevel,
+                    bfx.balarmfx_type AS confirmType,
+                    bfx.balarmfx_remark AS remark,
+                    bfx.balarmfx_satid AS satId,
+                    bfx.balarmfx_iden AS iden,
+                    bfx.balarmfx_username AS userId,
+                  bfx.balarmfx_atpcreatedatetime as createTime,
+                  bfx.balarmfx_atplastmodifydatetime as modifyTime
+                FROM
+                    htdxjk_balarmfx bfx UNION ALL
+                SELECT
+                    bsj.bsjmxys_atpid AS atpId,
+                    "三级门限延时报警" AS alarmSource,
+                    bsj.bsjmxys_begintime AS alarmBeginTime,
+                    bsj.bsjmxys_endtime AS alarmEndTime,
+                    bsj.bsjmxys_createtime AS confirmTime,
+                    bsj.bsjmxys_alarmmsg AS alarmMsg,
+                    bsj.bsjmxys_alarmvalue AS alarmVal,
+                    bsj.bsjmxys_alarmlevel AS alarmLevel,
+                    '' AS confirmType,
+                    '' AS remark,
+                    bsj.bsjmxys_satid AS satId,
+                    '预判' AS iden,
+                    bsj.bsjmxys_username AS userId,
+                  bsj.bsjmxys_atpcreatedatetime as createTime,
+                  bsj.bsjmxys_atplastmodifydatetime as modifyTime
+                FROM
+                    htdxjk_bsjmxys bsj
+                    ) a
+                    LEFT JOIN htdxjk_bsat bsat ON a.satId = bsat.bsat_atpid
+                    LEFT JOIN htdxjk_suser s ON a.userId = s.su_atpid
+                WHERE bsat.bsat_admin_subs_id = #{userId}
+                AND a.alarmBeginTime <![CDATA[ >= ]]> date_sub(date_format(NOW(), '%Y-%m-%d 00:00:00' ),interval #{dayNum} day)
+                ORDER BY a.confirmTime DESC
+    </sql>
+</mapper>

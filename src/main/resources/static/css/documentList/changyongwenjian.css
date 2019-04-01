@@ -1,0 +1,4 @@
+@charset "UTF-8";
+.file_list{float:left;width:170px;height:150px;padding-top:10px;text-align: center;cursor:pointer;}
+.file_list:hover{background: #f9f9f9;}
+.file_list p{margin-top:10px;font-size: 14px;line-height: 26px;padding:0 18px;}

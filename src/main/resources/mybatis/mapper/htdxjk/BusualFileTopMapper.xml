@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BusualFileTopMapper">
+
+    <!-- 查询普通用户 (可以查看自己置顶和管理员置顶的卫星)  管理员只能查看自己-->
+    <select id="findIsAdminListBsatTop" resultType="map" parameterType="map">
+        select buft.*,buf.*
+        from htdxjk_busualfiletop buft
+        LEFT JOIN  htdxjk_busualfile buf
+        ON buft.buft_fkbusualfileid = buf.buf_atpid
+        WHERE buft.buft_admin = #{isAdmin}
+        <if test="userId != null and userId != ''">
+            or  buft.buft_fksuserid = #{userId}
+        </if>
+        ORDER BY buft.buft_atplastmodifydatetime DESC
+    </select>
+
+</mapper>

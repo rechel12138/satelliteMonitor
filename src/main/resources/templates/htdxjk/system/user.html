@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" style="min-width:900px;">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/platform.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/custom/darkblue/uimaker/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/process.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/all.css"/>
+</head>
+<body style="height:85%">
+
+<!--操作按钮，动态生成-->
+<div class="toolbar"></div>
+<!--datagrid数据表-->
+<table id="myTable" ></table>
+</body>
+</html>
+
+<!--用户弹窗-->
+<div class="dialog-warp" id="user_dialog">
+    <ul>
+        <li>用户姓名：<input type="text" id="name" placeholder="请输入姓名"></li>
+        <li>登录账号：<input type="text" id="userName" placeholder="请输入账号"></li>
+        <li>登录密码：<input type="password" id="password" placeholder="请输入密码"></li>
+
+    </ul>
+</div>
+
+<!--角色配置弹窗-->
+<div class="roleConfigMain" id="role_dialog">
+
+        <div class="selectPlace">
+            <li>全部角色<br>
+                <span style="font-size:10px;color:#999999">(双击添加至已选角色)</span>
+            </li>
+            <li>
+                <select multiple="multiple" id="allItem">
+
+                </select>
+            </li>
+        </div>
+        <div class="split">>></div>
+        <div class="selectPlace">
+
+            <li>已选角色<br>
+                <span style="font-size:10px;color:#999999">(双击删除已选角色)</span></li>
+            <li>
+                <select multiple="multiple" id="selectedItem">
+
+                </select>
+            </li>
+
+        </div>
+
+    </div>
+
+
+
+
+<script type="text/javascript" src="/vender/custom/green/jquery.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/js/base.js"></script>
+<script src="/js/system/user.js"></script>
+
+<script>
+    setBodyHeight();
+
+    parent.$(window).resize(function(){
+       setBodyHeight();
+    });
+
+    //datagrid高度赋值
+    function setBodyHeight(){
+        var toolbar_height =65;
+        var tab_panel_height = parent.$(".tabs-panels").height();
+        var rate =toolbar_height/tab_panel_height;
+        $("body").css("height",(1-rate)*100+"%");
+    }
+</script>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BsjckgzhdMapper">
+
+
+    <select id="getBsjckgzhdInfo" resultType="map" parameterType="map">
+
+        SELECT
+        *
+        FROM
+        htdxjk_bsjckgzhd hd
+        LEFT JOIN
+        htdxjk_bsat bs
+        ON
+        hd.bsjckgzhd_satid=bs.bsat_atpid
+        WHERE
+        <![CDATA[
+        ((
+        hd.bsjckgzhd_start_time >= #{startTime}
+        AND hd.bsjckgzhd_start_time <= #{endTime} )
+        OR  (
+        hd.bsjckgzhd_start_time <= #{startTime}
+        AND hd.bsjckgzhd_end_time >= #{endTime} )
+        OR  (
+        hd.bsjckgzhd_end_time >= #{startTime}
+        AND hd.bsjckgzhd_end_time <= #{endTime} ))
+        ]]>
+        <if test="bsatCodes !=null and bsatCodes !=''">
+            and  bs.bsat_code in ('${bsatCodes}')
+        </if>
+        <if test="keyword !=null and keyword !=''">
+        AND (
+        bs.bsat_code LIKE '%${keyword}%'
+        OR hd.bsjckgzhd_devname LIKE '%${keyword}%')
+        </if>
+        ORDER BY ${sort} ${order}
+        <if test="offset !=null and offset !=''">
+            LIMIT ${offset},${rows}
+        </if>
+    </select>
+
+    <select id="countBsjckgzhdInfo" resultType="int" parameterType="map">
+
+        SELECT
+        count(1)
+        FROM
+        htdxjk_bsjckgzhd hd
+        LEFT JOIN
+        htdxjk_bsat bs
+        ON
+        hd.bsjckgzhd_satid=bs.bsat_atpid
+        WHERE
+        <![CDATA[
+        ((
+        hd.bsjckgzhd_start_time >= #{startTime}
+        AND hd.bsjckgzhd_start_time <= #{endTime} )
+        OR  (
+        hd.bsjckgzhd_start_time <= #{startTime}
+        AND hd.bsjckgzhd_end_time >= #{endTime} )
+        OR  (
+        hd.bsjckgzhd_end_time >= #{startTime}
+        AND hd.bsjckgzhd_end_time <= #{endTime} ))
+        ]]>
+        <if test="bsatCodes !=null and bsatCodes !=''">
+            and  bs.bsat_code in ('${bsatCodes}')
+        </if>
+        <if test="keyword !=null and keyword !=''">
+            AND (
+            bs.bsat_code LIKE '%${keyword}%'
+            OR hd.bsjckgzhd_devname LIKE '%${keyword}%')
+        </if>
+    </select>
+
+
+    <select id="getOneBsjckById" resultType="map" parameterType="String">
+        SELECT
+            *
+        FROM
+            htdxjk_bsjckgzhd hd
+        LEFT JOIN
+            htdxjk_bsat bs
+        ON
+            hd.bsjckgzhd_satid=bs.bsat_atpid
+        WHERE
+            hd.bsjckgzhd_atpid=#{myid}
+    </select>
+
+</mapper>

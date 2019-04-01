@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BxxrjlMapper">
+
+    <select id="findBxxrjlCat" resultType="String">
+        SELECT group_concat(bxxrjl_app_group) AS domain FROM htdxjk_bxxrjl GROUP BY bxxrjl_app_group
+    </select>
+
+
+    <select id="findBxxrjlBsats" resultType="map" parameterType="map">
+        SELECT
+            bx.bxxrjl_atpid,
+            bx.bxxrjl_app_group        domainName,
+            group_concat(bs.bsat_code) bsatCodes,
+            group_concat(bs.bsat_atpid) atpids,
+            bx.bxxrjl_atplastmodifydatetime lastupdatetime,
+            bx.bxxrjl_atpcreateuser createuser
+        FROM
+            htdxjk_bxxrjl bx
+        LEFT JOIN
+            htdxjk_bsat bs
+        ON
+            bx.bxxrjl_atpid=bs.bsat_bxxrjl_id
+        WHERE 1=1
+        <if test="bxxrjlAtpid !=null and bxxrjlAtpid !=''">
+        AND bx.bxxrjl_atpid=#{bxxrjlAtpid}
+        </if>
+        <if test="keyword !=null and keyword !=''">
+        AND (bx.bxxrjl_app_group LIKE '%${keyword}%'
+        OR  bs.bsat_code LIKE '%${keyword}%'
+        OR  bx.bxxrjl_atpcreateuser LIKE '%${keyword}%')
+        </if>
+        GROUP BY
+            bx.bxxrjl_app_group
+        ORDER BY ${sort} ${order}
+        <if test="offset !=null and offset !=''">
+            LIMIT ${offset},${rows}
+        </if>
+    </select>
+
+
+    <select id="findBxxrjlBsatsCount" resultType="int" parameterType="map">
+        SELECT
+            COUNT(*)
+        FROM
+            (
+                SELECT
+                    bx.bxxrjl_atpid,
+                    bx.bxxrjl_app_group             domainName,
+                    group_concat(bs.bsat_atpid)     atpids,
+                    group_concat(bs.bsat_code)      bsatCodes,
+                    bx.bxxrjl_atplastmodifydatetime lastupdatetime,
+                    bx.bxxrjl_atpcreateuser         createuser
+                FROM
+                    htdxjk_bxxrjl bx
+                LEFT JOIN
+                    htdxjk_bsat bs
+                ON
+                    bx.bxxrjl_atpid=bs.bsat_bxxrjl_id
+                WHERE
+                    1=1
+                <if test="keyword !=null and keyword !=''">
+                    AND (bx.bxxrjl_app_group LIKE '%${keyword}%'
+                    OR  bs.bsat_code LIKE '%${keyword}%'
+                    OR  bx.bxxrjl_atpcreateuser LIKE '%${keyword}%')
+                </if>
+                GROUP BY
+                    bx.bxxrjl_app_group) t
+    </select>
+
+    <select id="updaeBxxrjlByCodes" parameterType="map">
+
+    </select>
+
+</mapper>

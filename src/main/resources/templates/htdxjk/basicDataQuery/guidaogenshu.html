@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>轨道根数</title>
+	<link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/base.css"/>
+	<link rel="stylesheet" type="text/css" href="/vender/custom/darkblue/uimaker/easyui.css"/>
+	<link rel="stylesheet" type="text/css" href="/vender/custom/green/uimaker/icon.css"/>
+	<link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/platform.css"/>
+	<link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/process.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/all.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/basicDataQuery/cekongjihua.css"/>
+</head>
+<body>
+<div class="clearfix" style="overflow:visible">
+	<div id="tb">
+		<select class="ckjhSelect">
+			<option value="1">自定义</option>
+			<option value="2">最近一天</option>
+			<option value="3">最近三天</option>
+			<option value="4">最近一周</option>
+		</select>
+
+		<input id="stateTime" class="easyui-datetimebox start_time" style="width:200px;height:30px;"/>~<input id="endTime" class="easyui-datetimebox end_time" style="width:200px;height:30px;"/>
+		<span class="calendar_box_back" style="left: 13.2%;top: 11px;"></span>
+		<span class="calendar_box_back" style="left: 40%;top: 11px;"></span>
+		<input class="ckkeywords" type="text" name="name"/>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-search" data-options="selected:true" id="ck_query_btn">查询</a>
+	</div>
+	<div class="toolbar"></div>
+</div>
+
+<table id="gdgs"></table>
+
+<!--型号代号筛选框-->
+<div id="ck_tp_sel">
+	<p style="font-size:15px;padding:5px 0;font-weight:bold">筛选</p>
+	<p><button style="border:1px solid #cbcbcb;width:60px;height:20px;cursor:pointer" id="sort_ace">升序</button><button style="border:1px solid #cbcbcb;width:60px;height:20px;cursor:pointer;margin-left:5px" id="sort_desc">降序</button></p>
+	<p style="padding:5px 0;"><span style="font-size:14px;color: #323030">型号代号:&nbsp</span><input type="text" id="sort_search"></p>
+	<div>
+		<p style="padding:5px 0;vertical-align: center">
+			<input type="checkbox" style="display: inline-block;vertical-align: bottom" class="baseCode_select"><a href="#" id="btn_all" style="margin-left:5px">全选</a><a id="btn_reverse" href="#" style="display: inline-block;margin-left:8px">反选</a>
+		</p>
+		<ul style="display: block;height:160px;width:210px;overflow:scroll" id="selectUl">
+
+		</ul>
+	</div>
+	<div style="text-align: right">
+		<button style="margin-right:15px" id="sorbtn_true">确定</button><button id="sorbtn_cel">取消</button>
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="/vender/custom/green/jquery.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/js/base.js"></script>
+<script src="/js/basicDataQuery/guidaogenshu.js"></script>
+<script>
+    //窗口折叠时iframe自适应：
+    setBodyHeight();
+    parent.$(window).resize(function(){
+        setBodyHeight();
+    });
+
+    //datagrid高度赋值
+    function setBodyHeight(){
+        var toolbar_height =60;
+        var tab_panel_height = parent.$(".tabs-panels").height();
+        var rate =toolbar_height/tab_panel_height;
+        //rate = Math.round(rate *100)/100;
+        $("body").css("height",(1-rate)*100-3+"%");
+    }
+</script>
+<!--弹窗-->
+<ul id="gdgstc" class="dialog-warp" style="width:356px;padding:0 15px;">
+	<li>
+		<span style="display:inline-block;width:136px;">型号代号</span><select name="" id="xhdh" style="width:187px;height:27px;">
+			<!--<option value="null">请选择</option>-->
+		</select>
+		<span style="position:absolute;width:182px;height:27px;background:#000; opacity:0.3;filter: Alpha(opacity=30);display:none;left:81px;top:69px;" id="cover"></span>
+	</li>
+	<li style="width:340px;"><span style="display:inline-block;width:136px;">测量时间</span><input type="text" id="measuretime"></li>
+	<li><span style="display:inline-block;width:136px;">类别</span><input type="text" id="gdgs_type"></li>
+	<li><span style="display:inline-block;width:136px;">半长轴（m）</span><input type="text" id="bcz"></li>
+	<li><span style="display:inline-block;width:136px;">偏心率</span><input type="text" id="pxl"></li>
+	<li><span style="display:inline-block;width:136px;">倾角（Deg）</span><input type="text" id="qj"></li>
+	<li><span style="display:inline-block;width:136px;">升交点赤经（Deg）</span><input type="text" id="sjdcj"></li>
+	<li><span style="display:inline-block;width:136px;">近地点俯角（Deg）</span><input type="text" id="jdifj"></li>
+	<li><span style="display:inline-block;width:136px;">平近点角（Deg）</span><input type="text" id="pjdj"></li>
+</ul>
+<!--二维码弹窗-->
+<div id="erweima" class="dialog-warp">
+	<img src="" alt="" style="width:200px;height:200px;margin:0 20px;">
+</div>

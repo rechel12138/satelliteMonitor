@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BdxznzdxtssbjMapper">
+    <select id="getByAtpId" parameterType="String" resultType="AlarmInfoModel">
+        SELECT
+        bs.bdxznzdxtssbj_record_time as beginTime,
+        bs.bdxznzdxtssbj_sat_id as satId,
+        bsat.bsat_code as bsatCode,
+        s.su_atpid as dutyId,
+        s.su_chinesename as dutyName
+        FROM htdxjk_bdxznzdxtssbj bs
+        LEFT JOIN htdxjk_bsat bsat ON bs.bdxznzdxtssbj_sat_id = bsat.bsat_atpid
+        LEFT JOIN htdxjk_suser s on bsat.bsat_admin_subs_id = s.su_atpid
+        WHERE bs.bdxznzdxtssbj_atpid = #{alarmId}
+    </select>
+</mapper>

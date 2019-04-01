@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.SlogMapper">
+
+    <select id="getLogsCount" parameterType="map" resultType="int">
+
+        select count(1)
+        <include refid="condition"></include>
+
+    </select>
+
+    <select id="getLogsLists" parameterType="map" resultType="map">
+
+        select *
+        <include refid="condition"></include>
+        order by sl_atpcreatedatetime desc
+        limit #{offset},#{rows}
+
+    </select>
+    
+    <select id="logToExcel" parameterType="map" resultType="map">
+
+        select *
+        <include refid="condition"></include>
+
+    </select>
+
+    <sql id="condition">
+
+      from htdxjk_slog
+
+      <where>
+
+          <if test="keyword !=null">
+
+               sl_ip like concat("%",#{keyword},"%") or
+
+               sl_content like concat("%",#{keyword},"%") or
+
+               sl_atpcreateuser like concat("%",#{keyword},"%")
+
+
+          </if>
+
+      </where>
+
+    </sql>
+
+</mapper>

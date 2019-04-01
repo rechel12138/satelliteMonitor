@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" style="min-width:900px;">
+<head>
+    <meta charset="UTF-8">
+    <title>角色管理</title>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/platform.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/custom/darkblue/uimaker/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/process.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/all.css"/>
+</head>
+<body>
+
+<div class="toolbar"></div>
+<table id="myTable"></table>
+
+</body>
+</html>
+
+<!--弹窗-->
+<div class="dialog-warp" id="role_config_dialog">
+    <ul>
+        <li>角色名称：<input type="text" id="roleName" placeholder="请输入角色名称"></li>
+        <li>主页链接：<input type="text" id="indexUrl" placeholder="请输入主页链接"></li>
+        <li>
+            <span style="vertical-align: top">角色描述：</span>
+            <textarea style="height:50px; width:175px;" id="remark" placeholder="请输入描述内容"></textarea>
+        </li>
+
+    </ul>
+</div>
+
+<!--权限配置弹窗-->
+<div class="right_main"  id="configTree">
+    <div class="loading" id="menu_loading">正在加载...</div>
+</div>
+<script type="text/javascript" src="/vender/custom/green/jquery.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/js/base.js"></script>
+<script src="/js/system/role.js"></script>
+
+<script>
+    setBodyHeight();
+    parent.$(window).resize(function(){
+        setBodyHeight();
+    });
+
+    //datagrid高度赋值
+    function setBodyHeight(){
+        var toolbar_height =65;
+        var tab_panel_height = parent.$(".tabs-panels").height();
+        var rate =toolbar_height/tab_panel_height;
+        //rate = Math.round(rate *100)/100;
+        $("body").css("height",(1-rate)*100+"%");
+    }
+</script>

@@ -1,0 +1,69 @@
+= springboot利用swagger构建api文档
+
+
+[[_overview]]
+== Overview
+简单优雅的restful风格，http://baidu.com
+
+
+=== Version information
+[%hardbreaks]
+__Version__ : 1.0
+
+
+=== License information
+[%hardbreaks]
+__Terms of service__ : http://baidu.com
+
+
+=== URI scheme
+[%hardbreaks]
+__Host__ : localhost:8000
+__BasePath__ : /
+
+
+=== Tags
+
+* 三级门限实时报警信息表 : Bsjmxss Controller
+* 三级门限延时报警信息 : Bsjmxys Controller
+* 会话保持 : Keep Session Controller
+* 值班列表 : Bzbjl Controller
+* 值班记录 : Bzbsw Controller
+* 单位管理 : Bdwgl Controller
+* 卫星回放数据 : Bsatdatamsg Controller
+* 历史报警分类分析-延遥 : Balarmfxyy Controller
+* 在轨卫星型号责任联系人 : Bzgwxxhfzlxr Controller
+* 在轨异常 : Bzgyc Controller
+* 地月影预报 : Bmonthpre Controller
+* 型号支持队伍 : Bxhzcdw Controller
+* 型号集信息 : Bsatset Controller
+* 备忘录 : Bzbbwl Controller
+* 多星智能诊断系统实时报警 : Bdxznzdxtssbj Controller
+* 实际跟踪弧段 : Bsjckgzhd Controller
+* 常用文件 : Busualfile Controller
+* 常用文件软件 : Bfile Controller
+* 平台表 : Bpt Controller
+* 报警分类分析 : Balarmfx Controller
+* 文件上传下载 : File Controller
+* 文件分享 : Bfileshare Controller
+* 日志 : Slog Controller
+* 显示软件库(领域) : Bxxrjl Controller
+* 模块关系表 : Srolemodule Controller
+* 测控计划 : Bckplan Controller
+* 用户表 : Suser Controller
+* 用户角色表 : Suserrole Controller
+* 登录登出 : Login Controller
+* 系统字典 : Sdict Controller
+* 系统配置 : Sconfig Controller
+* 置顶卫星信息 : Bsat Top Controller
+* 置顶常用文件信息 : Busual File Top Controller
+* 航天器基本信息 : Bsat Controller
+* 账号角色 : Srole Controller
+* 超寿重复异常 : Bcscfyc Controller
+* 轨道根数 : Borbit Controller
+* 通知管理 : Bnotice Controller
+* 雇员菜单 : Smodule Controller
+* 页面管理 : Spageconfig Controller
+
+
+

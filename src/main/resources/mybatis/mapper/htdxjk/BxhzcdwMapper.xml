@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BxhzcdwMapper">
+
+    <select id="findBySatIdOrSatCode" resultType="Bxhzcdw" parameterType="map">
+        SELECT
+            bx.*
+        FROM
+            htdxjk_bxhzcdw bx
+            LEFT JOIN htdxjk_bxhzcdwrel br ON bx.bxhzcdw_atpid = br.bxhzcdwrl_fkbxhzcdwid
+            LEFT JOIN htdxjk_bsat bs ON br.bxhzcdwrl_fkbsatid = bs.bsat_atpid
+        WHERE
+           1 =1
+        <if test="keyWord != '' and keyWord != null">
+            AND bx.bxhzcdw_post like concat("%",#{keyWord},"%") or
+            bx.bxhzcdw_name like concat("%",#{keyWord},"%") or
+            bx.bxhzcdw_unit like concat("%",#{keyWord},"%") or
+            bx.bxhzcdw_phone like concat("%",#{keyWord},"%") or
+            bx.bxhzcdw_telephone like concat("%",#{keyWord},"%") or
+            bx.bxhzcdw_remark like concat("%",#{keyWord},"%")
+        </if>
+        and  bs.bsat_id = #{satId}
+    </select>
+
+
+    <select id="findZrrBySatAtpId" resultType="Bxhzcdw" parameterType="map">
+        SELECT
+            *
+        FROM
+            htdxjk_bzgwxxhfzlxr zrr
+        LEFT JOIN
+            htdxjk_bxhzcdw dw
+        ON
+            zrr.bzgwxxhfzlxr_fkbxhzcdwid=dw.bxhzcdw_atpid
+        WHERE 1=1
+        <if test="bsatAtpid != '' and bsatAtpid != null">
+            and zrr.bzgwxxhfzlxr_satid=#{bsatAtpid}
+        </if>
+    </select>
+
+    <select id="findZcdwBySatAtpId" resultType="Bxhzcdw" parameterType="map">
+        SELECT
+        *
+        FROM
+        htdxjk_bxhzcdwrel rel
+        LEFT JOIN
+        htdxjk_bxhzcdw dw
+        ON
+        rel.bxhzcdwrl_fkbxhzcdwid=dw.bxhzcdw_atpid
+        WHERE 1=1
+
+        <if test="bsatAtpid != '' and bsatAtpid != null">
+            and rel.bxhzcdwrl_fkbsatid=#{bsatAtpid}
+        </if>
+    </select>
+
+
+
+</mapper>

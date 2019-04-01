@@ -1,0 +1,13 @@
+@charset "UTF-8";
+.title{font-size: 16px;color:#000;font-weight: bold;margin-left: 10px;line-height: 30px;}
+#toolbar_wrap{margin:7px 0;}
+#change_shifts,#btn_Add,#btn_search{padding: 5px 10px;background: #1890FF;color:#fff;
+    cursor: pointer;margin:5px 10px 5px 0; }
+#change_shifts{margin-left:65%;}
+#btn_Add{margin-left:75%;}
+
+.watcher_list{margin:7px 0;}
+#new_btn{padding: 5px 10px;background: #1890FF;color:#fff;cursor: pointer;margin-left:83%;}
+
+.confirm_btn{text-decoration: underline;}
+.bar_graph{overflow-y:auto;}

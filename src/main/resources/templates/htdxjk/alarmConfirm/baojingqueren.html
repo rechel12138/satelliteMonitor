@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Document</title>
+	<link href="/vender/static/darkblue/css/platform.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="/vender/custom/green/uimaker/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/custom/green/uimaker/icon.css"/>
+    <link href="/vender/static/darkblue/css/base.css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/all.css"/>
+
+	<link rel="stylesheet" href="/css/alarmConfirm/baojingqueren.css"/>
+    <style type="text/css">
+       #xhjflBtn:hover{
+           cursor:pointer
+       }
+    </style>
+</head>
+<body>
+<!-- 表格以上选项及按钮 -->
+<ul class="alarm_toolbar">
+    <li><span class="time">时间:</span><span class="time_num">2018/12/05  21:31:06</span></li>
+    <li><span id="xhjflBtn">型号集分类</span></li>
+    <li><input type="checkbox" class="show_light_alarm" ids=""/><span>显示轻度报警</span></li>
+    <li><span>当前页面报警数量：</span><span id="alarm_num">44</span></li>
+    <li class="export"><a href="javascript:;" id="excel_port">导出报警信息</a></li>
+    <li class="watcher_judge"><a href="javascript:;">值班人预判</a></li>
+</ul>
+<div style="position:relative;height: 90%;width:100%">
+    <table id="dg" style="width:100%;height: 100%;"></table>
+    <!--筛选框-->
+    <div id="table_sort" style="position:absolute;top:38px;left:67px;background-color: #ffffff;padding:5px 10px;display:none;border:1px solid #bebebe" istrue="0" sorparam="">
+        <p style="font-size:15px;padding:5px 0;font-weight:bold">筛选</p>
+        <p><button style="border:1px solid #cbcbcb;width:60px;height:20px;cursor:pointer" id="sort_ace">升序</button><button style="border:1px solid #cbcbcb;width:60px;height:20px;cursor:pointer;margin-left:5px" id="sort_desc">降序</button></p>
+        <p style="padding:5px 0;"><span style="font-size:14px;color: #323030" class="search_name">型号代号:</span>&nbsp<input type="text" id="sort_search"></p>
+        <div>
+            <p style="padding:5px 0;vertical-align: center">
+                <input type="checkbox" style="display: inline-block;vertical-align: bottom" class="baseCode_select"><a href="#" id="btn_all" style="margin-left:5px">全选</a><a id="btn_reverse" href="#" style="display: inline-block;margin-left:8px">反选</a>
+            </p>
+            <ul style="display: block;height:160px;width:210px;overflow:scroll" id="selectUl">
+
+            </ul>
+        </div>
+        <div style="text-align: right">
+            <button style="margin-right:15px" id="sorbtn_true">确定</button><button id="sorbtn_cel">取消</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<!--型号集分类弹窗-->
+<div class="xhjfl dialog-warp" id="xhjfl" style="width:1235px">
+    <span class="configure">配置</span>
+    <ul class="clearfix categoryList" id="categoryList" style="height: 300px">
+    <!--    <li id="xhjflList"><span>icon</span><span class="satelliteName" id="all_satelite">所有卫星</span></li>-->
+<!--        <li><a href="javascript:;"><span>icon</span><span class="satelliteName">海洋卫星</span></a></li>
+        <li><a href="javascript:;"><span>icon</span><span class="satelliteName">气象卫星</span></a></li>
+        <li><a href="javascript:;"><span>icon</span><span class="satelliteName">北斗卫星</span></a></li>
+        <li><a href="javascript:;"><span>icon</span><span class="satelliteName">海洋卫星</span></a></li>
+        <li><a href="javascript:;"><span>icon</span><span class="satelliteName">气象卫星</span></a></li>
+        <li><a href="javascript:;"><span>icon</span><span class="satelliteName">北斗卫星</span></a></li>
+        <li><a href="javascript:;"><span>icon</span><span class="satelliteName">海洋卫星</span></a></li>
+        <li><a href="javascript:;"><span>icon</span><span class="satelliteName">气象卫星</span></a></li>-->
+    </ul>
+</div>
+
+<!-- 型号集分类配置弹窗 -->
+<div class="dialog-warp xhjconfig-panel" id="xhjconfig-panel">
+    <div class="configBtn" style="padding:10px 5px"><span id="createXhjfl">创建新型号集</span><span class="delete" id="Xhjfl_delete">删除</span>
+        <input type="text" id="Xhjfl_keyword"><span class="" id="Xhjfl_search">查询</span>
+    </div>
+    <div style="width:100%">
+        <table id="xhjconfig"></table>
+    </div>
+</div>
+
+<!-- 创建新型号集弹窗 -->
+<ul class="dialog-warp" id="createType" style="width:290px">
+    <li><span>分类名称:</span><input type="text" id="createType_name" style="margin-left:10px;padding-left:10px"></li>
+    <li><span>分类描述:</span><input type="text" id="createType_desc" style="margin-left:10px;padding-left:10px"></li>
+    <li>
+      <span style="vertical-align: top">型号代号:</span>
+        <ul id="typeNameList" style="display:inline-block;width:190px;height:80px;padding-left:8px;overflow: scroll">
+          <!--  <option value="DFW231">DFW231</option>
+            <option value="AAA">AAA</option>
+            <option value="BBB">BBB</option>
+            <option value="c">BBB</option>
+            <option value="d">BBB</option>
+            <option value="e">BBB</option>
+            <option value="f">BBB</option>
+            <option value="g">BBB</option>
+            <option value="h">BBB</option>-->
+        </ul>
+    </li>
+    <li class="radio" style="padding-left:20px">
+        <span>类型：</span>
+        <input type="radio" name="singleSelection" id="a" value="公有">公有
+        <input type="radio" name="singleSelection" id="b" value="私有">私有
+        <input type="radio" name="singleSelection" id="c" value="共有">共有
+    </li>
+    <li id="radioControll" style="display: none">
+        <span style="vertical-align: top">指派人员:</span>
+        <ul id="dutyManList" style="display:inline-block;width:190px;height:80px;padding-left:8px;overflow: scroll">
+<!--
+            <option value="张三疯">张三疯</option>
+            <option value="李四">李四</option>
+            <option value="王五">王五</option>
+            <option value="1">王五</option>
+            <option value="2">王五</option>
+            <option value="3">王五</option>
+            <option value="4">王五</option>
+            <option value="5">王五</option>-->
+        </ul>
+    </li>
+</ul>
+
+<!--值班人预判面板-->
+<div class="watcher_adjust dialog-warp" id="watcherJudge" style="padding-left:20px">
+    <ul>
+        <li class="type">
+            <span>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</span>
+            <select id="ff" class="zb_selec" name="dept" style="width:178px;">
+                <option value="aa1">在轨异常</option>
+                <option value="aa2" selected="selected">报警处理</option>
+                <option value="aa3">测控事件</option>
+                <option value="aa4">链路中断</option>
+                <option value="aa5">来电记录</option>
+                <option value="aa6">特殊空间环境情况</option>
+                <option value="aa7">接待参观</option>
+                <option value="aa8">其他</option>
+            </select>
+        </li>
+        <li>
+            <span>报警类别：</span>
+            <select id="cc" class="zb_selec" name="dept" style="width:178px;">
+                <option value="地面异常报警">地面异常报警</option>
+                <option value="星上异常报警">星上异常报警</option>
+                <option value="测控事件">测控事件</option>
+                <option value="乱码和野值">乱码和野值</option>
+                <option value="门限设置不当">门限设置不当</option>
+                <option value="其它">其它</option>
+                <option value="知识错误">知识错误</option>
+            </select>
+        </li>
+        <li><span>处理结果：</span><input type="text" value="" style="width:166px;padding-left:10px;margin-left: 4px;" id="resultV"/></li>
+        <li class="adjust_end_time"><span style="margin-right: 5px">预判时间：&nbsp;</span><input name="birthday" type="text"
+                                                                                             style="width:180px;" id="end_time"/></li>
+        <li id="folowing_V"><span>该事件是否需要追踪：</span>
+            <input type="radio" name="to_trace" value="on"/>是<input type="radio" name="to_trace" checked="checked" value="off" style="margin-left: 15px"/>否</li>
+        <li class="send" id="watcher_zrr" style="display: none;"><span>发送给：下一岗值班人</span>
+            <!--<input type="radio" name="next_watcher" value="下一岗值班人"/>下一岗值班人-->
+        <!--    <input type="radio" name="next_watcher" class="choose_watcher" value="选择责任人"/>选择责任人
+            <select id="dd" class="zb_selec watcher_name" name="dept" style="width:100px;margin-left: 140px;margin-top:10px">
+                <option value="aa">责任人姓名</option>
+                <option value="bb">bbb</option>
+            </select>-->
+        </li>
+    </ul>
+    <!--<div class="submit">提交</div>-->
+    <!--超寿异常-->
+<div class="dialog-warp" id="add_csyc" style="width:350px;height:460px">
+<div style="height:280px;width:300px;margin:auto auto">
+    <ul style="text-align: center" id="add_csyc_ul">
+        <!--<li><span style="display: inline-block;width:100px;text-align: right">型号代号：</span><input type="text"></li>
+        <li><span style="display: inline-block;width:100px;text-align: right">异常记录编号：</span><input type="text" placeholder="20190102-YG1234-001"></li>
+        <li><span style="display: inline-block;width:100px;text-align: right">异常名称：</span><input type="text"></li>
+        <li><span style="display: inline-block;width:100px;text-align: right">发生时间：</span><input type="text"></li>
+        <li><span style="display: inline-block;width:100px;text-align: right">异常现象描述：</span><input type="text"></li>
+        <li><span style="display: inline-block;width:100px;text-align: right">卫星责任人：</span><input type="text"></li>
+        <li><span style="display: inline-block;width:100px;text-align: right">状态：</span><input type="text"></li>
+        <li><span style="display: inline-block;width:100px;text-align: right">异常处理结果：</span><input type="text"></li>-->
+    </ul>
+</div>
+</div>
+<!--报警确认详情tab:-->
+<div class="alert_box dialog-warp" id="alarmConfirmDetail" style="width:1200px;height:600px">
+    <div id="tt" class="easyui-tabs" style="width:1200px;height:580px;" satid="1" atpid="" alarsource="">
+        <div title="历史报警分类分析" style="display:none;overflow-x:hidden">
+            <div data-choose = "1" >
+                <div>
+                    <div class="history_accordion" style="width:100%">
+                        <div class="center" style="width: 100%">
+                        <!--    <div class="accordion_first_line">
+                                <span class="name">型号代号:</span><input type="text" class="name_input"/>
+                                <span class="param">报警参数:</span><input type="text"/>
+                            </div>-->
+                            <div style="width: 100%">
+                                <span>开始时间:</span>
+                                <input id="flfx_begin_tme" class="begin_calendar" name="birthday"
+                                       style="width:180px;margin-left:5px;" type="text"/>
+                                <span class="end_time">结束时间:&nbsp;</span><input id="flfx_end_time" name="birthday"
+                                                                                style="width:180px;margin-left:5px;"/>
+                                <span class="alarm_type">报警类别:</span>
+                                <select id="ee" class="alarm_type" name="dept">
+                                    <option value="地面异常报警">地面异常报警</option>
+                                    <option value="星上异常报警">星上异常报警</option>
+                                    <option value="测控事件">测控事件</option>
+                                    <option value="乱码和野值">乱码和野值</option>
+                                    <option value="门限设置不当">门限设置不当</option>
+                                    <option value="其它">其它</option>
+                                    <option value="知识错误">知识错误</option>
+                                </select>
+                                <span class="btn_common query" id="flfx_searchbtn">查询</span>
+                                <span class="btn_common alarm_confirm" id="alarm_confirm">报警确认</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail_bottom center">
+                        <div class="detail_bottom_header">
+                            <div>
+                                <span class="odd">责任人：</span><span id="duty_text">耿仁冲(13588880000)(86158124)</span>
+                                <span class="odd">替代人：</span><span id="replace_text">耿仁冲(13588880000)(86158124)</span>
+                            </div>
+                            <div>
+                                <span class="odd">低轨值班电话：</span><span>0000-000000/01/02</span><span class="odd">传真：</span>
+                                <span>0000-123256</span><span class="odd">高轨值班电话：</span><span>0000-000000/01/02</span>
+                                <span class="odd">传真：</span><span>0000-123256</span>
+                            </div>
+                            <h3>默认显示最近一年的报警分类分析</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="table center" style="width:100%">
+                    <table id="detail_dg"></table>
+                </div>
+                <div class="add_over_btn center">
+                    <div id="zbr_btn_call" style="margin-top: 10px">值班人预判</div>
+                    <div class="add_over" id="add_over" style="margin-top: 10px">添加超寿重复异常</div>
+                </div>
+            </div>
+        </div>
+        <div title="航天器在轨基本信息" style="overflow:auto;padding:20px;display:none;">
+            <div data-choose = "2">
+                <div class="satellites_center">
+                    <div class="base_msg">
+                        <p><span>基本信息</span></p>
+                        <table id="base_msg">
+                    <!--        <tr class="base_msg_one">
+                                <td class="name">对外名称</td>
+                                <td colspan="3" class="name_value"></td>
+                                <td class="satellite_name">卫星代号</td>
+                                <td colspan="2" class="satellite_name_value"></td>
+                            </tr>
+                            <tr>
+                                <td>发射时间</td>
+                                <td class="shoot_time" colspan="2"></td>
+                                <td>考核寿命(年)</td>
+                                <td class="life_time">3</td>
+                                <td class="is_over_time">是否超寿</td>
+                                <td class="life_state"></td>
+                            </tr>
+                            <tr class="base_msg_three">
+                                <td>责任人</td>
+                                <td class="zpoe"></td>
+                                <td class="phone">电话</td>
+                                <td class="zphone"></td>
+                                <td class="mobile">手机</td>
+                                <td class="ztel" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td>替代人</td>
+                                <td  class="tpeo"></td>
+                                <td>电话</td>
+                                <td  class="tphone"></td>
+                                <td >手机</td>
+                                <td class="ttel" colspan="2"></td>
+                            </tr>-->
+                        </table>
+                        <p><span>在轨卫星型号责任联系人</span></p>
+                    </div>
+                </div>
+                <div class="contacts_xq_table_wrap" style="position:relative;width:100%;height:300px;">
+                    <div style="width:1000px;height:300px;margin: 0 auto">
+                        <table id="contacts_xq_table" style="height:300px;width:1000px">
+                            <!-- <tr>
+                                 <td class="station">岗位</td>
+                                 <td class="name">姓名</td>
+                                 <td class="mobile">手机</td>
+                                 <td class="phone">电话</td>
+                             </tr>
+                             <tr>
+                                 <td>在轨管理责任人</td>
+                                 <td class="zgname"></td>
+                                 <td class="zgphone"></td>
+                                 <td class="zgtel"></td>
+                             </tr>
+                             <tr>
+                                 <td>总指挥</td>
+                                 <td class="zzname"></td>
+                                 <td class="zzphone"></td>
+                                 <td class="zztel"></td>
+                             </tr>
+                             <tr>
+                                 <td>总师</td>
+                                 <td class="zsname"></td>
+                                 <td class="zsphone"></td>
+                                 <td class="zstel"></td>
+                             </tr>
+                             <tr>
+                                 <td>在轨应急响应第一联系人</td>
+                                 <td class="name1"></td>
+                                 <td class="phone1"></td>
+                                 <td class="tel1"></td>
+                             </tr>
+                             <tr>
+                                 <td>在轨应急响应第二联系人</td>
+                                 <td class="name2"></td>
+                                 <td class="phone2"></td>
+                                 <td class="tel2"></td>
+                             </tr>
+                             <tr>
+                                 <td>在轨应急响应第三联系人</td>
+                                 <td class="name3"></td>
+                                 <td class="phone3"></td>
+                                 <td class="tel3"></td>
+                             </tr>-->
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div title="在轨异常" style="padding:20px;display:none;">
+            <div data-choose = "3" class="show_this">
+                <div class="center">
+                    <div class="table_search_box" style="padding: 30px 0 40px 50px;">
+                        <input type="text" name="name" style="width:166px;height:22px;
+                            line-height:22px;padding: 0;outline: none;border:1px solid #666;
+                            vertical-align: middle" id="abnormal_keyword"/>
+                        <input type="button" value="查询" style="height: 24px;padding: 4px 20px;
+                            border: 1px solid dodgerblue;background-color: dodgerblue;
+                            color: #fff;cursor: pointer;vertical-align: middle" id="abnormal_query"/>
+                    </div>
+                </div>
+                <div style="height:270px;width:100%">
+                    <table id="abnormal_dg"style="width:100%;height:445px">
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div title="地月影预报" style="padding:20px;display:none;">
+            <div data-choose = "4">
+                <div class="center">
+                    <div style="padding:30px 0;">
+                        <div class="type_select" style="padding-left:30px;">
+                            <input type="text" name="name" style="width:166px;height:22px;
+						        	border:1px solid #666;" id="dyykeyword"/>
+                            <input type="button" value="查询" style="height: 22px;padding: 0 20px;border: 1px solid dodgerblue;
+						        	background-color: dodgerblue;color: #fff;cursor: pointer;" id="dyyquery"/>
+                        </div>
+                    </div>
+                    <table id="moon_dg" class="easyui-datagrid" style="width:100%;height:445px"></table>
+                </div>
+
+            </div>
+        </div>
+        <div title="测控计划" style="overflow:auto;padding:20px;display:none;">
+            <div data-choose = "5">
+                <div class="center" style="padding-top: 25px;">
+                    <table id="cekong_dg" class="easuui-datagrid" style="width: 100%;height:500px;"></table>
+                </div>
+            </div>
+        </div>
+        <div title="在轨技术支持队伍" style="padding:20px;display:none;">
+            <div data-choose = "6">
+                <div class="table_box">
+                    <div style="padding:15px 30px;">
+                        <div class="type_select">
+                            <input type="text" name="name" style="width:166px;height:22px;
+						        	line-height:22px;padding: 0;outline: none;border:1px solid #666;" id="zgdwkeyword"/>
+                            <input type="button" value="查询" style="height: 22px;padding: 0 20px;border: 1px solid dodgerblue;
+						        	background-color: dodgerblue;color: #fff;cursor: pointer;" id="zgdwquery"/>
+                        </div>
+                    </div>
+                   <div>
+                       <table id="team_dg" class="easuui-datagrid" style="width: 100%;height:445px;"></table>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--在轨异常详情面板-->
+    <div class="dialog-warp" id="bzgyc_detail" style="padding:15px;width:560px;height:550px">
+        <!--<div style="width:100%;height:100%;font-size: 14px">
+            <div style="display: inline-block;width:250px">
+                <p style="padding:5px">异常编号：111111</p>
+                <p style="padding:5px">型号代号：111111</p>
+                <p style="padding:5px">异常名称：111111</p>
+                <p style="padding:5px">所属分系统：111111</p>
+                <p style="padding:5px">所属单机：111111</p>
+                <p style="padding:5px">发现时间：111111</p>
+                <p style="padding:5px">异常涉及单位：111111</p>
+            </div>
+            <div style="display: inline-block;width:250px">
+                <p style="padding:5px">型号名称：111111</p>
+                <p style="padding:5px">发生次数：111111</p>
+                <p style="padding:5px">型号总体单位：111111</p>
+                <p style="padding:5px">所属关键单位：111111</p>
+                <p style="padding:5px">发生时间：111111</p>
+                <p style="padding:5px">是否为常驻故障：111111</p>
+                <p style="padding:5px">异常等级：111111</p>
+            </div>
+            <p style="padding:5px">异常现象描述:11111</p>
+            <p style="padding:5px">异常原因分析:11111111</p>
+            <p style="padding:5px">异常处理过程:111111111</p>
+            <p style="padding:5px">异常处理结果:11111111</p>
+            <p style="padding:5px">备注:111111111</p>
+            <p style="padding:5px">举一反三措施：111111</p>
+            <div style="display: inline-block;width:250px">
+                <p style="padding:5px">设计寿命：111111</p>
+                <p style="padding:5px">是否归零：111111</p>
+                <p style="padding:5px">计划归零时间：111111</p>
+                <p style="padding:5px">单机失效日期：111111</p>
+            </div>
+            <div style="display: inline-block;width:250px">
+                <p style="padding:5px">已运行时间：111111</p>
+                <p style="padding:5px">原因分类：111111</p>
+                <p style="padding:5px">完成归零时间：111111</p>
+                <p style="padding:5px">补偿措施：111111</p>
+            </div>
+        </div>-->
+    </div>
+ <!--   &lt;!&ndash;添加超寿重复异常面板：&ndash;&gt;
+    <div class="add_panel_box dialog-warp">
+			<div class="add_panel_back"></div>
+			<div class="add_panel">
+				<div class="header"><h4 class="title">添加超寿重复异常</h4></div>
+				<div class="center">
+					<div class="sheet">
+                        <table id="add_msg" style="height:300px;margin: 0 auto;">
+						<tr>
+							<td class="first_cell importent">型号代号</td>
+							<td class="second_cell"><input type="text" class="over_id" value="DF-f345"/></td>
+						</tr>
+						<tr>
+							<td>异常记录编号</td>
+							<td><input type="text" class="over_num" placeholder="例如：20190102-YG1234-001"/></td>
+						</tr>
+						<tr>
+							<td class="importent">异常名称</td>
+							<td><input class="over_name" type="text"/></td>
+						</tr>
+						<tr>
+							<td>发生时间</td>
+							<td><input type="text" class="over_time" value="2018-12-13 10:10:10"/></td>
+						</tr>
+						<tr>
+							<td>异常现象描述</td>
+							<td><input type="text" class="over_info" /></td>
+						</tr>
+						<tr>
+							<td class="importent">卫星责任人</td>
+							<td><input type="text" class="over_man" value="张三"/></td>
+						</tr>
+						<tr>
+							<td>状态</td>
+							<td><input type="text" class="over_state" value="open"/></td>
+						</tr>
+						<tr>
+							<td>异常处理结果</td>
+							<td><input class="over_end" type="text"/></td>
+						</tr>
+					</table></div>
+					<div class="submit_btn">提&nbsp;&nbsp;&nbsp;交</div>
+				</div>
+			</div>
+		</div>-->
+</div>
+
+    <bgsound id='snd_ie' src="" loop=-1></loop>
+    <!--<object id='snd_chrome' width="0px" height="0px" type="audio/x-wav" data=""></object>-->
+        <audio  controls="controls" id="snd_chrome" style='display:none'>
+            <source  src="/css/ce_3.mp3" type="audio/mpeg">
+        </audio>
+
+        <script type="text/javascript" src="/vender/custom/green/jquery.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/js/base.js"></script>
+<script type="text/javascript" src="/js/alarmConfirm/baojingqueren.js"></script>
+<script>
+
+
+
+    playSound();
+
+    function playSound(){
+
+        var file = "/css/ce_3.mp3";
+        //IE放 背景音乐
+        var snd_ie = document.getElementById('snd_ie');
+        snd_ie.src = file;
+
+        //chrome
+        var snd_chrome = document.getElementById('snd_chrome');
+        //snd_chrome.data = file;
+        snd_chrome.play();
+    }
+    setBodyHeight();
+    parent.$(window).resize(function(){
+        setBodyHeight();
+    });
+    //datagrid高度赋值
+    function setBodyHeight(){
+        var toolbar_height =60;
+        var tab_panel_height = parent.$(".tabs-panels").height();
+        var rate =toolbar_height/tab_panel_height;
+        //rate = Math.round(rate *100)/100;
+        $("body").css("height",(1-rate)*100+"%");
+    }
+</script>

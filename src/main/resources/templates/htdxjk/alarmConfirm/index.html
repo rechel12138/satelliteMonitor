@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Document</title>
+    <link rel="stylesheet" href="/vender/static/green/css/base.css"/>
+    <link rel="stylesheet" href="/vender/custom/green/uimaker/easyui.css"/>
+    <link rel="stylesheet" href="/vender/custom/green/uimaker/icon.css"/>
+    <link rel="stylesheet" href="/vender/static/green/css/providers.css"/>
+    <link rel="stylesheet" href="/css/baojingqueren.css"/>
+    <link rel="stylesheet" href="/vender/static/green/css/basic_info.css" />
+</head>
+<body>
+<!-- 表格以上选项及按钮 -->
+<!--<div class="container">-->
+    <ul class="toolbar">
+        <li><span class="time">时间:</span><span class="time_num">2018/12/05  21:31:06</span></li>
+        <li class="all_satellites_name"><a href="javascript:;">所有卫星名称</a></li>
+        <li><input type="checkbox" class="show_light_alarm"/><span>显示轻度报警</span></li>
+        <li><span>当前页面报警数量：</span><span>44</span></li>
+        <li class="export"><a href="javascript:;">导出报警信息</a></li>
+        <li class="watcher_judge"><a href="javascript:;">值班人预判</a></li>
+    </ul>
+    <table id="dg" style="width:100%;height: auto;"></table>
+    <!--值班人预判面板-->
+    <div class="alert_box1">
+    	<div class="alert_back1"></div>
+    	<div class="watcher_adjust">
+	        <div class="header"><p class="title">值班人预判</p><p class="close">×</p></div>
+	        <ul>
+	            <li class="type">
+	                <span>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</span>
+	                <select id="ff" class="easyui-combobox" name="dept" style="width:180px;">
+	                    <option value="aa1">在轨异常</option>
+	                    <option value="aa2" selected="selected">报警处理</option>
+	                    <option value="aa3">测控事件</option>
+	                    <option value="aa4">链路中断</option>
+	                    <option value="aa5">来电记录</option>
+	                    <option value="aa6">特殊空间环境情况</option>
+	                    <option value="aa7">接待参观</option>
+	                    <option value="aa8">其他</option>
+	                </select>
+	            </li>
+	            <li>
+	                <span>报警类别：</span>
+	                <select id="cc" class="easyui-combobox" name="dept" style="width:180px;">
+	                    <option value="aa">地面异常报警</option>
+	                </select>
+	            </li>
+	            <li><span>处理结果：</span><input type="text" value="链路问题" style="width:166px;padding-left:10px;"/></li>
+	            <li class="adjust_end_time"><span>结束时间：&nbsp;</span><input class="easyui-datetimebox" name="birthday"
+	                                         data-options="required:true,showSeconds:false" value="3/4/2010 2:3"
+	                                               style="width:180px;margin-left:5px;"/></li>
+	            <li><span>该事件是否需要追踪：</span>
+	                <input type="radio" name="to_trace" value="on"/>是<input type="radio" name="to_trace" checked="checked" value="off"/>否</li>
+	            <li class="send"><span>发送给：</span>
+	                <input type="checkbox" name="next_watcher"/>下一岗值班人
+	                <input type="checkbox" name="choose_on_duty" class="choose_watcher"/>选择责任人
+	                <select id="dd" class="easyui-combobox watcher_name" name="dept" style="width:100px;">
+	                    <option value="aa">责任人姓名</option>
+	                </select>
+	            </li>
+	        </ul>
+	        <div class="submit">提交</div>
+	    </div>
+    </div> 
+    <!--报警确认详情tab:-->
+    <div class="alert_box">
+    	<div class="alert_back"></div>
+    	<div class="content1">
+	        <div class="alarm_detail">
+	        	<div class=" center">报警确认详情</div>
+	        </div>
+	        <ul class="header_list">
+	        	<li data-choose = "0">历史报警分类分析</li>
+	        	<li data-choose = "1">航天器在轨基本信息</li>
+	        	<li data-choose = "2">在轨异常</li>
+	        	<li data-choose = "3">地月影预报</li>
+	        	<li data-choose = "4">测控计划</li>
+	        	<li data-choose = "5">在轨技术支持队伍</li>
+	        </ul>
+	        <ul class="table_list">
+	        	 <!--历史报警分类分析列表-->
+	            <li data-choose = "1" >
+	                <div>
+	                    <div class="history_accordion">
+	                    	<div class="center">
+	                    		<div class="accordion_first_line">
+		                            <span class="name">型号代号:</span><input type="text" class="name_input"/>
+		                            <span class="param">报警参数:</span><input type="text"/>
+		                        </div>
+		                        <div>
+		                            <span>开始时间:</span>
+		                            <input class="easyui-datetimebox begin_calendar" name="birthday"
+		                                   data-options="required:true,showSeconds:false" value="3/4/2010 2:3"
+		                                   style="width:180px;margin-left:5px;"/>
+		                            <span class="end_time">结束时间:&nbsp;</span><input class="easyui-datetimebox" name="birthday"
+		                                   data-options="required:true,showSeconds:false" value="3/4/2010 2:3"
+		                                   style="width:180px;margin-left:5px;"/>
+		                            <span class="alarm_type">报警类别:</span>
+		                            <select id="ee" class="easyui-combobox alarm_type" name="dept">
+		                                <option value="aa">地面异常报警</option>
+		                                <option>报警处理</option>
+		                                <option>测控事件</option>
+		                                <option>list item1</option>
+		                            </select>
+		                            <span class="btn_common query">查询</span>
+		                            <span class="btn_common confirme">报警确认</span>
+		                        </div>
+	                    	</div>	                        
+	                    </div>
+	                    <div class="detail_bottom center">
+	                        <div class="detail_bottom_header">
+	                            <div>
+	                                <span class="odd">责任人：</span><span>耿仁冲(13588880000)(86158124)</span>
+	                                <span class="odd">替代人：</span><span>耿仁冲(13588880000)(86158124)</span>
+	                            </div>
+	                            <div>
+	                                <span class="odd">低轨值班电话：</span><span>0000-000000/01/02</span><span class="odd">传真：</span>
+	                                <span>0000-123256</span><span class="odd">高轨值班电话：</span><span>0000-000000/01/02</span>
+	                                <span class="odd">传真：</span><span>0000-123256</span>
+	                            </div>
+	                            <h3>默认显示最近一年的报警分类分析</h3>
+	                        </div>	                        
+	                    </div>	                    	
+	                </div>
+	                <div class="table center">
+						<table id="detail_dg" class="easuui-datagrid" style="width: 100%;height: auto;"></table>
+					</div>
+                    <div class="add_over_btn center">
+                        <div>值班人预判</div>
+                        <div class="add_over">添加超寿重复异常</div>
+                    </div>
+
+	            </li>
+	            <!--航天器在轨基本信息列表-->
+	            <li data-choose = "2">
+                    <div class="center">
+                        <div class="base_msg">
+                            <h4>基本信息</h4>
+                            <table id="base_msg">
+                                <tr class="base_msg_one">
+                                    <td class="name">对外名称</td>
+                                    <td colspan="2" class="name_value"></td>
+                                    <td class="satellite_name">卫星代号</td>
+                                    <td colspan="2" class="satellite_name_value"></td>
+                                </tr>
+                                <tr>
+                                    <td>发射时间</td>
+                                    <td class="shoot_time"></td>
+                                    <td>考核寿命(年)</td>
+                                    <td class="life_time"></td>
+                                    <td class="is_over_time">是否超寿</td>
+                                    <td class="life_state"></td>
+                                </tr>
+                                <tr class="base_msg_three">
+                                    <td>责任人</td>
+                                    <td class="zpoe"></td>
+                                    <td class="phone">电话</td>
+                                    <td class="zphone"></td>
+                                    <td class="mobile">手机</td>
+                                    <td class="ztel"></td>
+                                </tr>
+                                <tr>
+                                    <td>替代人</td>
+                                    <td  class="tpeo"></td>
+                                    <td>电话</td>
+                                    <td  class="tphone"></td>
+                                    <td >手机</td>
+                                    <td class="ttel"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="linkman">
+                            <h4>在轨卫星型号责任联系人</h4>
+                            <table id="linkman">
+                                <tr>
+                                    <td class="station">岗位</td>
+                                    <td class="name">姓名</td>
+                                    <td class="mobile">手机</td>
+                                    <td class="phone">电话</td>
+                                </tr>
+                                <tr>
+									<td>在轨管理责任人</td>
+									<td class="zgname"></td>
+									<td class="zgphone"></td>
+									<td class="zgtel"></td>
+								</tr>
+                                <tr>
+									<td>总指挥</td>
+									<td class="zzname"></td>
+									<td class="zzphone"></td>
+									<td class="zztel"></td>
+								</tr>
+                                <tr>
+									<td>总师</td>
+									<td class="zsname"></td>
+									<td class="zsphone"></td>
+									<td class="zstel"></td>
+								</tr>
+                                <tr>
+									<td>在轨应急响应第一联系人</td>
+									<td class="name1"></td>
+									<td class="phone1"></td>
+									<td class="tel1"></td>
+								</tr>
+                                <tr>
+									<td>在轨应急响应第二联系人</td>
+									<td class="name2"></td>
+									<td class="phone2"></td>
+									<td class="tel2"></td>
+								</tr>
+                                <tr>
+									<td>在轨应急响应第三联系人</td>
+									<td class="name3"></td>
+									<td class="phone3"></td>
+									<td class="tel3"></td>
+								</tr>
+                            </table>
+                        </div>
+                    </div>
+                </li>
+	            <!--在轨异常列表-->
+	            <li data-choose = "3" class="show_this">
+	            	<div class="center">
+	            		<div class="table_search_box" style="padding: 30px 0 40px;">
+		            		<div style="float: left;">
+		            			型号代号：
+			            		<select style="height:33px;width: 166px;height: 24px;">
+									<option value="left">自定义</option>
+									<option value="lasted_one">最近一天</option>
+								</select>
+		            		</div>
+		            		<div class="type_select">
+						        异常名称: <input type="text" name="name" style="width:166px;height:22px;
+						        	line-height:22px;padding: 0;outline: none;border:1px solid #666;"/>
+						        <input type="button" value="查询" style="height: 22px;padding: 0 20px;border: 1px solid dodgerblue;
+						        	background-color: dodgerblue;color: #fff;cursor: pointer;" />
+						    </div>
+					    </div>
+					    <table id="abnormal_dg" class="easuui-datagrid" style="width: 100%;"></table>
+	            	</div>	            	
+	            </li>
+	            <!--地月影预报列表-->
+	            <li data-choose = "4">
+	            	<div class="center">
+				    	<div style="padding:30px 0;">				      	
+						    <div class="type_select">
+						       	 型号代号: <input type="text" name="name" style="width:166px;height:22px;
+						        	line-height:22px;padding: 0;outline: none;border:1px solid #666;"/>
+						        <input type="button" value="查询" style="height: 22px;padding: 0 20px;border: 1px solid dodgerblue;
+						        	background-color: dodgerblue;color: #fff;cursor: pointer;" />
+						    </div>
+					    </div>
+				    	<table id="moon_dg" class="easuui-datagrid" style="width: 100%;height: 400px;"></table>
+				    </div>
+	            </li>
+	            <!--测控计划列表-->
+				<li data-choose = "5">
+	            	<div class="center" style="padding-top: 85px;">
+	            		<table id="cekong_dg" class="easuui-datagrid" style="width: 100%;height: 400px;"></table>
+	            	</div>
+	            </li>
+	            <!--在轨技术列表-->
+	            <li data-choose = "6">	            	
+				    <div class="table_box">
+				    	<div style="padding:30px 0;">				      	
+						    <div class="type_select">
+						       	 型号代号: <input type="text" name="name" style="width:166px;height:22px;
+						        	line-height:22px;padding: 0;outline: none;border:1px solid #666;"/>
+						        <input type="button" value="查询" style="height: 22px;padding: 0 20px;border: 1px solid dodgerblue;
+						        	background-color: dodgerblue;color: #fff;cursor: pointer;" />
+						    </div>
+					    </div>
+				    	<table id="team_dg" class="easuui-datagrid" style="width: 100%;height: 400px;"></table>
+				    </div>	            		            	
+	            </li>
+	        </ul>
+	        <div class="alert_box_close" style="cursor: pointer;">×</div>
+            <!--添加超寿重复异常面板：-->
+            <div class="add_panel_box">
+                <div class="add_panel_back"></div>
+                <div class="add_panel">
+                    <div class="header"><h4 class="title">添加超寿重复异常</h4><span class="close">×</span></div>
+                    <div class="center">
+                        <div class="sheet"><table id="add_msg" style="height:300px;margin: 0 auto;">
+                            <tr>
+                                <td class="first_cell importent">型号代号</td>
+								<td class="second_cell"><input type="text" class="over_id" value="DF-f345"/></td>
+                            </tr>
+                            <tr>
+                                <td>异常记录编号</td>
+								<td><input type="text" class="over_num" placeholder="例如：20190102-YG1234-001"/></td>
+                            </tr>
+                            <tr>
+                                <td class="importent">异常名称</td>
+								<td><input class="over_name" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td>发生时间</td>
+								<td><input type="text" class="over_time" value="2018-12-13 10:10:10"/></td>
+                            </tr>
+                            <tr>
+                                <td>异常现象描述</td>
+								<td><input type="text" class="over_info" /></td>
+                            </tr>
+                            <tr>
+                                <td class="importent">卫星责任人</td>
+								<td><input type="text" class="over_man" value="张三"/></td>
+                            </tr>
+                            <tr>
+                                <td>状态</td>
+								<td><input type="text" class="over_state" value="open"/></td>
+                            </tr>
+                            <tr>
+                                <td>异常处理结果</td>
+								<td><input class="over_end" type="text"/></td>
+                            </tr>
+                        </table></div>
+                        <div class="submit_btn">提&nbsp;&nbsp;&nbsp;交</div>
+                    </div>
+                </div>
+            </div>
+    	</div>
+
+    	
+    </div>
+    
+<!--ssss-->
+<script type="text/javascript" src="/vender/custom/green/jquery.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/easyui-lang-zh_CN.js"></script>
+<!--本页方法-->
+<script>
+    /*<![CDATA[*/
+	var $nowId;
+	$(".header_list").children("li").each(function(){
+		$(this).click(function(e){
+			e.stopPropagation();
+			var $left=-parseInt($(this).data("choose"));
+			$(".table_list").css("left",$left+"00%");
+		})
+	})
+    $(".alert_box_close").click(function(e){
+        e.stopPropagation();
+        $(".alert_box").hide();
+    })
+    $(".add_over").click(function(e){
+        e.stopPropagation();
+        $(".add_panel_box").show();
+        $.ajax({
+            url:'updateRepeatById',
+            method:'post',
+            data:{'id':$nowId},
+            success: function(data){
+                console.log(data);
+				$(".over_id").val(data.rows[0].code);
+				$(".over_time").val(data.rows[0].occurredtime);
+                $(".over_man").val(data.rows[0].owner);
+            }
+        })
+    })
+
+	$(".submit_btn").click(function(e){
+        e.stopPropagation();
+        if ($(".over_id").val()=="") {
+            alert("型号代号不能为空");
+            return;
+		} else if ($(".over_name").val()=="") {
+            alert("异常名称不能为空");
+            return;
+        } else if ($(".over_man").val()=="") {
+            alert("卫星责任人不能为空");
+            return;
+        } else {
+            $.ajax({
+				url:'updateRepeat',
+				method:'post',
+				data:{
+				    'id':$nowId,
+				    'code':$(".over_id").val(),
+					'satelliteCode':$(".over_num").val(),
+                    'exceptionName':$(".over_name").val(),
+                    'occurredtime':$(".over_time").val(),
+                    'appearance':$(".over_info").val(),
+                    'owner':$(".over_man").val(),
+                    'status':$(".over_state").val(),
+                    'result':$(".over_end").val()
+				},
+				success:function(data){
+				    console.log(1);
+				}
+			})
+            $(".add_panel_box").hide();
+		}
+	})
+
+    $(".close").click(function(e){
+        $(".add_panel_box").hide();
+    })
+
+    /*]]>*/
+</script>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $(function(){
+        initGrid();
+        function initGrid() {
+            $('#dg').datagrid({
+                // url: '',
+                rownumbers:false,
+                autoRowHeight: true,
+				sortable:true,
+                pagination: false,
+                fitColumns:true,
+				fit:false,
+                scrollbarSize:0,
+                striped: true,
+                checkOnSelect: false,
+                selectOnCheck: true,
+				collapsible:true,
+                nowrap:false,
+				height:"300px",
+                pageNumber:1,
+                pageSize:7,
+                pageList:[7,20,30,40,50],
+                columns: [[
+                    {field: 'check', checkbox: true, width: '50',resizable:false},
+					{field: 'num', title: '序号', width: '60', resizable:false,sortable: true,
+						formatter: function (value,row,index) {
+							return '<span class="row_num">'+value+'</span><img src="../images/redflag.png" class="sign"/>'
+						}
+					},
+                    {field: 'satid', title: '型号代号', align: 'center',  width: '70', resizable:false,sortable: true},
+                    {field: 'begintime', title: '报警开始时间', align: 'center',  width: '130',resizable:false, sortable: false},
+                    {field: 'tmid', title: '参数代号' , align: 'center',width: '60',resizable:false, sortable: true},
+					{field: 'csjb', title: '参数级别' , align: 'center',width: '60',resizable:false, sortable: true},
+                    {field: 'alarmlevel', title: '报警级别',  align: 'center',width: '60',resizable:false, sortable: true},
+					{field: 'current_value', title: '当前值',  align: 'center', width: '50', resizable:false,sortable: true},
+					{field: 'alarmvalue', title: '报警值',  align: 'center', width: '50', resizable:false,sortable: true},
+                    {field: 'alarmmsg', title: '报警信息',  align: 'center', width: '390', resizable:false,sortable: true},
+                    {field: 'tmcode', title: '报警来源', align: 'center',width: '70',resizable:false,},
+                    // {
+                    //     field: 'state1', title: '报警来源',  align: 'center',resizable:false,
+                    //     formatter: function (v) {
+                    //         if(v=="三级门限")return "<img src='../images/alarmConfirm/sanjimenxian.png'/>";
+                    //         if(v=="多星智能诊断系统") return "<img src='../images/alarmConfirm/zhenduan.png'/>";
+                    //         if(v=="VELA报警") return "<img src='../images/alarmConfirm/alarm.png'/>";
+                    //     }
+                    // },
+                    {
+                        field: 'responetime', title: '确认时间', width:'130', align: 'center',resizable:false,
+                        sortable: true, formatter: function (value,row,index) {
+							if (value) {
+							    return value
+							} else {
+							    var $a="<a href='javascript:;' class='unconfirmed' id="+row.id+">等待确认</a>";
+                                return $a;
+                                // return '<a href="javascript:;" class="unconfirmed">等待确认</a>'
+							}
+
+
+                        }
+                    },
+                    {
+                        field: 'modify_time1', title: '报警分析',width: '60',  align: 'center',resizable:false,
+                        formatter: function () {
+                            return '<a href="javascript:;" class="detail">详情</a>'
+                        }
+                    },
+                    {
+                        field: 'trend', title: '遥测趋势',  align: 'center',width: '60',resizable:false,
+                        formatter: function () {
+                            return '<a href="javascript:;" class="telemetering">趋势图</a>'
+                        }
+                    }
+                ]],
+                onBeforeLoad:function(){
+                    var fakeData={"total":1,"rows":[{
+      "num": 1,
+      "satid": "BD-Q234",
+      "begintime": "2016-03-23 20:33:20",
+      "tmid":"FKD659",
+      "csjb":"核心",
+      "alarmlevel":"重度",
+      "current_value":"0.24",
+      "alarm_value":"0.24",
+      "alarm_msg":"遥测数据中断",
+      "alarm_src":"三级门限",
+      "confirm_time": "2016-03-24 00:00:00",
+      "alarm_analyze": "详情",
+      "telemetry_trend": "趋势图"
+    },{
+      "num": 2,
+      "satid": "BD-Q234",
+      "begintime": "2018-03-13 01:33:10",
+      "tmid":"FKD659",
+      "csjb":"一般",
+      "alarmlevel":"中度",
+      "current_value":"0.24",
+      "alarm_value":"0.24",
+      "alarm_msg":"常规姿态控制应用软件标志KBZA(ZK219)跳变为阳光规避中,滚动角(DK1)不进行判读>>more",
+      "alarm_src":"三级门限",
+      "confirm_time": "2018-03-13 01:43:20",
+      "alarm_analyze": "详情",
+      "telemetry_trend": "趋势图"
+    },{
+      "num": 3,
+      "satid": "BD-Q234",
+      "begintime": "2016-03-23 20:33:20",
+      "tmid":"FKD659",
+      "csjb":"核心",
+      "alarmlevel":"重度",
+      "current_value":"0.24",
+      "alarm_value":"0.24",
+      "alarm_msg":"遥测数据中断",
+      "alarm_src":"三级门限",
+      "confirm_time": "2016-03-24 00:00:00",
+      "alarm_analyze": "详情",
+      "telemetry_trend": "趋势图"
+    },{
+      "num": 4,
+      "satid": "BD-Q234",
+      "begintime": "2018-03-13 01:33:10",
+      "tmid":"FKD659",
+      "csjb":"一般",
+      "alarmlevel":"中度",
+      "current_value":"0.24",
+      "alarm_value":"0.24",
+      "alarm_msg":"常规姿态控制应用软件标志KBZA(ZK219)跳变为阳光规避中,滚动角(DK1)不进行判读>>more",
+      "alarm_src":"三级门限",
+      "confirm_time": "2018-03-13 01:43:20",
+      "alarm_analyze": "详情",
+      "telemetry_trend": "趋势图"
+    },{
+      "num": 5,
+      "satid": "BD-Q234",
+      "begintime": "2016-03-23 20:33:20",
+      "tmid":"FKD659",
+      "csjb":"核心",
+      "alarmlevel":"重度",
+      "current_value":"0.24",
+      "alarm_value":"0.24",
+      "alarm_msg":"遥测数据中断",
+      "alarm_src":"三级门限",
+      "confirm_time": "2016-03-24 00:00:00",
+      "alarm_analyze": "详情",
+      "telemetry_trend": "趋势图"
+    },{
+      "num": 6,
+      "satid": "BD-Q234",
+      "begintime": "2018-03-13 01:33:10",
+      "tmid":"FKD659",
+      "csjb":"一般",
+      "alarmlevel":"中度",
+      "current_value":"0.24",
+      "alarm_value":"0.24",
+      "alarm_msg":"常规姿态控制应用软件标志KBZA(ZK219)跳变为阳光规避中,滚动角(DK1)不进行判读>>more",
+      "alarm_src":"三级门限",
+      "confirm_time": "2018-03-13 01:43:20",
+      "alarm_analyze": "详情",
+      "telemetry_trend": "趋势图"
+    }
+                        ]};
+                    $('#dg').datagrid('loadData', fakeData);
+                },
+                onClickCell:function (index,field){
+					var rows=$("#dg").datagrid("getRows");
+                    //点击时切换序号列的小红旗：
+                    if(field=="num"){
+                        $(".sign").eq(index).toggleClass("toggle");
+                    //点击等待确认显示时间：
+                    }else if (field=="responetime"){
+                        if($(".unconfirmed").css("visibility")=="visible"){
+                                $.ajax({
+								url:'confirm',
+								type:'post',
+								data:{"confirmId":rows[index].satid},
+								success:function(){
+								    $("#dg").datagrid('reload');
+								}
+							})
+                         }
+                    } else if (field=="modify_time1"){
+                        $nowId=rows[index].satid;
+                    	$(".alert_box").show().resize();
+                    	$("#moon_dg").datagrid("load",{'id':rows[index].satid});
+                        $('#team_dg').datagrid("load",{'id':rows[index].satid});
+                        $('#cekong_dg').datagrid("load",{'id':rows[index].satid});
+                        $('#abnormal_dg').datagrid("load",{'id':rows[index].satid});
+                        $('#detail_dg').datagrid("load",{'satid':rows[index].satid});
+                        $.ajax({
+                        	url:'listBiao',
+							method:'post',
+                        	data:{'id':rows[index].satid},
+                        	success:function(data){
+                        	    $(".name_value").text(data.list[0].outsideName);
+                        	    $(".satellite_name_value").text(data.list[0].code);
+                                $(".shoot_time").text(data.list[0].launchTime);
+                                $(".life_time").text(data.list[0].life);
+                                $(".zpoe").text(data.list[0].adminId);
+                                var zarr=data.list[0].zPhone.split(";");
+                                $(".zphone").text(zarr[0]);
+                                $(".ztel").text(zarr[1]);
+                                $(".tpeo").text(data.list[0].adminSubsId);
+                                var tarr=data.list[0].tPhone.split(";");
+                                $(".tphone").text(tarr[0]);
+                                $(".ttel").text(tarr[1]);
+								$(".life_state").text(getlife(data.list[0]));
+
+
+                        	}
+                        });
+                        $.ajax({
+                            url:'getUserController',
+                            method:'post',
+                            data:{'sateid':rows[index].satid},
+                            success:function(data){
+                                $(".zgname").text(data.list[0].name);
+                                $(".zgphone").text(data.list[0].iphone);
+                                $(".zgtel").text(data.list[0].eleiphone);
+                                $(".zzname").text(data.list[1].name);
+                                $(".zzphone").text(data.list[1].iphone);
+                                $(".zztel").text(data.list[1].eleiphone);
+                                $(".zsname").text(data.list[2].name);
+                                $(".zsphone").text(data.list[2].iphone);
+                                $(".zstel").text(data.list[2].eleiphone);
+                                $(".name1").text(data.list[3].name);
+                                $(".phone1").text(data.list[3].iphone);
+                                $(".tel1").text(data.list[3].eleiphone);
+                                $(".name2").text(data.list[4].name);
+                                $(".phone2").text(data.list[4].iphone);
+                                $(".tel2").text(data.list[4].eleiphone);
+                                $(".name3").text(data.list[5].name);
+                                $(".phone3").text(data.list[5].iphone);
+                                $(".tel3").text(data.list[5].eleiphone);
+                            }
+                        })
+					}
+                },
+                //根据报警级别改变对应行颜色：
+                rowStyler: function(index,row){
+                    if (row.alarmlevel=="重度"){
+                        return 'background-color:#ccc';
+                    }if (row.alarmlevel=="中度"){
+                        return 'background-color:#999';
+                    }if (row.alarmlevel=="轻度"){
+						return 'background-color:#666';
+					}
+                },
+                //取消点击或选中时行高亮：
+                onClickRow:function(){
+                    $("#dg").datagrid('clearSelections')
+                },
+                onSelect:function (index) {
+                    $("#dg").datagrid('unselectRow',index)
+                },
+                onCheckAll:function () {
+                    $("#dg").datagrid('unselectAll')
+                },
+				loadFilter:function(data){
+                	if (!$(".show_light_alarm").prop("checked")) {
+						for (var i = 0; i < data.rows.length; i++) {
+							if (data.rows[i].alarmlevel == "轻度") {
+								data.rows.splice(i, 1);
+								i--;
+							}
+						}
+					}
+                	for (var j=0;j<data.rows.length;j++){
+                		var key="num";
+                		var value=j+1;
+						data.rows[j][key]=value;
+					}
+                	return data;
+				},
+                freezeRow:0
+
+            });
+            function getlife(data){
+                var $starttime=new Date(data.launchTime).getTime();
+                var $life=(parseInt(data.life))*12*30*24*60*60*1000;
+                var $nowtime=new Date().getTime();
+                if ($starttime==""||$starttime>$nowtime) {
+                    data.active="待发射";
+                } else if ($nowtime-$starttime<$life) {
+                    data.active="未超寿";
+                } else if ($nowtime-$starttime>$life) {
+                    var $moretime=$nowtime-$starttime-$life;
+                    if ($moretime<1000*60*60*24*30) {
+                        data.active="超寿"+parseInt($moretime/1000/60/60/24)+"天";
+                    } else if ($moretime<1000*60*60*24*30*12) {
+                        data.active="超寿"+parseInt($moretime/1000/60/60/24/30)+"月";
+                    } else if ($moretime>=1000*60*60*24*30*12) {
+                        data.active="超寿"+parseInt($moretime/1000/60/60/24/30/12)+"年";
+                    }
+                }
+                return data.active;
+			}
+
+        }
+		//显示轻度报警：
+		$(".show_light_alarm").click(function (e) {
+			e.stopPropagation();
+			$("#dg").datagrid("reload");
+        })
+        //时间戳转为年月日时分秒：
+        $('.time_num').text(getTime); // 一开始就执行一次，防止空白
+        setInterval(function(){
+            $('.time_num').text(getTime);
+        }, 1000);
+        function getTime() {
+            var datetime = new Date();
+            var year = datetime.getFullYear();
+            var month = ("0" + (datetime.getMonth() + 1)).slice(-2);
+            var date = ("0" + datetime.getDate()).slice(-2);
+            var hour = ("0" + datetime.getHours()).slice(-2);
+            var minute = ("0" + datetime.getMinutes()).slice(-2);
+            var second = ("0" + datetime.getSeconds()).slice(-2);
+            return (year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second);
+        }
+
+		$(".export").children("a").click(function(e){
+			e.stopPropagation();
+			var form=$("<form></form>");//定义一个form表单
+			form.attr("style","display:none");
+			form.attr("target","");
+			form.attr("method","post");
+			form.attr("action",'getPoiMsta');
+			$("body").append(form);//将表单放置在web中
+			form.submit();//表单提交
+            form.remove();
+		})
+
+
+
+
+
+
+    });
+    $(function () {
+        //值班人预判面板：
+        $(function(){
+            $(".watcher_judge a").click(function (e) {
+            	e.stopPropagation();
+                $(".watcher_adjust").parent().css("display","block");
+            });
+            $(".close").click(function (e) {
+            	e.stopPropagation();
+                $(".watcher_adjust").parent().css("display","none");
+            });
+            $('input:radio[name="to_trace"]').change(function () {
+                if (this.value == 'off') {
+                   $(".send").css("visibility","hidden")
+                } else {
+                     $(".send").css("visibility","visible")
+                }
+            });
+        })
+
+        $(".table_list").height($(window).height()*0.9-62);
+    });
+    /*]]>*/
+</script>
+<!--历史报警分类分析列表-->
+<script type="text/javascript">
+    /*<![CDATA[*/
+        $('.easyui-tabs1').tabs({
+            tabHeight: 36,
+            onSelect: function () {
+                setTimeout(function () {
+                    resizeTabs();
+                }, 100)
+            }
+        });
+        $(window).resize(function () {
+            $('.easyui-tabs1').tabs("resize");
+            setTimeout(function () {
+                resizeTabs();
+            }, 100)
+        }).resize();
+
+        function resizeTabs() {
+            var $body = $('body'),
+                $window = $(window);
+            if ($window.height() > $body.height()) {
+                $('.easyui-tabs1').find('.panel-body').height($window.height() - 44);
+            }
+        }
+
+
+        //报警确认详情-历史报警分类分析表：
+
+		initGrid1();
+        function initGrid1() {
+            $('#detail_dg').datagrid({
+                url: 'getMstaController',
+                singleSelect: true,
+                autoRowHeight: false,
+                fitColumns: true,
+                scrollbarSize: '0',
+                striped: true,
+                checkOnSelect: true,
+                selectOnCheck: false,
+				queryParams:{},
+                columns: [[
+                    {field: 'satid', title: '序号', width: '60', align: 'center', resizable: true, sortable: true},
+                    {
+                        field: 'begintime',
+                        title: '开始时间',
+                        width: '130',
+                        align: 'center',
+                        resizable: true,
+                        sortable: true
+                    },
+                    {field: 'endtime', title: '结束时间', width: '130', align: 'center', resizable: true},
+                    {field: 'alarmvalue', title: '报警值', width: '50', align: 'center', sortable: true},
+                    {field: 'alarmmsg', title: '报警信息', width: '400', align: 'center', resizable: true},
+                    {field: 'type', title: '类别', width: '80', align: 'center', resizable: true, sortable: false},
+                    {field: 'remark', title: '说明', width: '60', align: 'center', resizable: true, sortable: false}
+                ]]
+            })
+        }
+
+    /*]]>*/
+</script>
+<!--在轨异常列表-->
+<script>
+    /*<![CDATA[*/
+		abnormalgrid();
+		function abnormalgrid(){
+			$('#abnormal_dg').datagrid({
+                url: 'getAnomalyController',
+                autoRowHeight: false,
+                pagination: false,
+                fitColumns: false,
+                scrollbarSize: '0',
+                striped: true,
+                checkOnSelect: false,
+                selectOnCheck: true,
+                nowrap:false,
+                columns: [[
+                    {field: 'id', title: '序号', width: '60', align: 'center', resizable:false,sortable: true,},
+                    {field: 'name', title: '卫星名称',  width: '70', align: 'center',resizable:false, sortable: false},
+                    {field: 'code', title: '异常名称',  width: '130', align: 'center',resizable:false, sortable: true},
+                    {field: 'cId', title: '发生次数',  width: '60', align: 'center',resizable:false, sortable: true},
+                    {field: 'begintime', title: '发生时间',  width: '60', align: 'center', resizable:false,sortable: true},
+                    { field: 'end_time1', title: '上报时间',  width: '60', align: 'center',resizable:false,},
+                    { field: 'end_time1', title: '详情',  width: '60', align: 'center',resizable:false,
+                    	formatter: function () {
+                            return '<span>详情</span>'
+                        }
+                    }
+                ]],
+				//取消点击或选中时行高亮：
+                onClickRow:function(){
+                    $("#dg").datagrid('clearSelections')
+                },
+                onSelect:function (index) {
+                    $("#dg").datagrid('unselectRow',index)
+                },
+                onCheckAll:function () {
+                    $("#dg").datagrid('unselectAll')
+                }
+
+            });
+        }
+    /*]]>*/
+</script>
+<!--地月影列表-->
+<script type="text/javascript">
+    /*<![CDATA[*/
+		moongrid();
+		function moongrid(){
+			$('#moon_dg').datagrid({
+                url: 'getMoonybController',
+                autoRowHeight: false,
+                pagination: false,
+                fitColumns: false,
+                scrollbarSize: '0',
+                striped: true,
+                checkOnSelect: false,
+                selectOnCheck: true,
+                nowrap:false,
+                columns: [[
+                    {field: 'id', title: '序号', width: '60', align: 'center', resizable:false,sortable: true,},
+                    {field: 'btime', title: '型号代号',  width: '70', align: 'center',resizable:false, sortable: false},
+                    {field: 'etime', title: '开始时间',  width: '130', align: 'center',resizable:false, sortable: true},
+                    {field: 'satellite', title: '结束时间',  width: '60', align: 'center',resizable:false, sortable: true},
+                    {field: 'mstype', title: '时长',  width: '60', align: 'center', resizable:false,sortable: true},
+                    { field: 'span', title: '阴影',  width: '60', align: 'center',resizable:false,}
+                ]],
+				//取消点击或选中时行高亮：
+                onClickRow:function(){
+                    $("#dg").datagrid('clearSelections')
+                },
+                onSelect:function (index) {
+                    $("#dg").datagrid('unselectRow',index)
+                },
+                onCheckAll:function () {
+                    $("#dg").datagrid('unselectAll')
+                }
+
+            });
+        }
+    /*]]>*/
+</script>
+<!--测控计划列表-->
+<script type="text/javascript">
+    /*<![CDATA[*/
+		cekonggrid();
+		function cekonggrid(){
+			$('#cekong_dg').datagrid({
+                url: 'getControl2',
+                autoRowHeight: false,
+                pagination: false,
+                fitColumns: false,
+                scrollbarSize: '0',
+                striped: true,
+                checkOnSelect: false,
+                selectOnCheck: true,
+                nowrap:false,
+                columns: [[
+                    {field: 'id', title: '序号', width: '60', align: 'center', resizable:false,sortable: true,},
+                    {field: 'madetime', title: '文件生成时间',  width: '70', align: 'center',resizable:false, sortable: false},
+                    {field: 'startTime', title: '开始时间',  width: '130', align: 'center',resizable:false, sortable: true},
+                    {field: 'endTime', title: '结束时间',  width: '60', align: 'center',resizable:false, sortable: true},
+                    {field: 'cnt', title: '圈次',  width: '60', align: 'center', resizable:false,sortable: true},
+                    { field: 'devname', title: '测站',  width: '60', align: 'center',resizable:false,},
+                    {field: 'isDelete', title: '是否已删除',  width: '50', align: 'center', resizable:false,sortable: true},
+                    {field: 'aaa', title: '来源',  width: '50', align: 'center', sortable: true},
+                ]],
+				//取消点击或选中时行高亮：
+                onClickRow:function(){
+                    $("#dg").datagrid('clearSelections')
+                },
+                onSelect:function (index) {
+                    $("#dg").datagrid('unselectRow',index)
+                },
+                onCheckAll:function () {
+                    $("#dg").datagrid('unselectAll')
+                }
+            });
+        }
+    /*]]>*/
+</script>
+<!--技术支持队伍列表-->
+<script type="text/javascript">
+    /*<![CDATA[*/
+		teamgrid();
+		function teamgrid(){
+			$('#team_dg').datagrid({
+                url: 'getInforbitlinkman',
+                autoRowHeight: false,
+                pagination: false,
+                fitColumns: false,
+                scrollbarSize: '0',
+                striped: true,
+                checkOnSelect: false,
+                selectOnCheck: true,
+                nowrap:false,
+                columns: [[
+                    {field: 'id', title: '序号', width: '60', align: 'center', resizable:false,sortable: true,},
+                    {field: 'post', title: '岗位',  width: '70', align: 'center',resizable:false, sortable: false},
+                    {field: 'name', title: '姓名',  width: '130', align: 'center',resizable:false, sortable: true},
+                    {field: 'provide', title: '单位',  width: '60', align: 'center',resizable:false, sortable: true},
+                    {field: 'phone', title: '办公电话',  width: '60', align: 'center', resizable:false,sortable: true},
+                    {field: 'telephone', title: '手机',  width: '50', align: 'center', resizable:false,sortable: true},
+                    {field: 'warning_message', title: '备注',  width: '50', align: 'center', sortable: true},
+                ]],
+				//取消点击或选中时行高亮：
+                onClickRow:function(){
+                    $("#dg").datagrid('clearSelections')
+                },
+                onSelect:function (index) {
+                    $("#dg").datagrid('unselectRow',index)
+                },
+                onCheckAll:function () {
+                    $("#dg").datagrid('unselectAll')
+                }
+
+            });
+        }
+    /*]]>*/
+</script>
+</body>
+</html>

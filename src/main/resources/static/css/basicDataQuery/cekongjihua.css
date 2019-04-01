@@ -1,0 +1,40 @@
+@charset "UTF-8";
+html{min-width:900px;}
+
+.ckkeywords{width:166px;height:28px;line-height:28px;border:1px solid #aaa;margin-left:10px;
+    padding-left:5px;vertical-align: middle;}
+.combo{margin-right:0 !important;}
+#query_btn{height:28px !important;padding:0 10px !important;line-height: 28px !important;}
+.ckjhSelect{height:30px;vertical-align: middle;width:88px;}
+#tb{position: relative;float:left;padding:10px 0 10px 10px;}
+
+#ck_query_btn{padding:0 10px;height:28px;vert-align:middle;}
+.toolbar{float:left;}
+.calendar_box_back{position: absolute;width: 199px;height: 28px;z-index: 100;background-color: #000;
+    opacity:0.3;filter: Alpha(opacity=30);display: none;}
+.downLoad_Excel{display: block;position: absolute;left: 350px;bottom: 5px;width: 80px;height: 25px;
+    line-height: 25px;border-radius: 3px;text-align: center;border: 1px solid #666;color: #666;
+    cursor: pointer;text-decoration: none;}
+
+.datagrid-toolbar{background-color: #fff !important;}
+.pagination{background-color: #fff !important;}
+.l-btn-plain{background-color: #fff !important;}
+.datagrid-header-row td{background-color: #f6f6f7;}
+
+/*型号代号筛选框*/
+#ck_tp_sel{position:absolute;top:92px;left:69px;background: #fff;padding:5px 10px;display: none;
+    border:1px solid #000;}
+.ck_sel_title{font-size:15px;padding:5px 0;font-weight:bold}
+#sort_ace,#sort_desc{border:1px solid #cbcbcb;width:60px;height:20px;cursor:pointer}
+#sort_desc{margin-left:5px}
+.ck_input_tl{padding:5px 0;}
+.ck_input_tl span{font-size:14px;color: #323030}
+
+.ck_sel_list p{padding:5px 0;vertical-align: center}
+.ck_sel_list .baseCode_select{display: inline-block;vertical-align: bottom}
+.ck_sel_list p #btn_all{margin-left:5px}
+.ck_sel_list p #btn_reverse{display: inline-block;margin-left:8px}
+.ck_sel_list #selectUl{display: block;height:160px;width:210px;overflow:scroll}
+.ck_sel_foot{text-align: right}
+.ck_sel_foot #sorbtn_true{margin-right:15px}
+#ck_tp,#htqSelPanel,#sjgzhdSelPanel,#gdgs_type{cursor:pointer;}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BzbbwlMapper">
+
+    <select id="listNowBzbbwlByParam" parameterType="map" resultType="map">
+        SELECT
+            *
+       <include refid="condition"></include>
+        <if test="offset != 0 and rows != 0">
+            limit #{offset},#{rows}
+        </if>
+    </select>
+
+    <select id="getCount" parameterType="map" resultType="int">
+        SELECT COUNT(1)
+        <include refid="condition"></include>
+    </select>
+
+    <sql id="condition">
+        FROM
+        htdxjk_bzbbwl bw
+        LEFT JOIN htdxjk_bzbbwlrel bwr ON bw.bzbbwl_atpid = bwr.bzbbwlrel_bwl_id
+        LEFT JOIN htdxjk_suser s ON bw.bzbbwl_addperson = s.su_atpid
+        WHERE NOW() BETWEEN DATE_FORMAT(bw.bzbbwl_showdate,'%Y-%m-%d 08:30:00')
+        AND date_sub(DATE_FORMAT(bw.bzbbwl_showdate,'%Y-%m-%d 08:30:00'),interval -bw.bzbbwl_showdays day)
+        <if test="keyWord != null and keyWord != ''">
+            AND (
+            bw.bzbbwl_satcode LIKE concat("%",#{keyWord},"%") or
+            bw.bzbbwl_state LIKE concat("%",#{keyWord},"%") or
+            bw.bzbbwl_showtitle LIKE concat("%",#{keyWord},"%") or
+            bw.bzbbwl_showdetail LIKE concat("%",#{keyWord},"%") or
+            bw.bzbbwl_addtime LIKE concat("%",#{keyWord},"%") or
+            s.su_chinesename LIKE concat("%",#{keyWord},"%") )
+        </if>
+        <if test="startTime != null and startTime != '' and endTime != null and endTime != ''">
+           and bw.bzbbwl_showdate BETWEEN #{startTme} and #{endTime}
+        </if>
+        <if test="title != null and title != ''">
+            and bw.bzbbwl_showtitle LIKE concat("%",#{title},"%")
+        </if>
+        <if test="detail != null and detail != ''">
+            and bw.bzbbwl_showdetail LIKE concat("%",#{detail},"%")
+        </if>
+        <if test="state != null and state != ''">
+            and bw.bzbbwl_state = #{state}
+        </if>
+        <if test="addPerson != null and addPerson != ''">
+            and bw.bzbbwl_addperson = #{addPerson}
+        </if>
+        <if test="arrList.size > 0">
+            and bw.bzbbwl_satcode in
+            <foreach collection="arrList" item="item" index="index" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+        </if>
+    </sql>
+
+</mapper>

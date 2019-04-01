@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>航天多星监控系统 </title>
+    <link href="/vender/static/darkblue/css/platform.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/vender/custom/darkblue/uimaker/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/process.css"/>
+    <link href="/vender/static/darkblue/css/base.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/index/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/all.css"/>
+    <link rel="stylesheet" href="/css/alarmConfirm/detailTabs.css">
+    <link rel="stylesheet" href="/css/alarmConfirm/xinghaojifenlei.css">
+
+</head>
+<body>
+<div class="container">
+
+    <!--顶部---搜索及登录区-->
+    <div id="pf-hd">
+        <div class="pf-logo"></div>
+        <div class="pf-user clearfix">
+            <div class="search">
+                <input type="text" placeholder="请输入" class="input_box"/><span class="search_btn">搜索</span>
+            </div>
+
+            <div class="sys-login">
+                <span class="user-name"></span>
+                <a class="user-logout" href="/htdxjk/login/in">登录</a>
+            </div>
+            <div class="skin">
+                <div class="skin_btn"></div>
+                <ul class="skin_panel">
+                    <li class="skin-item" data-color="blue"></li>
+                    <li class="skin-item" data-color="lightblue"></li>
+                    <li class="skin-item" data-color="darkblue"></li>
+                    <li class="skin-item" data-color="black"></li>
+                    <li class="skin-item" data-color="darkgrey"></li>
+                    <li class="skin-item" data-color="light"></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!--中部--- -->
+    <div id="pf-bd">
+
+        <!--中部折叠按钮-->
+        <div class="pf-sider-wrap">
+
+            <img src="/images/back_btn_left.png" title="点击收起菜单栏" class="sider_fold_btn"/>
+            <!--back_btn_bottom.png-->
+           <!-- back_btn_right.png-->
+        </div>
+
+        <!--右侧内容区-->
+        <div class="page_right">
+            <!--滚动公告-->
+            <div class="notice" style="z-index: 99;width:98%;overflow: hidden">
+                <ul class=" clearfix" style="background:url(/images/notice.png) no-repeat left center;width:100%;height:31px;padding-left:25px;">
+                    <marquee id="notice_text"></marquee>
+                </ul>
+            </div>
+            <!--卫星置顶区别-->
+            <div style="overflow-x: scroll" class="top_area_wrap">
+                <img src="/images/back_btn_bottom.png" title="点击收起置顶区" class="back_btn"/>
+                <ul class="top_area clearfix" style="width: 10000%">
+
+                </ul>
+            </div>
+
+            <!--tab列表区-->
+            <div id="pf-page" >
+              <!--  <div class="easyui-tabs" id="index_easyui_tab1" >
+                    <div title="空间管理页面" style="padding:10px;">
+                        <h1>我是空间管理页面</h1>
+                    </div>
+                </div>-->
+                <div class="easyui-tabs1" id="index_easyui_tab" >
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!--底部--- -->
+    <div id="pf-ft">
+        <div class="system-name">
+            <i class="iconfont">&#xe6fe;</i>
+            <span>多星监控综合管理系统&nbsp;v1.0</span>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+<input type="hidden" id="menuId">
+<input type="hidden" id="menuIcon">
+<input type="hidden" id="menuIsLoginedDisplay">
+<input type="hidden" id="menuName">
+<input type="hidden" id="menuAction">
+<input type="hidden" id="menuUrl">
+
+
+<script type="text/javascript" src="/vender/custom/green/jquery.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/js/base.js"></script>
+<script type="text/javascript" src="/js/index/index.js"></script>
+<script type="text/javascript" src="/vender/static/green/js/main.js"></script>
+

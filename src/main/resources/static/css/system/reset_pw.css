@@ -1,0 +1,14 @@
+@charset "UTF-8";
+html{background: rgb(141,141,141);filter:opacity(50);}
+.rset_panel{width:400px;margin:0 auto;background: #fff;}
+.header{background: #2f4050;color:#fff;height:45px;width:380px;line-height: 45px;padding-left:20px;
+    font-size: 16px;}
+.body span{color:red;}
+.body li{width:250px;margin:0 auto;}
+.tip{line-height: 30px;font-size: 14px;}
+.pw_input input{display:inline-block;border:1px solid #aaa;width:250px;height:34px;padding-left:5px;}
+.footer{padding-left:230px;}
+.footer a{display:inline-block;width:54px;height:30px;line-height: 30px;text-align: center;
+    color:#fff;margin-right:20px;font-size: 14px; margin-top:20px;margin-bottom:30px;}
+.save{background: rgb(26,179,148);}
+.close{background: rgb(51,136,255)}

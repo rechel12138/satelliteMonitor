@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BsatdatamsgMapper">
+
+    <select id="findByUserId" parameterType="java.lang.String" resultType="Bsatdatamsg">
+        SELECT *
+        <include refid="condition"></include>
+        WHERE bsdm_fksuserid = #{userId}
+        ORDER BY bsdm_atplastmodifydatetime desc
+    </select>
+
+
+    <sql id="condition">
+        FROM htdxjk_bsatdatamsg
+    </sql>
+
+</mapper>

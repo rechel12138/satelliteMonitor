@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BsatTopMapper">
+
+    <!-- 查询不是管理员且是自己的数据-->
+    <select id="findIsAdminListBsatTop" resultType="map" parameterType="map">
+        select bst.*,bs.*
+        from htdxjk_bsattop bst
+        LEFT JOIN  htdxjk_bsat bs
+        ON bst.bst_fkbsatid = bs.bsat_atpid
+        WHERE bst.bst_fksuserid = #{userId} AND bst.bst_admin = '否'
+        ORDER BY bst.bst_atplastmodifydatetime DESC
+    </select>
+
+    <!-- 查询普通用户 (可以查看自己置顶和管理员置顶的卫星)  管理员只能查看自己-->
+    <select id="getIsAdminListBsatTop" resultType="map" parameterType="map">
+        select bst.*,bs.*
+        from htdxjk_bsattop bst
+        LEFT JOIN  htdxjk_bsat bs
+        ON bst.bst_fkbsatid = bs.bsat_atpid
+        WHERE bst.bst_admin = #{isAdmin}
+        <if test="userId != null and userId != ''">
+            or bst.bst_fksuserid = #{userId}
+        </if>
+        ORDER BY bst.bst_atplastmodifydatetime DESC
+    </select>
+</mapper>

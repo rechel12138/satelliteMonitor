@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BzgwxxhfzlxrMapper">
+    <select id="findListBySatId" parameterType="String" resultType="map">
+        SELECT
+            *
+        FROM
+            htdxjk_bxhzcdw bdw
+            LEFT JOIN htdxjk_bzgwxxhfzlxr bz ON bdw.bxhzcdw_atpid = bz.bzgwxxhfzlxr_fkbxhzcdwid
+            WHERE bz.bzgwxxhfzlxr_satid = #{satId}
+    </select>
+</mapper>

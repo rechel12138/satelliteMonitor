@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" style="min-width:900px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/custom/darkblue/uimaker/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/custom/green/uimaker/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/platform.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/process.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/all.css"/>
+    <link rel="stylesheet" href="/css/fileShare/wenjianfenxiangqu.css">
+
+</head>
+<body>
+   <div id="btn_wrap">
+       <form id="exportForm" action="/api/bfileshare/uploadBfileshare" method="post" enctype="multipart/form-data" style="display: none;"><input type="file" name="multipartFile"  class="exportBox" style="display: none;"/></form>
+       <!--<button id="upload">上传</button>-->
+   </div>
+ <div style="height:100%;width:100%">
+     <table id="fileShare"></table>
+ </div>
+</body>
+</html>
+<script type="text/javascript" src="/vender/custom/green/jquery.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/js/jquery.form.js"></script>
+<script type="text/javascript" src="/js/base.js"></script>
+<script src="/js/fileShare/wenjianfenxiangqu.js"></script>
+<script>
+    //窗口折叠时iframe自适应：
+    setBodyHeight();
+    parent.$(window).resize(function(){
+        setBodyHeight();
+    });
+
+    //datagrid高度赋值
+    function setBodyHeight(){
+        var toolbar_height =55;
+        var tab_panel_height = parent.$(".tabs-panels").height();
+        var rate =toolbar_height/tab_panel_height;
+        //rate = Math.round(rate *100)/100;
+        $("body").css("height",(1-rate)*100-3+"%");
+    }
+</script>

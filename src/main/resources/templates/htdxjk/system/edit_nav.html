@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" style="min-width:900px;">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/vender/static/darkblue/css/platform.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/vender/custom/darkblue/uimaker/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/process.css"/>
+    <link href="/vender/static/darkblue/css/base.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/all.css"/>
+    <link rel="stylesheet" href="/css/system/edit_nav.css">
+</head>
+    <body style="height:85%;">
+    <!--<div class="toolbar"></div>-->
+
+    <div class="module-warp">
+        <div class="module-frist-warp">
+
+            <!--<span>一级菜单列表</span>-->
+            <span>
+                <div id="firstMenu"></div>
+            </span>
+
+        </div>
+        <div class="module-second-warp">
+
+            <table id="myTable"></table>
+        </div>
+    </div>
+
+</body>
+</html>
+<!--弹窗-->
+<div class="dialog-warp" id="module_dialog">
+    <ul>
+        <li>菜单名称：<input type="text" id="moduleName" placeholder="请输入角色名称"></li>
+        <li>是否在权限配置中显示：<input type="radio" value="0" name="aa" />是 <input type="radio" value="1" name="aa" />否</li>
+        <li>
+            是否需要登录访问：<input type="radio" value="0" name="bb" />是 <input type="radio" value="1" name="bb" />否
+        </li>
+
+    </ul>
+</div>
+
+<script type="text/javascript" src="/vender/custom/green/jquery.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/js/base.js"></script>
+<script src="/js/system/edit_nav.js"></script>
+<script>
+    //窗口折叠时iframe自适应：
+    setBodyHeight();
+    parent.$(window).resize(function(){
+        setBodyHeight();
+    });
+
+    //datagrid高度赋值
+    function setBodyHeight(){
+        var toolbar_height =60;
+        var tab_panel_height = parent.$(".tabs-panels").height();
+        var rate =toolbar_height/tab_panel_height;
+        //rate = Math.round(rate *100)/100;
+        $("body").css("height",(1-rate)*100-3+"%");
+    }
+</script>
+

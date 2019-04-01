@@ -1,0 +1,9 @@
+@charset "UTF-8";
+html{background: rgba(0,0,0,0.4);filter: alpha(opacity=40);}
+.login{width:680px;height:432px;margin:100px auto;background: #fff;}
+#login_hd{height:66px;background: #001529 url(../../images/logo.png) no-repeat 20px 6px;}
+.login_body input{width:400px;height:50px;border:1px solid #aaa;font-size:16px;padding-left:10px;}
+.username,.password,.btn{text-align: center;margin-top:35px;font-size:16px;}
+.btn a{display:inline-block;width:410px;height:53px;color:#fff;background:#1890FF;text-align: center;
+    line-height: 53px;font-size: 16px;border-radius:5px;behavior: url("../../PIE-1.0/PIE.htc");cursor: pointer;}
+.tip{height:20px;line-height:20px;font-size: 14px;padding-left: 145px;color:red;}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>通信卫星</title>
+	<link rel="stylesheet" href="/vender/custom/darkblue/uimaker/easyui.css"/>
+	<link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/process.css"/>
+	<link href="/vender/static/darkblue/css/base.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="/css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/runSoft/tongxinweixing.css"/>
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="/PIE-1.0/PIE.js"></script>
+	<![endif]-->
+	<style type="text/css">
+		#list_sign{height:22px;text-align: right;padding:5px 0}
+		#list_sign span{display: inline-block;width:40px;padding:3px 6px}
+		.qk_pic{z-index:1000}
+		.qk_pic li{height:18px;width:280px;font-size:14px}
+		.qk_pic ul{padding:6px}
+	</style>
+</head>
+<body>
+
+<!--iframe右上角三个按钮
+<div class="top_btn clearfix">
+
+	<ul class="add_Btn_box clearfix">
+		<li class="set_top">置顶</li>
+		<li class="download_list">下载列表</li>
+		<li class="slide_menu">
+			<select class="select_box1">
+				<option value="big">大图标</option>
+				<option value="small">小图标</option>
+				<option value="list">列表</option>
+			</select>
+		</li>
+	</ul>
+
+	<ul class="color_show clearfix">
+		<li>
+			<span style="background-color: #ffd78b;"></span>超寿
+		</li>
+		<li>
+			<span style="background-color: #a4df7c;"></span>未超寿
+		</li>
+		<li>
+			<span style="background-color: #d8d7d7;"></span>待发射
+		</li>
+	</ul>
+
+
+</div>-->
+<!--iframe右上角三个按钮-->
+<div class="top_btn">
+	<span class="set_top" id="set_top">置顶</span>
+	<span class="download_list">下载列表</span>
+	<select class="select_list">
+		<option value="big">大图标</option>
+		<option value="small">小图标</option>
+		<option value="list">列表</option>
+	</select>
+</div>
+
+<div class="all_satellites clearfix" style="overflow: scroll" id="all_satellites">
+	<!-- 大图标展示 -->
+
+</div>
+<!-- 列表展示 -->
+<div class="satellite_list_box" id="satellite_list_box" style="height:100%;width:100%;overflow: scroll;display: none">
+	<div id="list_sign">
+		<span style="border: 1px solid #c0b7b7;background-color: #d4b7c9;color:#d4b7c9">&nbsp</span><span>待发射</span><span style="border: 1px solid #c0b7b7;background-color: #88d4bc;color:#88d4bc">&nbsp</span><span>未超寿</span><span style="border: 1px solid #c0b7b7;background-color:#F2E64D;color:#F2E64D">&nbsp</span><span>超寿</span>
+	</div>
+	<div>
+		<table id="dg"></table>
+	</div>
+</div>
+<!--详情面板弹窗-->
+<ul class="dialog-warp" id="detail_box" style="padding:0 50px;font-size:13px;display: none">
+	<li><span>对外名称:  </span><span id="wrap_Name">嫦娥2号</span></li>
+	<li><span>发射时间:  </span><span id="start_Time">2018-01-23 17:29:02</span></li>
+	<li><span>发射时间:  </span><span id="end_Time">2018-01-23 17:29:02</span></li>
+	<li><span>考核寿命:</span><span id="life_Time"></span></li>
+	<li><span>状态:  </span><span id="status_Time">未超寿</span></li>
+	<li><span>责任人:  </span><span id="duty_Name">张三</span></li>
+	<li><span>责任人电话:  </span><span id="duty_Tel">123958302893</span></li>
+	<li><span>替代人:  </span><span id="replace_Name">李四</span></li>
+	<li><span>替代人电话:  </span><span id="replace_Tel">123874902839</span></li>
+</ul>
+<!--回放数据面板-->
+<div class="dialog-warp" id="pre_download" style="width:700px;height:600px;padding:20px;display: none">
+	<table id="predata"></table>
+</div>
+
+<script type="text/javascript" src="/vender/custom/green/jquery.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/js/public.js"></script>
+<script type="text/javascript" src="/js/runSoft/tongxinweixing.js"></script>
+<script>
+    setBodyHeight();
+    parent.$(window).resize(function(){
+        setBodyHeight();
+    });
+    //datagrid高度赋值
+    function setBodyHeight(){
+        var toolbar_height =40;
+        var tab_panel_height = parent.$(".tabs-panels").height();
+        var rate =toolbar_height/tab_panel_height;
+        //rate = Math.round(rate *100)/100;
+        $("body").css("height",(1-rate)*100+"%");
+    }
+</script>
+</body>
+</html>

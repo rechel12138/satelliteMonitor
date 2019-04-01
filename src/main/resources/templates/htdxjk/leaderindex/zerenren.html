@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>责任人</title>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/platform.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/custom/darkblue/uimaker/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/process.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/all.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/leaderindex/zerenren.css">
+</head>
+<body>
+<div class="pie">
+    <h2>近期卫星报警分类</h2>
+    <ul class="alarm_type clearfix">
+        <li id="oneday"></li>
+        <li id="threeDays"></li>
+        <li id="aWeek"></li>
+    </ul>
+</div>
+
+<div id="alarm_num">
+    <h2>
+        <span>近期卫星报警情况</span>
+        <select name="" id="alarm_date_list">
+            <option value="1" selected>1天</option>
+            <option value="3">3天</option>
+            <option value="7">一周</option>
+        </select>
+    </h2>
+    <div id="bar_graph"></div>
+</div>
+
+
+<script type="text/javascript" src="/vender/custom/green/jquery.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/js/base.js"></script>
+<script type="text/javascript" src="/vender/echarts.common.min.js"></script>
+<script type="text/javascript" src="/vender/westeros.js"></script>
+<script type="text/javascript" src="/js/leaderindex/zerenren.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BzbswMapper">
+
+    <!--通过值班列表的atpId查找值班记录-->
+    <select id="findByAtpId" resultType="map" parameterType="map">
+        SELECT
+           *
+        <include refid="condition"></include>
+        ORDER BY a.bzbsw_addtime DESC
+        limit #{offset},#{rows}
+
+    </select>
+    <select id="getCount" parameterType="map" resultType="int">
+        SELECT COUNT(1)
+        <include refid="condition"></include>
+    </select>
+    <sql id="condition">
+        FROM
+        (SELECT
+        bzbsw.*,
+        s.su_atpid AS addUserId,
+        s.su_chinesename AS addUserName,
+        s.su_account AS addUserAccount
+        FROM htdxjk_bzbsw bzbsw
+        LEFT JOIN htdxjk_bzbjl bzbjl ON bzbsw.bzbsw_infoid = bzbjl.bzbjl_atpid
+        LEFT JOIN htdxjk_suser s ON bzbsw.bzbsw_addperson = s.su_atpid
+        WHERE bzbsw.bzbsw_infoid = #{atpId}
+        UNION ALL
+        SELECT
+        bzbsw.*,
+        s.su_atpid AS addUserId,
+        s.su_chinesename AS addUserName,
+        s.su_account AS addUserAccount
+        FROM htdxjk_bzbsw bzbsw
+        LEFT JOIN htdxjk_suser s ON bzbsw.bzbsw_addperson = s.su_atpid
+        WHERE bzbsw.bzbsw_addtime  BETWEEN  DATE_FORMAT(now(),'%Y-%m-%d 08:30:00') AND DATE_FORMAT(DATE_SUB(now(),INTERVAL -1 DAY),'%Y-%m-%d 08:30:00')) a
+        <where>
+            <if test="keyWord != null and keyWord != ''">
+                AND (a.bzbsw_satcode like concat("%",#{keyWord},"%") or
+                a.bzbsw_infotype like concat("%",#{keyWord},"%") or
+                a.bzbsw_addtime like concat("%",#{keyWord},"%") or
+                a.bzbsw_phemdesc like concat("%",#{keyWord},"%") or
+                a.bzbsw_reslttime LIKE concat("%",#{keyWord},"%") or
+                a.bzbsw_resltdesc LIKE concat("%",#{keyWord},"%") or
+                a.bzbsw_sendto LIKE concat("%",#{keyWord},"%") or
+                a.addUserName LIKE concat("%",#{keyWord},"%") or
+                a.bzbsw_atpcreatedatetime LIKE concat("%",#{keyWord},"%") or
+                a.bzbsw_atplastmodifydatetime LIKE concat("%",#{keyWord},"%"))
+            </if>
+            <if test="arrList.size > 0">
+                and a.bzbsw_satcode in
+                <foreach collection="arrList" item="item" index="index" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="infotype != null and infotype != ''">
+                and a.bzbsw_infotype = #{infotype}
+            </if>
+            <if test="phemdesc != null and phemdesc != ''">
+                and a.bzbsw_phemdesc like concat("%",#{phemdesc},"%")
+            </if>
+            <if test="resltdesc != null and resltdesc != ''">
+                and a.bzbsw_resltdesc like concat("%",#{resltdesc},"%")
+            </if>
+            <if test="addPerson != null and addPerson != ''">
+                and a.bzbsw_addperson = #{addPerson}
+            </if>
+            <if test="state != null and state != ''">
+                and a.bzbsw_state = #{state}
+            </if>
+            <if test="sendto != null and sendto != ''">
+                and a.bzbsw_sendto like concat("%",#{sendto},"%")
+            </if>
+        </where>
+    </sql>
+
+    <select id="findByInfoid" parameterType="String" resultType="Bzbsw">
+        SELECT * FROM htdxjk_bzbsw WHERE bzbsw_infoid = #{infoId}
+    </select>
+
+</mapper>

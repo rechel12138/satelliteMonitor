@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!--<html lang="en" style="overflow: scroll !important">-->
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>所有卫星</title>
+    <link href="/vender/static/darkblue/css/platform.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/vender/custom/darkblue/uimaker/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/process.css"/>
+    <link href="/vender/static/darkblue/css/base.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/all.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/runSoft/suoyouweixing.css"/>
+	<!--[if lt IE 9]>
+		<script type="text/javascript" src="/PIE-1.0/PIE.js"></script>
+	<![endif]-->
+    <!-- [if (lt IE 9) & (!IEMobile)]>
+        <script src="/js/Respond-master/dest/respond.min.js"></script>
+    <![end if]-->
+    <style type="text/css">
+        #linkman,#linkman tr,#linkman td{
+            border: 1px solid #000000;
+        }
+    </style>
+</head>
+<body>
+    <!--iframe右上角按钮及下载列表-->
+    <div class="top_btn" style="position:relative">
+        <!--iframe右上角三个按钮动态生成-->
+        <!--下载列表-->
+        <div id="download_list_item" style="position:absolute;height:260px;top:42px;right: 10px;font-size: 20px;display: none;background-color:#fff3f3;z-index: 9999">
+            <p style="text-align: center;font-size:15px;font-weight: bold"></p>
+            <ul id="download_list_ul" style="overflow-x: scroll">
+                <!--<li style="padding:5px 5px;font-size: 15px"><span style="padding-right:15px;">name</span><span style="padding-right:15px;">time</span><span  style="padding-right:15px;">status</span><a href="#" style="cursor:pointer;font-size: 15px">删除</a></li>-->
+            </ul>
+        </div>
+    </div>
+
+    <!-- 大图标展示 -->
+	<div class="all_satellites clearfix" id="all_satellites" style="overflow: scroll">
+         <!--		<div class="satellite">
+			<input type="checkbox"  class="select_box"/>
+			<img src="/images/big_pic.png" class="img_hover"/>
+            <h3>型号代号（26）：<span class="model_code">GH-J89</span></h3>
+			<p>对外名称：嫦娥二号探地卫星</p>
+			<p>发射时间：2018年7月2日</p>
+			<p>状态：正常</p>
+			<div>
+				<span class="detail_btn">详情</span>
+				<span class="download_btn">回放数据</span>
+			</div>
+            <input class="satlite_id"  type="hidden" value="">
+            <div class="qk_pic" style="display: none;position:absolute;top:60px;left:160px">
+                <ul>
+                    <li>型号代号（五院）：<span></span></li>
+                    <li>对内名称：<span></span></li>
+                    <li>责任人：<span></span></li>
+                    <li>责任人电话：<span></span></li>
+                    <li>替代人：<span></span></li>
+                    <li>替代人电话：<span></span></li>
+                </ul>
+            </div>
+		</div>-->
+	</div>
+
+    <!-- 列表展示 -->
+    <div class="satellite_list_box" style="height:100%;width:100%;overflow: scroll;display: none">
+        <div id="list_sign">
+            <span class="first">&nbsp</span>待发射<span class="second">&nbsp</span>未超寿<span class="third">&nbsp</span>超寿
+        </div>
+        <div style="position:relative;width:100%;height:91%">
+            <table id="dg" style="width:100%;height:100%"></table>
+            <!--筛选框-->
+            <div id="table_sort" style="position:absolute;top:36px;left:50px;background-color: #ffffff;padding:5px 10px;display: none">
+                <p style="font-size:15px;padding:5px 0;font-weight:bold">筛选</p>
+                <p><button style="border:1px solid #cbcbcb;width:60px;height:20px;cursor:pointer" id="sort_ace">升序</button><button style="border:1px solid #cbcbcb;width:60px;height:20px;cursor:pointer;margin-left:5px" id="sort_desc">降序</button></p>
+                <p style="padding:5px 0;"><span style="font-size:14px;color: #323030">型号代号:&nbsp</span><input type="text" id="sort_search"></p>
+                <div>
+                    <p style="padding:5px 0;vertical-align: center">
+                        <input type="checkbox" style="display: inline-block;vertical-align: bottom" class="baseCode_select"><a href="#" id="btn_all" style="margin-left:5px">全选</a><a id="btn_reverse" href="#" style="display: inline-block;margin-left:8px">反选</a>
+                    </p>
+                    <ul style="display: block;height:160px;width:210px;overflow:scroll" id="selectUl">
+
+                    </ul>
+                </div>
+                <div style="text-align: right">
+                    <button style="margin-right:15px" id="sorbtn_true">确定</button><button id="sorbtn_cel">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--详情面板弹窗-->
+    <ul class="dialog-warp" id="detail_box" style="padding:0 50px;font-size:13px;width:26%">
+        <li><span style="display:inline-block;width:70px;">对外名称:  </span><span id="wrap_Name"></span></li>
+        <li><span style="display:inline-block;width:70px;">发射时间:  </span><span id="start_Time"></span></li>
+        <li><span style="display:inline-block;width:70px;">考核寿命:</span><span id="life_Time"></span></li>
+        <li><span style="display:inline-block;width:70px;">状态:  </span><span id="status_Time"></span></li>
+        <li><span style="display:inline-block;width:70px;">责任人:  </span><span id="duty_Name"></span></li>
+        <li><span style="display:inline-block;width:70px;">责任人电话:  </span><span id="duty_Tel"></span></li>
+        <li><span style="display:inline-block;width:70px;">替代人:  </span><span id="replace_Name"></span></li>
+        <li><span style="display:inline-block;width:70px;">替代人电话:  </span><span id="replace_Tel"></span></li>
+    </ul>
+
+    <!--回放数据面板-->
+    <div class="dialog-warp" id="pre_download" style="width:700px;height:600px;padding:20px;display: none">
+        <table id="predata"></table>
+    </div>
+
+    <!--在轨型号责任联系人-->
+    <div class="dialog-warp" id="contacts_qx" style="width:850px;height:500px;display: none">
+        <table id="contacts_table">
+      <!--      <tr style=" border: 1px solid #000000;">
+                <td style=" border: 1px solid #000000;" class="station">岗位</td>
+                <td style=" border: 1px solid #000000;" class="name">姓名</td>
+                <td style=" border: 1px solid #000000;" class="mobile">手机</td>
+                <td style=" border: 1px solid #000000;" class="phone">电话</td>
+            </tr>
+            <tr>
+                <td>在轨管理责任人</td>
+                <td class="zgname"></td>
+                <td class="zgphone"></td>
+                <td class="zgtel"></td>
+            </tr>
+            <tr>
+                <td>总指挥</td>
+                <td class="zzname"></td>
+                <td class="zzphone"></td>
+                <td class="zztel"></td>
+            </tr>
+            <tr>
+                <td>总师</td>
+                <td class="zsname"></td>
+                <td class="zsphone"></td>
+                <td class="zstel"></td>
+            </tr>
+            <tr>
+                <td>在轨应急响应第一联系人</td>
+                <td class="name1"></td>
+                <td class="phone1"></td>
+                <td class="tel1"></td>
+            </tr>
+            <tr>
+                <td>在轨应急响应第二联系人</td>
+                <td class="name2"></td>
+                <td class="phone2"></td>
+                <td class="tel2"></td>
+            </tr>
+            <tr>
+                <td>在轨应急响应第三联系人</td>
+                <td class="name3"></td>
+                <td class="phone3"></td>
+                <td class="tel3"></td>
+            </tr>-->
+        </table>
+    </div>
+    <!--在轨技术支持队伍-->
+    <div class="dialog-warp" id="ranks_qx" style="width:1000px;height:500px;display: none">
+        <table id="ranks_table">
+            <!--      <tr style=" border: 1px solid #000000;">
+                      <td style=" border: 1px solid #000000;" class="station">岗位</td>
+                      <td style=" border: 1px solid #000000;" class="name">姓名</td>
+                      <td style=" border: 1px solid #000000;" class="mobile">手机</td>
+                      <td style=" border: 1px solid #000000;" class="phone">电话</td>
+                  </tr>
+                  <tr>
+                      <td>在轨管理责任人</td>
+                      <td class="zgname"></td>
+                      <td class="zgphone"></td>
+                      <td class="zgtel"></td>
+                  </tr>
+                  <tr>
+                      <td>总指挥</td>
+                      <td class="zzname"></td>
+                      <td class="zzphone"></td>
+                      <td class="zztel"></td>
+                  </tr>
+                  <tr>
+                      <td>总师</td>
+                      <td class="zsname"></td>
+                      <td class="zsphone"></td>
+                      <td class="zstel"></td>
+                  </tr>
+                  <tr>
+                      <td>在轨应急响应第一联系人</td>
+                      <td class="name1"></td>
+                      <td class="phone1"></td>
+                      <td class="tel1"></td>
+                  </tr>
+                  <tr>
+                      <td>在轨应急响应第二联系人</td>
+                      <td class="name2"></td>
+                      <td class="phone2"></td>
+                      <td class="tel2"></td>
+                  </tr>
+                  <tr>
+                      <td>在轨应急响应第三联系人</td>
+                      <td class="name3"></td>
+                      <td class="phone3"></td>
+                      <td class="tel3"></td>
+                  </tr>-->
+        </table>
+    </div>
+    <input type="hidden" id="satelliteType" value="${st}">
+
+    <script type="text/javascript" src="/vender/custom/green/jquery.min.js"></script>
+    <script type="text/javascript" src="/vender/custom/green/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/vender/custom/green/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/js/base.js"></script>
+    <script src="/js/runSoft/suoyouweixing.js"></script>
+    <script>
+        setBodyHeight();
+        parent.$(window).resize(function(){
+            setBodyHeight();
+        });
+        //datagrid高度赋值
+        function setBodyHeight(){
+            var toolbar_height =60;
+            var tab_panel_height = parent.$(".tabs-panels").height();
+            var rate =toolbar_height/tab_panel_height;
+            //rate = Math.round(rate *100)/100;
+            $("body").css("height",(1-rate)*100+"%");
+        }
+    </script>
+</body>
+</html>
+

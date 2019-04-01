@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.SuserMapper">
+
+    <select id="getDefultAPI" resultType="map">
+        SELECT distinct
+            sm_webpath as webpath
+        FROM
+            htdxjk_smodule
+        WHERE
+            sm_islogineddisplay=0
+        AND sm_webpath!=''
+        AND sm_webpath IS NOT NULL
+    </select>
+
+
+    <select id="getApiByUserid" resultType="map" parameterType="map">
+        SELECT
+            DISTINCT sm.sm_webpath as webpath
+        FROM
+            htdxjk_suser su
+        LEFT JOIN
+            htdxjk_suserrole sur
+        ON
+            su.su_atpid=sur.sur_fksuserid
+        LEFT JOIN
+            htdxjk_srole sr
+        ON
+            sur.sur_fksroleid=sr.sr_atpid
+        LEFT JOIN
+            htdxjk_srolemodule srm
+        ON
+            sr.sr_atpid=srm.srm_fksroleid
+        LEFT JOIN
+            htdxjk_smodule sm
+        ON
+            srm.srm_fksmoduleid=sm.sm_atpid
+        WHERE
+            su.su_atpid=#{userid}
+        AND sm.sm_webpath !=''
+        AND sm.sm_webpath IS NOT NULL;
+    </select>
+
+    <select id="findUserIdList" resultType="String">
+        select su.su_atpid from htdxjk_suser su
+    </select>
+
+
+    <select id="getUserInfo" resultType="map" parameterType="map">
+
+        SELECT
+        htdxjk_suser.su_atpid,
+        htdxjk_suser.su_chinesename,
+        htdxjk_suser.su_account,
+        htdxjk_suser.su_atplastmodifydatetime,
+        htdxjk_suser.su_lastlogindatetime,
+        htdxjk_suser.su_atpstatus,
+        group_concat(htdxjk_srole.sr_name) sr_name
+        FROM
+        htdxjk_suser
+        LEFT JOIN
+        htdxjk_suserrole
+        ON
+        htdxjk_suser.su_atpid=htdxjk_suserrole.sur_fksuserid
+        LEFT JOIN
+        htdxjk_srole
+        ON
+        htdxjk_suserrole.sur_fksroleid=htdxjk_srole.sr_atpid
+        WHERE
+        su_account != 'admin'
+        <if test="keyword !=null and keyword !=''">
+        AND (
+        su_chinesename LIKE '%${keyword}%'
+        OR  su_englishname LIKE '%${keyword}%'
+        OR  su_nickname LIKE '%${keyword}%'
+        OR  su_account LIKE '%${keyword}%'
+        OR  su_tele_phone_num LIKE '%${keyword}%'
+        OR  su_work_phone_num LIKE '%${keyword}%'
+        OR  sr_name LIKE '%${keyword}%' )
+        </if>
+        GROUP BY
+        htdxjk_suser.su_atpid,
+        htdxjk_suser.su_chinesename,
+        htdxjk_suser.su_account,
+        htdxjk_suser.su_atpcreatedatetime,
+        htdxjk_suser.su_lastlogindatetime,
+        htdxjk_suser.su_atpstatus
+
+
+    </select>
+
+
+</mapper>

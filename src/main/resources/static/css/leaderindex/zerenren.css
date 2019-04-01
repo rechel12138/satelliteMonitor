@@ -1,0 +1,7 @@
+@charset "UTF-8";
+.pie h2{font-weight: bold;padding-left:30px;margin-top:20px;}
+#oneday,#threeDays,#aWeek{float:left;width:32%;height:220px;}
+
+#alarm_num{margin-top:30px;}
+#alarm_num h2{padding-left:30px;font-weight:bold;}
+#bar_graph{width:1200px;height:400px;}

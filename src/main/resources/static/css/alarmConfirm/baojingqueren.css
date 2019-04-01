@@ -1,0 +1,151 @@
+@charset "UTF-8";
+.alarm_toolbar:after{content: "";display: block;clear: both;}
+.alarm_toolbar li{float:left;line-height: 70px;margin-left: 50px;}
+.time_num{margin-left: 10px;}
+.all_satellites_name a{color:#000;}
+.export a{color:#000;}
+.toolbar .watcher_judge{float:right;margin-right:100px;}
+.watcher_judge a{display: block;width:88px;height:32px;background-color:#1890FF;border-radius:6px;
+    line-height:32px;text-align:center;color:#fff;text-decoration: none;margin-top:19px;}
+.datagrid-cell-c1-modify_time{height:31px;}
+.datagrid-cell-c1-state1{width:61px !important;}
+.unconfirmed{display: block;width:80px;height:28px;background-color:#1890FF;border-radius:6px;
+    line-height:28px;text-align:center;color:#fff;text-decoration: none;margin:1px auto 0;}
+.datagrid-cell-c1-rowNumbers{padding:0;height:38px;line-height: 38px;}
+/*.sign_img{display: none;}*/
+.toggle{visibility:visible;}
+.row_num{display:inline-block;width:25px;height:28px;text-align: center;line-height: 28px;}
+.detail{color:#000;font-size:14px;}
+.telemetering{color:#000;font-size:14px;}
+.datagrid-row td .datagrid-cell-c1-state1{display: inline-block; width:50px;height:28px;}
+#add_csyc span{
+    display: inline-block;
+    width: 100px;
+    height:30px;
+}
+/*值班人预判：*/
+/*.watcher_adjust{width:500px; height:404px;border:1px solid #000;border-radius: 6px;*/
+    /*position:relative;background: #fff;z-index: 10;margin: 80px auto;}*/
+/*.header{font-size: 22px;font-weight: bold;height: 70px;}*/
+/*.header:after{content:'';display:block;clear:both;}*/
+/*.title{float:left;display:inline-block;margin-left:25px;line-height:70px;}*/
+/*.close{float:right;display:inline-block;width:20px;height:22px;margin-right: 20px;margin-top:19px;
+    line-height: 19px;padding-left:3px;cursor: pointer;}*/
+/*.close:hover{background:#1890FF;color:#fff;}*/
+/*.watcher_adjust ul{border-top:1px solid #000;border-bottom:1px solid #000;padding-left:35px;}*/
+/*.watcher_adjust li{line-height:40px;font-size: 16px;}*/
+/*.combobox-item{font-size: 14px !important;}*/
+/*.adjust_end_time .choose_time .calendar{width:172px;}*/
+/*.adjust_end_time .textbox a{right:8px !important;}*/
+/*.datebox{margin-left:9px;}*/
+/*.textbox-text{padding-right:0 !important;}*/
+/*.no_trace{margin-left:30px;}*/
+/*.combo{width:116px;margin-left:14px;}*/
+/*.send{margin-bottom:20px;visibility:hidden;}*/
+/*.choose_watcher{margin-left: 20px;}*/
+/*.send .watcher_name+.textbox{margin-left:10px;}*/
+/*.submit{width: 100px;height: 40px;border-radius: 6px;line-height: 40px;color: #fff;
+    margin:15px auto;*/
+    /*background-color: #3A87E4;text-align: center;font-size: 18px;cursor: pointer;}*/
+
+/*详情选项卡*/
+/*.tabs li.tabs-selected{border-top: 2px solid #2f4050 !important;}*/
+/*.tabs-header{padding-top: 0;}*/
+/*.tabs-wrap ul{padding-left:0;border-right:1px solid #ccc;}*/
+/*.tabs-wrap ul li{margin-right:0;}*/
+/*.tabs-wrap ul li a{background: #3A87E4 !important;}*/
+/*.tabs-title{color:#fff;}*/
+/*.alarm_detail{border:1px solid #ccc;height:40px;font-size: 16px;font-weight: bold;line-height: 40px;*/
+    /*background:#eee;}*/
+/*.alarm_detail_title{ float:left;}*/
+/*.alarm_detail_close{float:right;display:inline-block;width:20px;height:20px;margin-right:15px;*/
+    /*margin-top: 12px;line-height: 20px;text-align: center; }*/
+/*.alarm_detail_close:hover{background:#3A87E4;color:#fff; }*/
+
+
+/*历史报警分析：*/
+.container .content .basic-info{padding:0 !important;}
+.history_accordion{font-size:14px;background: #ddd;}
+.history_accordion span{font-weight: bold;line-height: 50px;margin-right: 15px;}
+.name_input{margin-right: 50px;}
+.combo{margin-left:-5px;}
+.textbox{width:167px !important;}
+.textbox-addon{margin-right:0;}
+.textbox-icon{right:-13px !important;}
+.history_accordion .end_time{margin-left: 23px;}
+.alarm_type{margin-left:20px;}
+.alarm_type+.textbox{width:130px !important;}
+.btn_common{display:inline-block;border-radius: 5px;color: #fff;background-color: #3A87E4;
+    text-align: center;font-size: 14px;cursor: pointer;height: 32px;line-height: 32px;}
+.history_accordion .query{width:75px;margin-right:20px !important;margin-left: 50px !important;
+    font-weight: normal !important;line-height: 32px;}
+.history_accordion .confirme{width: 75px;margin:15px auto;font-size: 14px;
+    font-weight: normal !important;line-height: 32px;}
+.detail_bottom_header .odd{line-height: 30px;margin-left:50px;margin-right:10px;font-weight: bold;}
+.detail_bottom_header h3{font-size: 14px;font-weight: bold;text-align: center;line-height: 50px;}
+.history_analyze_footer .btn_add{width: 125px;margin: 0;}
+.history_analyze_footer .btn_adjust{width: 85px;margin: 0;}
+/*添加报警重复异常面板：*/
+.add_panel_box{position: absolute;left: 0;top: 0;width: 100%;height: 100%;display: none}
+.add_panel_box .add_panel_back{position: absolute;left: 0;top: 0;width: 100%;height: 100%;
+    background-color: #000;background-color: rgba(0,0,0,0.4);filter: alpha(opacity=40);}
+.add_panel{position: relative;width:80%;height:80%;margin: 5% 10%;background: #fff;
+    border: 1px solid #000;}
+.add_panel .title{display:inline-block;font-size: 16px;font-weight: bold;line-height: 60px;}
+.add_panel .close{font-size:18px;padding-left:4px;}
+.add_panel .header{height:60px;}
+.sheet{margin:0 auto;}
+#add_msg td{ border:1px solid #aaa;height:40px;line-height: 40px;text-align: center;}
+#add_msg .first_cell{width:30%;height:40px;}
+#add_msg .second_cell{width:60%;}
+#add_msg input{width:623px;height:36px;border: none;outline: 0;text-align: center;}
+.add_panel .submit_btn{width:100px;height:30px;color:#fff;background: #3A87E4;text-align: center;
+    line-height: 30px;
+    border-radius: 5px;margin:24px auto;font-size: 14px;cursor: pointer;}
+
+.alert_box1{position: fixed;left: 0;top: 0;z-index: 99;width: 100%;height: 100%;display: none;}
+.alert_box1 .alert_back1{position: fixed;left: 0;top: 0;width: 100%;height: 100%;
+    background-color: #000;background-color: rgba(0,0,0,0.4);filter: alpha(opacity=40);}
+.alert_box{position: fixed;left: 0;top: 0;z-index: 99;width: 100%;height: 100%;display: none;}
+.alert_box .alert_back{position: fixed;left: 0;top: 0;width: 100%;height: 100%;background-color: #000;
+background-color: rgba(0,0,0,0.4);filter: alpha(opacity=40);}
+.alert_box .content1{position: relative;width: 80%;height: 90%;margin: 0 10%;background-color: #f1f1f1;
+    padding: 0;overflow: hidden;}
+.table_box{width: 90%;margin: 0 auto;}
+.header_list{width: 100%;}
+.header_list:after{content: "";display: block;clear: both;}
+.header_list li{float: left;padding: 0 20px;font-size: 16px;cursor: pointer;
+    background-color:dodgerblue;color: #fff;line-height: 22px;height: 20px;border-radius: 3px;}
+.header_list li.choose_this{background-color: #000 !important;}
+.table_list{position: relative;top: 0;left:0;width: 600%;}
+.table_list:after{content: "";display: block;clear: both;}
+.table_list li{width: 16.666%;height: 100%;float: left;
+    background-color: #fff;overflow-x: hidden;overflow-y: auto}
+.table_list .show_this{display:block !important;}
+.alert_box_close{position: absolute;right: 0;top: 0;width: 30px;height: 30px;
+    margin: 5px;;line-height: 30px;text-align: center;font-weight: 600;}
+.alert_box_close:hover{background:#1890FF;color:#fff;}
+.datagrid-mask{opacity:0;filter:alpha(opacity=0);}
+.datagrid-mask-msg{opacity:0;filter:alpha(opacity=0);}
+
+.base_msg h4{height:30px;width:80px;color:#fff;background: #aaa;border-radius: 2px;text-align: center;
+    line-height:30px;font-size: 14px;margin-top: 20px}
+.linkman h4{height:30px;width:170px;color:#fff;background: #aaa;border-radius: 2px;text-align: center;
+    line-height:30px;font-size: 14px;margin-top:20px;}
+#base_msg td{border:1px solid #bbb;height:35px;text-align: center;}
+.base_msg_one .name{width:160px;}
+.name_value{width:340px;}
+.satellite_name{width:150px;}
+.satellite_name_value{width:335px;}
+.base_msg_three .watcher{width:105px;}
+.phone{width:56px;}
+.is_over_time{width:100px;}
+.station{width:237px;}
+.linkman,.base_msg{width:1000px;margin:0 auto;}
+.linkman td{border:1px solid #bbb;height:34px;text-align: center;}
+.linkman .name{width:240px;}
+.linkman .mobile{width:270px;}
+.linkman .phone{width:238px;}
+.importent{position: relative;}
+.importent:after{content: "*";display: block;position: absolute;right: 10%;
+    top: -5px;color: red;font-weight: 600;}

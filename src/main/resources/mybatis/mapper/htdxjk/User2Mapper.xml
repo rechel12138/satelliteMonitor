@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.User2Mapper">
+    <resultMap id="BaseResultMap" type="com.htzh.htdxjk.entity.User2" >
+        <id column="iid" property="iid" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="getUser2Diy" resultMap="BaseResultMap"  >
+        SELECT * FROM htdxjk_user2 WHERE  1=1
+    </select>
+
+    <insert id="insertSelective">
+		        INSERT INTO htdxjk_user2(name,age,email) VALUES(#{name},#{age},#{email});
+
+	</insert>
+</mapper>

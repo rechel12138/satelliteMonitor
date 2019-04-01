@@ -1,0 +1,21 @@
+@charset "UTF-8";
+.alarm_level_wrap{width:21%;}
+.time_sel{width:47%;}
+.above_table{margin:10px 0;padding-left:1%;}
+.above_table>li{float:left;vertical-align: middle;}
+.above_table select#dateSelect{height:30px;}
+.alarm_level>li{float:left;line-height:30px;margin-right:8px;font-size: 12px;}
+.alarm_level input[type=checkbox]{margin-right:5px;font-size:13px !important;}
+.btn span{display:inline-block;width: 65px;height:25px;color: #fff;background:#1890FF;text-align: center;
+    border-radius: 5px;line-height: 25px;margin-right:3px;vertical-align:baseline;}
+.btn{margin-right:1%;height:30px;line-height:30px; cursor: pointer;}
+.first .textbox,.second .textbox{width:177px !important;}
+.first,#dateSelect,.second{vertical-align: bottom;}
+#dateSelect{width:77px;}
+.query{height:30px;line-height: 30px;}
+.query input{padding-left:10px;outline: 0;border:1px solid #aaa;height:25px;width:140px;margin-right:5px;}
+.query span{display:inline-block;width: 55px;height:25px;color: #fff;background:#1890FF;text-align: center;
+    border-radius: 4px;line-height: 25px;cursor: pointer;}
+
+.calendar_box_back{position: absolute;width: 178px;height: 28px;z-index: 100;background-color: #000;
+    opacity:0.3;filter: Alpha(opacity=30);display: none;}

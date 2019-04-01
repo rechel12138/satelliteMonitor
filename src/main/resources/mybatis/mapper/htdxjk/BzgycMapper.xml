@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BzgycMapper">
+
+
+    <select id="getBzgycBySatIdOrParam" parameterType="map" resultType="Bzgyc">
+        SELECT
+            bz.*
+        FROM
+            htdxjk_bzgyc bz
+            LEFT JOIN htdxjk_bsat bs ON bz.bzgyc_sat_id = bs.bsat_atpid
+        WHERE
+            1 = 1
+        <if test="bzgycName != null and bzgycName != ''">
+            and bz.bzgyc_c_512 like concat("%",#{bzgycName},"%")
+            OR bz.bzgyc_c_9117 like concat("%",#{bzgycName},"%")
+            OR bz.bzgyc_c_8788 like concat("%",#{bzgycName},"%")
+            OR bz.bzgyc_c_9064 like concat("%",#{bzgycName},"%")
+            OR bz.bzgyc_submit_time like concat("%",#{bzgycName},"%")
+        </if>
+        AND bs.bsat_id = #{satId}
+    </select>
+
+
+</mapper>

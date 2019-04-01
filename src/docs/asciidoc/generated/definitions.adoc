@@ -1,0 +1,22 @@
+
+[[_definitions]]
+== Definitions
+
+[[_alarmidandsource]]
+=== AlarmIdAndSource
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**alarmSource** +
+__optional__|string
+|**atpId** +
+__optional__|string
+|**confirmMsg** +
+__optional__|string
+|**confirmType** +
+__optional__|string
+|===
+
+
+

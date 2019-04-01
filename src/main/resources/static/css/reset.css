@@ -1,0 +1,15 @@
+  body{margin:0;font:12px/1 "微软雅黑";}
+  h1,h2,h3,h4,h5,h6{margin:0;font-size:12px; font-weight:normal;}
+  ul,ol{list-style:none;margin:0;padding:0;}
+  p,dl,dd{margin:0;}
+  a{text-decoration:none;}
+  img{border:none;vertical-align:bottom;}
+  strong,b{font-weight:normal;}
+  em,i{ font-style:normal;}
+  .clearfix{*zoom:1;}/*ie7及以下兼容*/
+  .clearfix:after{content:"";display:block;clear:both;}
+  table{border-spacing: 0; border-collapse:collapse;}
+  td,th{padding:0;}
+  td{vertical-align:center;}
+  input{margin:0;padding:0;background:none;}
+  textarea{resize:none;overflow:auto;}

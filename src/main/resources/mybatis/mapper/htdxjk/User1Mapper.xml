@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.User1Mapper">
+    <resultMap id="BaseResultMap" type="com.htzh.htdxjk.entity.User1" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="listUser1" resultMap="BaseResultMap">
+        select * from htdxjk_user2
+    </select>
+</mapper>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BorbitMapper">
+
+
+    <select id="getBorbitInfo" parameterType="map" resultType="map">
+        <![CDATA[
+        SELECT
+        *
+        FROM
+        htdxjk_borbit bo
+        LEFT JOIN
+        htdxjk_bsat bs
+        ON
+        bo.borbit_satid=bs.bsat_atpid
+        WHERE
+        bo.borbit_time_stamp>=#{startTime}
+        AND bo.borbit_time_stamp<=#{endTime}
+         ]]>
+        <if test="bsatCodes !=null and bsatCodes !=''">
+            and  bs.bsat_code in ('${bsatCodes}')
+        </if>
+        <if test="keyword !=null and keyword !=''">
+            AND (
+            bs.bsat_code LIKE '%${keyword}%'
+            OR bo.borbit_time_stamp LIKE '%${keyword}%'
+            OR bo.borbit_satname LIKE '%${keyword}%'
+            OR bo.borbit_a LIKE '%${keyword}%'
+            OR bo.borbit_e LIKE '%${keyword}%'
+            OR bo.borbit_i LIKE '%${keyword}%'
+            OR bo.borbit_o LIKE '%${keyword}%'
+            OR bo.borbit_w LIKE '%${keyword}%'
+            OR bo.borbit_m LIKE '%${keyword}%')
+        </if>
+        ORDER BY ${sort} ${order}
+        <if test="offset !=null and offset !=''">
+            LIMIT ${offset},${rows}
+        </if>
+
+    </select>
+
+    <select id="countBorbitInfo" parameterType="map" resultType="int">
+        <![CDATA[
+        SELECT
+        count(1)
+        FROM
+        htdxjk_borbit bo
+        LEFT JOIN
+        htdxjk_bsat bs
+        ON
+        bo.borbit_satid=bs.bsat_atpid
+        WHERE
+        bo.borbit_time_stamp>=#{startTime}
+        AND bo.borbit_time_stamp<=#{endTime}
+         ]]>
+        <if test="bsatCodes !=null and bsatCodes !=''">
+            and  bs.bsat_code in ('${bsatCodes}')
+        </if>
+        <if test="keyword !=null and keyword !=''">
+            AND (
+            bs.bsat_code LIKE '%${keyword}%'
+            OR bo.borbit_time_stamp LIKE '%${keyword}%'
+            OR bo.borbit_satname LIKE '%${keyword}%'
+            OR bo.borbit_a LIKE '%${keyword}%'
+            OR bo.borbit_e LIKE '%${keyword}%'
+            OR bo.borbit_i LIKE '%${keyword}%'
+            OR bo.borbit_o LIKE '%${keyword}%'
+            OR bo.borbit_w LIKE '%${keyword}%'
+            OR bo.borbit_m LIKE '%${keyword}%')
+        </if>
+
+    </select>
+
+    <select id="getOneBorbitById" resultType="map" parameterType="String">
+SELECT
+    *
+FROM
+    htdxjk_borbit bo
+LEFT JOIN
+    htdxjk_bsat bs
+ON
+    bo.borbit_satid=bs.bsat_atpid
+WHERE
+    bo.borbit_atpid=#{myid}
+    </select>
+
+</mapper>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BsjmxssMapper">
+
+    <select id="getBsjmxssBySatId" parameterType="map" resultType="map">
+        select * from htdxjk_bsjmxss
+        where bsjmxss_satid = #{satId}
+    </select>
+
+    <select id="getCount">
+        select count(1)
+        <include refid="condition"></include>
+    </select>
+
+
+    <select id="getBsjmxssByParam" parameterType="map" resultType="AlarmModel">
+        select a.*,
+        bsat.bsat_code AS bsatCode ,t.sufid
+        <include refid="condition"></include>
+        ORDER  BY  a.alarmBeginTime DESC
+        <if test="sort == 'bsatCode' and order == 'desc'">
+            ,bsat.bsat_code DESC
+        </if>
+        <if test="sort == 'bsatCode' and order == 'asc'">
+            ,bsat.bsat_code ASC
+        </if>
+        <if test="sort == 'alarmSource' and order == 'desc'">
+            ,a.alarmSource DESC
+        </if>
+        <if test="sort == 'alarmSource' and order == 'asc'">
+            ,a.alarmSource ASC
+        </if>
+        <if test="offset != 0 and rows != 0">
+            limit #{offset},#{rows}
+        </if>
+    </select>
+
+    <select id="incrementReturnData" parameterType="map" resultType="AlarmModel">
+        select a.*,
+        bsat.bsat_code AS bsatCode
+        <include refid="condition"></include>
+        and a.alarmBeginTime <![CDATA[ >= ]]> #{timeStamp}
+    </select>
+
+    <select id="getAlarmByAtpId" parameterType="map" resultType="map">
+        select * from htdxjk_balarmfx bal
+
+
+
+    </select>
+
+    <select id="getByAtpId" parameterType="String" resultType="AlarmInfoModel">
+        SELECT
+        bs.bsjmxss_begintime as beginTime,
+        bs.bsjmxss_satid as satId,
+        bsat.bsat_code as bsatCode,
+        s.su_atpid as dutyId,
+        s.su_chinesename as dutyName
+        FROM htdxjk_bsjmxss bs
+        LEFT JOIN htdxjk_bsat bsat ON bs.bsjmxss_satid = bsat.bsat_atpid
+        LEFT JOIN htdxjk_suser s on bsat.bsat_admin_subs_id = s.su_atpid
+      WHERE bs.bsjmxss_atpid = #{alarmId}
+    </select>
+
+    <sql id="condition">
+        from (
+        SELECT bs.bsjmxss_atpid as atpId,
+        bs.bsjmxss_begintime as alarmBeginTime,
+        bs.bsjmxss_endtime as alarmEndTime,
+        '三级门限实时报警' as alarmSource,
+        bs.bsjmxss_responetime as confirmTime,
+        bs.bsjmxss_alarmmsg as alarmMsg,
+        bs.bsjmxss_alarmvalue as alarmVal,
+        bs.bsjmxss_alarmlevel as alarmLevel,
+        bs.bsjmxss_pre_judge_type as confirmType,
+        bs.bsjmxss_pre_judge_remark as remark,
+        bs.bsjmxss_satid as satId,
+        '预判' as iden,
+        bs.bsjmxss_atpcreatedatetime as createTime,
+        bs.bsjmxss_atplastmodifydatetime as modifyTime
+        from htdxjk_bsjmxss bs WHERE UNIX_TIMESTAMP(bs.bsjmxss_endtime) <![CDATA[ <= ]]> UNIX_TIMESTAMP('2000-1-1 00:00:00')
+        UNION ALL
+        SELECT
+        bd.bdxznzdxtssbj_atpid as atpId,
+        bd.bdxznzdxtssbj_begintime as alarmBeginTime,
+        bd.bdxznzdxtssbj_endtime as alarmEndTime,
+        '多星智能诊断系统实时报警' as alarmSource,
+        bd.bdxznzdxtssbj_record_time as confirmTime,
+        bd.bdxznzdxtssbj_explain as alarmMsg,
+        bd.bdxznzdxtssbj_val_level as alarmVal,
+        bd.bdxznzdxtssbj_alarm_level as alarmLevel,
+        bd.bdxznzdxtssbj_pre_judge_type AS confirmType,
+        bd.bdxznzdxtssbj_pre_judge_remark AS remark,
+        bd.bdxznzdxtssbj_sat_id AS satId,
+        '预判' AS iden,
+        bd.bdxznzdxtssbj_atpcreatedatetime AS createTime,
+        bd.bdxznzdxtssbj_atplastmodifydatetime AS modifyTime
+        from htdxjk_bdxznzdxtssbj bd WHERE bd.bdxznzdxtssbj_endtime = NULL OR bd.bdxznzdxtssbj_endtime = ''
+        ) a
+        LEFT JOIN htdxjk_bsat bsat ON a.satId = bsat.bsat_atpid
+        LEFT JOIN
+        (
+        SELECT
+        su_atpid         suatpid,
+        ss.bsjmxss_atpid bjid,
+        suf.suf_from     sfrom,
+        suf.suf_atpid    sufid
+        FROM
+        htdxjk_suser su
+        LEFT JOIN
+        htdxjk_suserflag suf
+        ON
+        su.su_atpid=suf.suf_fksuserid
+        LEFT JOIN
+        htdxjk_bsjmxss ss
+        ON
+        suf.suf_fkbjid=ss.bsjmxss_atpid
+        WHERE
+        suf.suf_from='三级门限实时报警'
+        AND su.su_atpid=#{userid}
+        UNION
+        SELECT
+        su_atpid                 suatpid,
+        ssbj.bdxznzdxtssbj_atpid bjid,
+        suf.suf_from             sfrom,
+        suf.suf_atpid            sufid
+        FROM
+        htdxjk_suser su
+        LEFT JOIN
+        htdxjk_suserflag suf
+        ON
+        su.su_atpid=suf.suf_fksuserid
+        LEFT JOIN
+        htdxjk_bdxznzdxtssbj ssbj
+        ON
+        suf.suf_fkbjid=ssbj.bdxznzdxtssbj_atpid
+        WHERE
+        suf.suf_from='多星智能诊断系统实时报警'
+        AND su.su_atpid=#{userid}) t
+        ON
+        a.atpId=t.bjid
+        AND a.alarmSource=t.sfrom
+        where 1=1
+        <if test="source != null and source != ''">
+            AND a.alarmSource like concat("%",#{source},"%")
+        </if>
+        <if test="alarmlevel == '' or alarmlevel == null">
+            and a.alarmLevel != '轻度'
+        </if>
+        <if test="satIds != null and satIds.size > 0">
+            and a.satId in
+            <foreach collection="satIds" index="index" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="keyWords != null and keyWords.size > 0">
+            <if test="sort == 'bsatCode'">
+                and a.satId in
+                <foreach collection="keyWords" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="sort == 'alarmSource'">
+                AND a.alarmSource in
+                <foreach collection="keyWords" index="index" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </if>
+        <if test="alarmStartTime != null and alarmStartTime != ''">
+            and DATE_FORMAT(a.alarmBeginTime,'%Y-%m-%d') = #{alarmStartTime}
+        </if>
+
+
+    </sql>
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BmonthpreMapper">
+
+    <select id="findBySatIdOrSatCode" parameterType="map" resultType="BmonthpreSatModel">
+        SELECT
+            bm.bmonthpre_atpid,
+            bm.bmonthpre_atpcreatedatetime,
+            bm.bmonthpre_atpcreateuser,
+            bm.bmonthpre_atplastmodifydatetime,
+            bm.bmonthpre_atplastmodifyuser,
+            bm.bmonthpre_atpstatus,
+            bm.bmonthpre_atpsort,
+            bm.bmonthpre_atpdotype,
+            bm.bmonthpre_atpremark,
+            bm.bmonthpre_satid,
+            bm.bmonthpre_btime,
+            bm.bmonthpre_etime,
+            bm.bmonthpre_satellite,
+            bm.bmonthpre_mstype,
+            bm.bmonthpre_span,
+            bs.bsat_code
+        FROM
+            htdxjk_bmonthpre bm
+            LEFT JOIN htdxjk_bsat bs
+            ON bm.bmonthpre_satid = bs.bsat_atpid
+        WHERE 1= 1
+        <if test="keyWord != null and keyWord != ''">
+            and bm.bmonthpre_btime like concat("%",#{keyWord},"%") or
+            bm.bmonthpre_etime like concat("%",#{keyWord},"%") or
+            bm.bmonthpre_mstype like concat("%",#{keyWord},"%") or
+            bm.bmonthpre_span like concat("%",#{keyWord},"%")
+        </if>
+        and bm.bmonthpre_satid = #{satId}
+        ORDER BY bm.bmonthpre_btime DESC
+    </select>
+
+</mapper>

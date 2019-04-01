@@ -1,0 +1,5 @@
+@charset "UTF-8";
+.designer_right{float: right;width:50%;}
+.designer_con{width:46%;height:190px;background:#bbb;margin:0 0 16px 2%;float:left;text-align: center;}
+.designer_con_detail{margin-top:60px;color:#ffffff;font-size: 24px;}
+.designer_con_detail2{margin-top:50px;color:#ffffff;}

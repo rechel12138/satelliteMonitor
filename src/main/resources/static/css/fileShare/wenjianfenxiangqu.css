@@ -1,0 +1,19 @@
+@charset "UTF-8";
+button{
+    padding: 3px 15px;
+    color: #fff;
+    background: #2c7ada;
+    border-radius: 3px;
+    margin:10px 50px 10px 90%;
+    border:none;
+    outline: none;
+    cursor: pointer;
+}
+.file_onload,.file_del,.file_look{
+    color: #2c7ada;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.file_onload,.file_del{
+    margin-left: 20px;
+}

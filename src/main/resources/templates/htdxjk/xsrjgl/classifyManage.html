@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" style="min-width:900px;">
+<head>
+    <meta charset="UTF-8">
+    <title>分类管理</title>
+    <link href="/vender/static/darkblue/css/platform.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/vender/custom/darkblue/uimaker/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/process.css"/>
+    <link href="/vender/static/darkblue/css/base.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/all.css"/>
+</head>
+<body>
+<div class="toolbar"></div>
+<table id="classify"></table>
+
+<!--增加弹窗-->
+<div class="dialog-warp" id="classify_dialog">
+    <p>分类名称：<input type="text" id="classifyName" placeholder="请输入分类名称"></p>
+    <div style="margin-top:10px;vertical-align:top">
+        <span style="display:inline-block;vertical-align: top">所属卫星：</span>
+        <ul id="satelit_class" style="width:180px;height:180px;overflow: scroll;padding-left:10px;border: 1px solid #dadada;display: inline-block">
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="/vender/custom/green/jquery.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/vender/custom/green/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/js/base.js"></script>
+<script type="text/javascript" src="/js/xsrjgl/classifyManage.js"></script>
+</body>
+</html>
+<script>
+    setBodyHeight();
+    parent.$(window).resize(function(){
+        setBodyHeight();
+    });
+
+    //datagrid高度赋值
+    function setBodyHeight(){
+        var toolbar_height =60;
+        var tab_panel_height = parent.$(".tabs-panels").height();
+        var rate =toolbar_height/tab_panel_height;
+        //rate = Math.round(rate *100)/100;
+        $("body").css("height",(1-rate)*100+"%");
+
+    }
+</script>

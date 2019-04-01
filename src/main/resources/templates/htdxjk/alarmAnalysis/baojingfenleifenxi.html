@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" style="min-width:900px;">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+    <link href="/vender/static/darkblue/css/platform.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/vender/custom/darkblue/uimaker/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="/vender/static/darkblue/css/process.css"/>
+    <link href="/vender/static/darkblue/css/base.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/all.css"/>
+    <link rel="stylesheet" href="/css/baojingfenleifenxi/baojingfenleifenxi.css">
+</head>
+<a href=""></a>
+<body>
+    <div>
+        <ul class="above_table clearfix">
+            <li class="alarm_level_wrap">
+                <ul class="clearfix alarm_level">
+                    <li><input type="checkbox" value="重度" id="serious" checked/>重度报警</li>
+                    <li><input type="checkbox" value="中度" id="medium" checked/>中度报警</li>
+                    <li><input type="checkbox" value="轻度" id="mild"/>轻度报警</li>
+                </ul>
+            </li>
+            <li class="time_sel">
+                报警时间:<span class="first">
+					<input class="easyui-datetimebox start_time"
+                           style="width:200px;height:30px;"/>
+				</span>
+                <select id="dateSelect">
+                    <option value="custom">自定义</option>
+                    <option value="yesterday">昨天</option>
+                    <option value="lasted_two">最近两天</option>
+                    <option value="lasted_week">最近一周</option>
+                    <option value="lasted_month">最近一个月</option>
+                    <option value="lasted_threemonth">最近三个月</option>
+                    <option value="lasted_halfyear">最近半年</option>
+                </select>
+                <span class="second">
+                    <input class="easyui-datetimebox end_time"
+                       style="width:200px;height:30px;"/>
+                </span>
+                <span class="calendar_box_back" style="left: 301px;top: 11px;"></span>
+                <span class="calendar_box_back" style="left: 575px;top: 11px;"></span>
+                <input type="checkbox"  id="seeOnlyUnHander" style="margin-right:5px;"/>仅显示未处理
+            </li>
+            <li class="btn">
+                <span id="much_save">批量分析</span>
+                <span id="_save">保存</span>
+            </li>
+            <li class="query"><input type="text" id="keyword"/><span id="query">查询</span></li>
+        </ul>
+    </div>
+   <div style="position:relative;width:100%;height:100%">
+       <table id="bjflfx"></table>
+       <!--筛选框-->
+       <div id="table_sort" style="position:absolute;top:77px;left:67px;background-color: #ffffff;padding:5px 10px;display:none;border:1px solid #bebebe" istrue="0" sorparam="">
+           <p style="font-size:15px;padding:5px 0;font-weight:bold">筛选</p>
+           <p><button style="border:1px solid #cbcbcb;width:60px;height:20px;cursor:pointer" id="sort_ace">升序</button><button style="border:1px solid #cbcbcb;width:60px;height:20px;cursor:pointer;margin-left:5px" id="sort_desc">降序</button></p>
+           <p style="padding:5px 0;"><span style="font-size:14px;color: #323030" class="search_name">型号代号:</span>&nbsp<input type="text" id="sort_search"></p>
+           <div>
+               <p style="padding:5px 0;vertical-align: center">
+                   <input type="checkbox" style="display: inline-block;vertical-align: bottom" class="baseCode_select"><a href="#" id="btn_all" style="margin-left:5px">全选</a><a id="btn_reverse" href="#" style="display: inline-block;margin-left:8px">反选</a>
+               </p>
+               <ul style="display: block;height:160px;width:210px;overflow:scroll" id="selectUl">
+
+               </ul>
+           </div>
+           <div style="text-align: right">
+               <button style="margin-right:15px" id="sorbtn_true">确定</button><button id="sorbtn_cel">取消</button>
+           </div>
+       </div>
+   </div>
+<!--批量分析-->
+    <div class="dialog-warp" id="much_flfx">
+        <p style="padding:10px 0">确认类别：<select name="" id="much_confirm_type_" style="width:187px;height:27px">
+            <option value="地面异常报警">地面异常报警</option>
+            <option value="星上异常报警">星上异常报警</option>
+            <option value="测控事件">测控事件</option>
+            <option value="乱码和野值">乱码和野值</option>
+            <option value="门限设置不当">门限设置不当</option>
+            <option value="其他">其他</option>
+            <option value="知识错误">知识错误</option>
+        </select></p>
+        <p style="padding:10px 0">情况说明：<input type="text" id="much_relRemark"></p>
+    </div>
+    <!--情况说明 输入弹窗-->
+    <div class="dialog-warp" id="relRemark_dialog">
+        <ul>
+            <li><textarea id="_relRemark" style="width:200px; height:60px;"></textarea></li>
+        </ul>
+    </div>
+    <!--报警确认详情tab:-->
+    <div class="dialog-warp" id="alarmFlfxDetail" style="width:1200px;height:600px">
+        <div id="flfx_tabs" class="easyui-tabs" style="width:1160px;height:580px;" satid="" atpid="">
+            <div title="历史报警分类分析" style="display:none;overflow-x:hidden">
+                <div data-choose = "1" >
+                    <div>
+                        <div class="history_accordion" style="width:100%">
+                            <div class="center" style="width: 100%">
+                                <!--    <div class="accordion_first_line">
+                                        <span class="name">型号代号:</span><input type="text" class="name_input"/>
+                                        <span class="param">报警参数:</span><input type="text"/>
+                                    </div>-->
+                                <div style="width: 100%">
+                                    <span>开始时间:</span>
+                                    <input id="flfx_begintime" class="begin_calendar" name="birthday" style="width:180px;margin-left:5px;" type="text"/>
+                                    <span>结束时间:&nbsp;</span><input id="flfx_endtime" name="birthday" style="width:180px;margin-left:5px;"/>
+                                    <span class="alarm_type">报警类别:</span>
+                                    <select id="flfx_select" class="alarm_type" name="dept">
+                                        <option value="地面异常报警">地面异常报警</option>
+                                        <option value="星上异常报警">星上异常报警</option>
+                                        <option value="测控事件">测控事件</option>
+                                        <option value="乱码和野值">乱码和野值</option>
+                                        <option value="门限设置不当">门限设置不当</option>
+                                        <option value="其它">其它</option>
+                                        <option value="知识错误">知识错误</option>
+                                    </select>
+                                    <span class="btn_common query" id="flfx_search">查询</span>
+                                    <!--<span class="btn_common alarm_confirm" id="flfx_alarmConfirm">报警确认</span>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail_bottom center">
+                            <div class="detail_bottom_header">
+                                <div>
+                                    <span class="odd">责任人：</span><span id="flfx_duty_text">耿仁冲(13588880000)(86158124)</span>
+                                    <span class="odd">替代人：</span><span id="flfx_replace_text">耿仁冲(13588880000)(86158124)</span>
+                                </div>
+                                <div>
+                                    <span class="odd">低轨值班电话：</span><span>0000-000000/01/02</span><span class="odd">传真：</span>
+                                    <span>0000-123256</span><span class="odd">高轨值班电话：</span><span>0000-000000/01/02</span>
+                                    <span class="odd">传真：</span><span>0000-123256</span>
+                                </div>
+                                <h3>默认显示最近一年的报警分类分析</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table center" style="width:100%;height:320px">
+                        <table id="flfx_detail_dg"></table>
+                    </div>
+               <!--     <div class="add_over_btn center">
+                        <div id="flfx_zbr_call" style="margin-top: 10px">值班人预判</div>
+                        <div class="add_over" id="flfx_add_over" style="margin-top: 10px">添加超寿重复异常</div>
+                    </div>-->
+                </div>
+            </div>
+            <div title="航天器在轨基本信息" style="overflow:auto;padding:20px;display:none;">
+                <div data-choose = "2">
+                    <div class="satellites_center">
+                        <div class="base_msg">
+                            <p><span>基本信息</span></p>
+                            <table id="flfx_base_msg">
+                                <!--        <tr class="base_msg_one">
+                                            <td class="name">对外名称</td>
+                                            <td colspan="3" class="name_value"></td>
+                                            <td class="satellite_name">卫星代号</td>
+                                            <td colspan="2" class="satellite_name_value"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>发射时间</td>
+                                            <td class="shoot_time" colspan="2"></td>
+                                            <td>考核寿命(年)</td>
+                                            <td class="life_time">3</td>
+                                            <td class="is_over_time">是否超寿</td>
+                                            <td class="life_state"></td>
+                                        </tr>
+                                        <tr class="base_msg_three">
+                                            <td>责任人</td>
+                                            <td class="zpoe"></td>
+                                            <td class="phone">电话</td>
+                                            <td class="zphone"></td>
+                                            <td class="mobile">手机</td>
+                                            <td class="ztel" colspan="2"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>替代人</td>
+                                            <td  class="tpeo"></td>
+                                            <td>电话</td>
+                                            <td  class="tphone"></td>
+                                            <td >手机</td>
+                                            <td class="ttel" colspan="2"></td>
+                                        </tr>-->
+                            </table>
+                            <p><span>在轨卫星型号责任联系人</span></p>
+                        </div>
+                    </div>
+                    <div class="contacts_xq_table_wrap" style="position:relative;width:100%;height:300px;">
+                        <div style="width:1000px;height:300px;margin: 0 auto">
+                            <table id="flfx_contacts_xq_table" style="height:300px;width:1000px">
+                                <!-- <tr>
+                                     <td class="station">岗位</td>
+                                     <td class="name">姓名</td>
+                                     <td class="mobile">手机</td>
+                                     <td class="phone">电话</td>
+                                 </tr>
+                                 <tr>
+                                     <td>在轨管理责任人</td>
+                                     <td class="zgname"></td>
+                                     <td class="zgphone"></td>
+                                     <td class="zgtel"></td>
+                                 </tr>
+                                 <tr>
+                                     <td>总指挥</td>
+                                     <td class="zzname"></td>
+                                     <td class="zzphone"></td>
+                                     <td class="zztel"></td>
+                                 </tr>
+                                 <tr>
+                                     <td>总师</td>
+                                     <td class="zsname"></td>
+                                     <td class="zsphone"></td>
+                                     <td class="zstel"></td>
+                                 </tr>
+                                 <tr>
+                                     <td>在轨应急响应第一联系人</td>
+                                     <td class="name1"></td>
+                                     <td class="phone1"></td>
+                                     <td class="tel1"></td>
+                                 </tr>
+                                 <tr>
+                                     <td>在轨应急响应第二联系人</td>
+                                     <td class="name2"></td>
+                                     <td class="phone2"></td>
+                                     <td class="tel2"></td>
+                                 </tr>
+                                 <tr>
+                                     <td>在轨应急响应第三联系人</td>
+                                     <td class="name3"></td>
+                                     <td class="phone3"></td>
+                                     <td class="tel3"></td>
+                                 </tr>-->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div title="在轨异常" style="padding:20px;display:none;">
+                <div data-choose = "3" class="show_this">
+                    <div class="center">
+                        <div class="table_search_box" style="padding: 30px 0 40px 50px;">
+                            <input type="text" name="name" style="width:166px;height:22px;
+                            line-height:22px;padding: 0;outline: none;border:1px solid #666;
+                            vertical-align: middle" id="flfx_abnormal_keyword"/>
+                            <input type="button" value="查询" style="height: 24px;padding: 4px 20px;
+                            border: 1px solid dodgerblue;background-color: dodgerblue;
+                            color: #fff;cursor: pointer;vertical-align: middle" id="flfx_abnormal_query"/>
+                        </div>
+                    </div>
+                    <div style="height:270px;width:100%">
+                        <table id="flfx_abnormal_dg"style="width:100%;height:445px">
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div title="地月影预报" style="padding:20px;display:none;">
+                <div data-choose = "4">
+                    <div class="center">
+                        <div style="padding:30px 0;">
+                            <div class="type_select" style="padding-left:30px;">
+                                <input type="text" name="name" style="width:166px;height:22px;
+						        	border:1px solid #666;" id="flfx_dyykeyword"/>
+                                <input type="button" value="查询" style="height: 22px;padding: 0 20px;border: 1px solid dodgerblue;
+						        	background-color: dodgerblue;color: #fff;cursor: pointer;" id="flfx_dyyquery"/>
+                            </div>
+                        </div>
+                        <table id="flfx_moon_dg" class="easyui-datagrid" style="width:100%;height:445px"></table>
+                    </div>
+
+                </div>
+            </div>
+            <div title="测控计划" style="overflow:auto;padding:20px;display:none;">
+                <div data-choose = "5">
+                    <div class="center" style="padding-top: 25px;">
+                        <table id="flfx_cekong_dg" class="easuui-datagrid" style="width: 100%;height:500px;"></table>
+                    </div>
+                </div>
+            </div>
+            <div title="在轨技术支持队伍" style="padding:20px;display:none;">
+                <div data-choose = "6">
+                    <div class="table_box">
+                        <div style="padding:15px 30px;">
+                            <div class="type_select">
+                                <input type="text" name="name" style="width:166px;height:22px;
+						        	line-height:22px;padding: 0;outline: none;border:1px solid #666;" id="flfx_zgdwkeyword"/>
+                                <input type="button" value="查询" style="height: 22px;padding: 0 20px;border: 1px solid dodgerblue;
+						        	background-color: dodgerblue;color: #fff;cursor: pointer;" id="flfx_zgdwquery"/>
+                            </div>
+                        </div>
+                        <div>
+                            <table id="flfx_team_dg" class="easuui-datagrid" style="width: 100%;height:445px;"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--在轨异常详情面板-->
+        <div class="dialog-warp" id="flfx_bzgyc_detail" style="padding:15px;width:560px;height:550px">
+            <!--<div style="width:100%;height:100%;font-size: 14px">
+                <div style="display: inline-block;width:250px">
+                    <p style="padding:5px">异常编号：111111</p>
+                    <p style="padding:5px">型号代号：111111</p>
+                    <p style="padding:5px">异常名称：111111</p>
+                    <p style="padding:5px">所属分系统：111111</p>
+                    <p style="padding:5px">所属单机：111111</p>
+                    <p style="padding:5px">发现时间：111111</p>
+                    <p style="padding:5px">异常涉及单位：111111</p>
+                </div>
+                <div style="display: inline-block;width:250px">
+                    <p style="padding:5px">型号名称：111111</p>
+                    <p style="padding:5px">发生次数：111111</p>
+                    <p style="padding:5px">型号总体单位：111111</p>
+                    <p style="padding:5px">所属关键单位：111111</p>
+                    <p style="padding:5px">发生时间：111111</p>
+                    <p style="padding:5px">是否为常驻故障：111111</p>
+                    <p style="padding:5px">异常等级：111111</p>
+                </div>
+                <p style="padding:5px">异常现象描述:11111</p>
+                <p style="padding:5px">异常原因分析:11111111</p>
+                <p style="padding:5px">异常处理过程:111111111</p>
+                <p style="padding:5px">异常处理结果:11111111</p>
+                <p style="padding:5px">备注:111111111</p>
+                <p style="padding:5px">举一反三措施：111111</p>
+                <div style="display: inline-block;width:250px">
+                    <p style="padding:5px">设计寿命：111111</p>
+                    <p style="padding:5px">是否归零：111111</p>
+                    <p style="padding:5px">计划归零时间：111111</p>
+                    <p style="padding:5px">单机失效日期：111111</p>
+                </div>
+                <div style="display: inline-block;width:250px">
+                    <p style="padding:5px">已运行时间：111111</p>
+                    <p style="padding:5px">原因分类：111111</p>
+                    <p style="padding:5px">完成归零时间：111111</p>
+                    <p style="padding:5px">补偿措施：111111</p>
+                </div>
+            </div>-->
+        </div>
+    </div>
+    <script type="text/javascript" src="/vender/custom/green/jquery.min.js"></script>
+    <script type="text/javascript" src="/vender/custom/green/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/vender/custom/green/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/js/base.js"></script>
+    <script type="text/javascript" src="/js/baojingfenleifenxi/baojingfenleifenxi.js"></script>
+    <script>
+        setBodyHeight();
+
+        parent.$(window).resize(function(){
+            setBodyHeight();
+        });
+        //datagrid高度赋值
+        function setBodyHeight(){
+            var toolbar_height = 65;
+            var tab_panel_height = parent.$(".tabs-panels").height();
+            var rate =toolbar_height/tab_panel_height;
+            $("body").css("height",(1-rate)*100+"%");
+        }
+    </script>
+</body>
+</html>

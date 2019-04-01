@@ -1,0 +1,61 @@
+@charset "UTF-8";
+/*面板样式*/
+#alarmConfirmDetail .tabs li{margin-top: 0;margin-bottom: 0;}
+#alarmConfirmDetail .tabs-wrap,
+#alarmConfirmDetail .tabs-panels,
+#alarmConfirmDetail .panle-body,
+#alarmConfirmDetail .panle,
+#alarmConfirmDetail .tabs-container,
+#alarmConfirmDetail .tabs-header{width:100% !important;margin:0 !important;padding:0 !important;}
+/*.tabs-container{height:480px !important;}*/
+/*.tabs-panels{height:441px !important;}*/
+/*历史报警分类分析*/
+.history_accordion{font-size:14px;background: #ddd;width:1100px;padding-left:20px;}
+.history_accordion span{font-weight: bold;line-height: 50px;margin-right: 15px;}
+.panel-body-noheader{padding:0 !important;}
+.name_input{margin-right: 50px;border: 1px solid #000;}
+.history_accordion .combo{margin-left:-5px;}
+/*.textbox{width:167px !important;}*/
+.textbox-addon{margin-right:0;}
+.history_accordion .end_time{margin-left: 23px;}
+.history_accordion .textbox-icon{right:-13px !important;}
+.alarm_type{margin-left:20px;}
+.alarm_type+.textbox{width:130px !important;}
+.btn_common{display:inline-block;border-radius: 5px;color: #fff;background-color: #3A87E4;
+    text-align: center;font-size: 14px;cursor: pointer;height: 32px;line-height: 32px;}
+.history_accordion .query{width:75px;margin-right:20px !important;margin-left: 50px !important;
+    font-weight: normal !important;line-height: 32px;}
+.history_accordion .alarm_confirm{width: 75px;margin:15px auto;font-size: 14px;
+    font-weight: normal !important;line-height: 32px;}
+.detail_bottom_header .odd{line-height: 30px;margin-left:50px;margin-right:10px;font-weight: bold;}
+.detail_bottom_header h3{font-size: 14px;font-weight: bold;text-align: center;line-height: 50px;}
+.history_analyze_footer .btn_add{width: 125px;margin: 0;}
+.history_analyze_footer .btn_adjust{width: 85px;margin: 0;}
+.add_over_btn div{float: right;padding: 5px 20px;font-size: 14px;line-height: 24px;color: #fff;
+    background-color: dodgerblue;border-radius: 4px;margin: 30px 30px 0 0;cursor: pointer;}
+
+/*航天器在轨基本信息*/
+/*基本信息表：*/
+.tabs_base_msg{padding-top:20px;padding-left:20px;}
+.satellites_center span{display:inline-block;height:26px;padding:0 12px;color:#fff;background: #aaa;
+    border-radius: 2px;line-height:30px;font-size: 14px;margin-top:5px;}
+#base_msg td{border:1px solid #bbb;height:35px;text-align: center;}
+#flfx_base_msg td{border:1px solid #bbb;height:35px;text-align: center;}
+.base_msg_one .name{width:160px;}
+.base_msg_three .zpoe{width:150px;}
+.phone{width:100px;}
+.zphone{width:171px;}
+.life_state{width:200px;}
+.life_time{width:100px;}
+
+/*在轨卫星型号责任联系人表：*/
+.is_over_time{width:100px;}
+.station{width:237px;}
+.linkman,.base_msg{width:1000px;margin:0 auto;}
+.linkman td{border:1px solid #bbb;height:34px;text-align: center;}
+.linkman .name{width:240px;}
+.linkman .mobile{width:270px;}
+.linkman .phone{width:238px;}
+
+
+/*在轨异常tab页*/

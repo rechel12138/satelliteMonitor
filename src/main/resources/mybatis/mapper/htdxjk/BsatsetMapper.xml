@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BsatsetMapper">
+
+
+    <select id="findByParam" resultType="map" parameterType="map">
+        SELECT bss.*,s.*,
+        group_concat(DISTINCT(bsat.bsat_code)) as bsatCode,
+        CASE bss.bss_type
+        WHEN '公有' THEN '所有人'
+        WHEN '私有' THEN '个人'
+        ELSE group_concat(DISTINCT(s.su_chinesename))
+        END userName,
+        GROUP_CONCAT(DISTINCT(bspr.bspr_userid)) userIds,
+        s1.su_chinesename as creatUserName,
+        GROUP_CONCAT(DISTINCT(bssr.bssr_satid) ) AS satids
+        <include refid="condition"></include>
+    </select>
+
+    <sql id="condition">
+        FROM htdxjk_bsatset bss
+        LEFT JOIN htdxjk_bsatsetrel bssr ON bss.bss_atpid = bssr.bssr_bssid
+        LEFT JOIN htdxjk_bsatsetperrel bspr ON bss.bss_atpid = bspr.bspr_bssid
+        LEFT JOIN htdxjk_bsat bsat ON bssr.bssr_satid = bsat.bsat_atpid
+        LEFT JOIN htdxjk_suser s ON s.su_atpid = bspr.bspr_userid
+        LEFT join htdxjk_suser s1 ON s1.su_atpid = bss.bss_cuser
+        <where>
+            <if test="keyWord != null and keyWord != ''">
+               bss.bss_name like concat("%",#{keyWord},"%") or
+               bss.bss_desc like concat("%",#{keyWord},"%") or
+               bss.bss_cuser like concat("%",#{keyWord},"%") or
+               bss.bss_type  like concat("%",#{keyWord},"%") or
+               bss.bss_cusertime like concat("%",#{keyWord},"%") OR
+               bsat.bsat_code like concat("%",#{keyWord},"%") OR
+               s.su_chinesename like concat("%",#{keyWord},"%") OR
+               s1.su_chinesename like concat("%",#{keyWord},"%")
+            </if>
+        </where>
+        GROUP BY bss.bss_atpid
+        ORDER BY bss_cusertime DESC
+
+    </sql>
+
+    <select id="findAllBsatSet" resultType="Bsatset">
+        SELECT
+            bss.*,
+            GROUP_CONCAT( bsr.bssr_satid ) AS satids
+        FROM
+            htdxjk_bsatset bss
+            LEFT JOIN htdxjk_bsatsetrel bsr ON bss.bss_atpid = bsr.bssr_bssid
+        GROUP BY
+            bss.bss_atpid
+        ORDER BY
+            bss.bssatplastmodifydatetime DESC
+    </select>
+
+    <select id="getOneById" parameterType="String" resultType="map">
+        SELECT bss.*,s.*,
+        group_concat(DISTINCT(bsat.bsat_code)) as bsatCode,
+        CASE bss.bss_type
+        WHEN '公有' THEN '所有人'
+        WHEN '私有' THEN '个人'
+        ELSE group_concat(DISTINCT(s.su_chinesename))
+        END userName,
+        GROUP_CONCAT(DISTINCT(bspr.bspr_userid)) userIds,
+        s1.su_chinesename as creatUserName,
+        GROUP_CONCAT(DISTINCT(bssr.bssr_satid) ) AS satids
+        FROM htdxjk_bsatset bss
+        LEFT JOIN htdxjk_bsatsetrel bssr ON bss.bss_atpid = bssr.bssr_bssid
+        LEFT JOIN htdxjk_bsatsetperrel bspr ON bss.bss_atpid = bspr.bspr_bssid
+        LEFT JOIN htdxjk_bsat bsat ON bssr.bssr_satid = bsat.bsat_atpid
+        LEFT JOIN htdxjk_suser s ON s.su_atpid = bspr.bspr_userid
+        LEFT join htdxjk_suser s1 ON s1.su_atpid = bss.bss_cuser
+        WHERE bss.bss_atpid = #{atpId}
+
+    </select>
+
+</mapper>

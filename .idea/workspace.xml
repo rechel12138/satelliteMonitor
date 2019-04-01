@@ -1,0 +1,1562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="910defcf-14e7-446e-bd8f-d796a23a7bd0" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/target/classes/" />
+    <ignored path="$PROJECT_DIR$/target/maven-archiver/" />
+    <ignored path="$PROJECT_DIR$/target/maven-status/" />
+    <ignored path="$PROJECT_DIR$/target/test-classes/" />
+    <ignored path="$PROJECT_DIR$/target/generated-docs/" />
+    <ignored path="$PROJECT_DIR$/target/surefire-reports/" />
+    <manually-removed-from-ignored>
+      <directory path="target/" />
+      <directory path="$PROJECT_DIR$/target/" />
+    </manually-removed-from-ignored>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="htdxjk" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="BsatController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BsatController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="869" column="52" selection-start-line="869" selection-start-column="52" selection-end-line="869" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BsjmxssController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BsjmxssController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="511">
+              <caret line="136" column="70" selection-start-line="136" selection-start-column="70" selection-end-line="136" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BsjmxssServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/impl/BsjmxssServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="48" column="63" selection-start-line="48" selection-start-column="63" selection-end-line="48" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BsjmxssMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/mapper/BsjmxssMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="20" column="30" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BsjmxssMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BsjmxssMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="98">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SuserflagController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/SuserflagController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="JUnit4 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>domain =</find>
+      <find>bsat_domain</find>
+      <find>getSatelliteCodesByDomain</find>
+      <find>updateSatelliteDomainByBsatAtpid</find>
+      <find>findBxxrjlBsats</find>
+      <find>updateSatelliteDomainByCodes</find>
+      <find>update</find>
+      <find>htdxjk.</find>
+      <find>selectAllSatListPage</find>
+      <find>getBsatDomainsPage</find>
+      <find>getBsatDomains</find>
+      <find>selectAllSatListByIdsPage</find>
+      <find>/api/bsat/</find>
+      <find>版权所有</find>
+      <find>版权</find>
+      <find>信息管理系统</find>
+      <find>AlarmAnalysisRequest</find>
+      <find>AlarmIdAndSource</find>
+      <find>JSON</find>
+      <find>batchAnalysis</find>
+      <find>json</find>
+      <find>forbsa</find>
+      <find>findByParamEzuiForBsat</find>
+      <find>listBsjmxss</find>
+      <find>addbc</find>
+      <find>delete</find>
+      <find>dele</find>
+      <find>bxhzcdw_satcode</find>
+      <find>add</find>
+      <find>getBsjmxssByParam</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>Fileshare</replace>
+      <replace>@TableId(type = IdType.UUID)</replace>
+      <replace>Notice</replace>
+      <replace>/**</replace>
+      <replace>/**      *修改      */</replace>
+      <replace>getOneById</replace>
+      <replace>b.bsat_</replace>
+      <replace>zrr.bzgwxxhfzlxr_satid</replace>
+      <replace>bzgwxxhfzlxr_fkbxhzcdwid</replace>
+      <replace>bsjckgzhd_satid</replace>
+      <replace>成功</replace>
+      <replace>Utils.makeJSONResponseMsg(0, &quot;失败&quot;, null)</replace>
+      <replace>makeJSONResponseMsg(ResultTo.SUCCESS_STATUS, ResultTo.SUCCESS_STATUS_MSG</replace>
+      <replace>makeJSONResponseMsg(ResultTo.FAIL_STATUS, ResultTo.FAIL_STATUS_MSG</replace>
+      <replace>Utils.makeJSONResponseMsg(ResultTo.FAIL_STATUS, ResultTo.FAIL_STATUS_MSG, null)</replace>
+      <replace>Utils.makeJSONResponseMsg(ResultTo.LOGIN_ERR_STATUS, ResultTo.LOGIN_ERR_MSG, null)</replace>
+      <replace>Utils.makeJSONResponseMsg(ResultTo.ADD_FAIL_STATUS, ResultTo.ADD_SUCCESS_STATUS_MSG, null)</replace>
+      <replace />
+      <replace>Utils.makeJSONResponseMsg(ResultTo.PARAM_ERR_STATUS, ResultTo.PARAM_ERR_MSG, null)</replace>
+      <replace>Utils.makeJSONResponseMsg(ResultTo.UPDATE_FAIL_STATUS, ResultTo.UPDATE_FAIL_STATUS_MSG, null)</replace>
+      <replace>Utils.makeJSONResponseMsg(ResultTo.DEL_FAIL_STATUS, ResultTo.DEL_FAIL_STATUS_MSG, null)</replace>
+      <replace>static final</replace>
+      <replace>&quot;;}</replace>
+      <replace>{ return</replace>
+      <replace>Utils.makeJSONResponseMsg(ResultTo.DEL_SUCCESS_STATUS, ResultTo.DEL_SUCCESS_STATUS_MSG, null)</replace>
+      <replace>/**      * 修改      */</replace>
+      <replace>/**      * 删除      */</replace>
+      <replace>/**      * 增加     */</replace>
+      <replace>;}</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$</dir>
+    </dirStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/SdictController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/SlogController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/SmoduleController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/SroleController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/SrolemoduleController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/SuserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/SuserroleController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/demoController/User1Controller.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/entity/AllBsatModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/utils/Utils.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BalarmfxController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/uiController/IndexController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/KeepSessionController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BorbitMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BsjckgzhdMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/SuserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BxhzcdwMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BmonthpreMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BckplanMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BalarmfxMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BsatMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/mapper/BxxrjlMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/IBxxrjlService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/impl/BxxrjlServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/mapper/BsatMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/impl/BsatServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/IBsatService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/htdxjk/index/index.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/htdxjk/alarmConfirm/index.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/utils/CodeGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/entity/Spageconfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BckplanController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/requestParam/SpageConfigParam.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/requestParam/SpageconfigRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/SpageconfigMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/mapper/SpageconfigMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/ISpageconfigService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/impl/SpageconfigServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/SpageconfigController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BxxrjlMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BxxrjlController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/entity/AlarmModel.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BsjmxssMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BsjmxssController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/entity/Suserflag.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BxhzcdwController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/entity/Bxhzcdw.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BsatController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/SuserflagController.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="htdxjk" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="htdxjk" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="htdxjk" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="htdxjk" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+          <item name="asciidoctor" type="36feed69:MavenProjectsStructure$PluginNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="htdxjk" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+          <item name="resources" type="36feed69:MavenProjectsStructure$PluginNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="2" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="htdxjk" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newatpjava" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="htdxjk" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newatpjava" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="htdxjk" type="b2602c69:ProjectViewProjectNode" />
+              <item name="newatpjava" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder4" value="4" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder5" value="5" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="282" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="281" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="282" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="281" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4" value="281" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth5" value="140" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder5" value="5" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0" value="282" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth1" value="281" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2" value="282" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3" value="281" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4" value="281" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth5" value="140" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="SearchEverywhereHistoryKey" value="suserf&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/controller/SuserflagController.java&#10;BsjmxssMapper&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/resources/mybatis/mapper/htdxjk/BsjmxssMapper.xml&#10;bsatc&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/controller/BsatController.java&#10;bxhz&#9;PSI&#9;JAVA://com.htzh.htdxjk.entity.Bxhzcdw&#10;bxhzcdw&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/controller/BxhzcdwController.java&#10;suserfl&#9;PSI&#9;JAVA://com.htzh.htdxjk.entity.Suserflag&#10;suser.java&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/entity/Suser.java&#10;bsjmxss&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/controller/BsjmxssController.java&#10;AlarmModel&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/entity/AlarmModel.java&#10;susercon&#9;PSI&#9;JAVA://com.htzh.htdxjk.controller.SuserController&#10;bckp&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/controller/BckplanController.java&#10;SuserflagMapper&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/resources/mybatis/mapper/htdxjk/SuserflagMapper.xml&#10;suserflagm&#9;PSI&#9;JAVA://com.htzh.htdxjk.mapper.SuserflagMapper&#10;isuserfl&#9;PSI&#9;JAVA://com.htzh.htdxjk.service.ISuserflagService&#10;suserflags&#9;PSI&#9;JAVA://com.htzh.htdxjk.service.impl.SuserflagServiceImpl&#10;appli&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/resources/application.properties&#10;bsjm&#9;PSI&#9;JAVA://com.htzh.htdxjk.controller.BsjmxssController&#10;bxx&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/controller/BxxrjlController.java&#10;bsatma&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/resources/mybatis/mapper/htdxjk/BsatMapper.xml&#10;bsat&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/controller/BsatController.java&#10;sconfigc&#9;PSI&#9;JAVA://com.htzh.htdxjk.controller.SconfigController&#10;SpageconfigServi&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/service/impl/SpageconfigServiceImpl.java&#10;iSpageconfig&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/service/ISpageconfigService.java&#10;spageconfigma&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/mapper/SpageconfigMapper.java&#10;spageconfigm&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/resources/mybatis/mapper/htdxjk/SpageconfigMapper.xml&#10;bc&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/controller/BckplanController.java&#10;SpageconfigMapper&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/resources/mybatis/mapper/htdxjk/SpageconfigMapper.xml&#10;spage&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/mapper/SpageconfigMapper.java&#10;bckpl&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/controller/BckplanController.java&#10;Spageconfig&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/entity/Spageconfig.java&#10;spageconfigc&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/controller/SpageconfigController.java&#10;spagec&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/entity/Spageconfig.java&#10;spagecon&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/controller/SpageconfigController.java&#10;index.html&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/resources/templates/htdxjk/alarmConfirm/index.html&#10;ibsat&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/service/IBsatService.java&#10;bsats&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/service/impl/BsatServiceImpl.java&#10;bsatm&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/resources/mybatis/mapper/htdxjk/BsatMapper.xml&#10;BxxrjlMapper&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/resources/mybatis/mapper/htdxjk/BxxrjlMapper.xml&#10;bsatcon&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/controller/BsatController.java&#10;bxxr&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/controller/BxxrjlController.java&#10;BxxrjlServ&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/service/impl/BxxrjlServiceImpl.java&#10;ibxx&#9;PSI&#9;JAVA://com.htzh.htdxjk.service.IBxxrjlService&#10;Ib&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/service/IBsatService.java&#10;bsatser&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/service/impl/BsatServiceImpl.java&#10;Bxxrjl&#9;PSI&#9;JAVA://com.htzh.htdxjk.controller.BxxrjlController&#10;bxxrjl&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/resources/mybatis/mapper/htdxjk/BxxrjlMapper.xml&#10;BalarmfxMapper&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/resources/mybatis/mapper/htdxjk/BalarmfxMapper.xml&#10;balar&#9;PSI&#9;JAVA://com.htzh.htdxjk.controller.BalarmfxController&#10;ba&#9;FILE&#9;file:///Users/Rechel/Documents/newatpjava/src/main/java/com/htzh/htdxjk/controller/BalarmfxController.java&#10;add&#9;PSI&#9;JAVA://org.apache.commons.math3.analysis.function.Add" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.htzh.htdxjk.service.impl" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.htzh.htdxjk.entity" />
+      <recent name="com.htzh.htdxjk.config" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/SconfigController.java</PATH>
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BsjmxssController.java</PATH>
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BalarmfxController.java</PATH>
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/impl/BalarmfxServiceImpl.java</PATH>
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/resources/templates/htdxjk/watcherindex/zhibanren.html</PATH>
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/resources/templates/htdxjk/basicDataQuery/hangtianqijibenxinxi.html</PATH>
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/resources/templates/htdxjk/alarmConfirm/baojingqueren.html</PATH>
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/resources/static/css/watcherindex/zhibanren.css</PATH>
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/resources/static/css/alarmConfirm/baojingqueren.css</PATH>
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/resources/static/js/watcherindex/zhibanren.js</PATH>
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/resources/static/js/baojingfenleifenxi/baojingfenleifenxi.js</PATH>
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/resources/static/js/runSoft/suoyouweixing.js</PATH>
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/resources/static/js/basicDataQuery/hangtianqijibenxinxi.js</PATH>
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/resources/static/js/alarmConfirm/baojingqueren.js</PATH>
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BsjmxssMapper.xml</PATH>
+          <PATH vcs="svn" revision="818">$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BalarmfxMapper.xml</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.HtdxjkApplication">
+    <configuration name="CodeGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.htzh.htdxjk.utils.CodeGenerator" />
+      <module name="htdxjk" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.htzh.htdxjk.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="Utils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.htzh.htdxjk.utils.Utils" />
+      <module name="htdxjk" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.htzh.htdxjk.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="All in htdxjk (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="htdxjk" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="DemoApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="htdxjk" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.htzh.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.htzh" />
+      <option name="MAIN_CLASS_NAME" value="com.htzh.DemoApplicationTests" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="DemoApplicationTests.generateAsciiDocs" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="htdxjk" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.htzh.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.htzh" />
+      <option name="MAIN_CLASS_NAME" value="com.htzh.DemoApplicationTests" />
+      <option name="METHOD_NAME" value="generateAsciiDocs" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="HtdxjkApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="htdxjk" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.htzh.HtdxjkApplication" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.HtdxjkApplication" />
+      <item itemvalue="JUnit.All in htdxjk (1)" />
+      <item itemvalue="JUnit.DemoApplicationTests.generateAsciiDocs" />
+      <item itemvalue="JUnit.DemoApplicationTests" />
+      <item itemvalue="Application.Utils" />
+      <item itemvalue="Application.CodeGenerator" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CodeGenerator" />
+        <item itemvalue="Application.Utils" />
+        <item itemvalue="JUnit.DemoApplicationTests" />
+        <item itemvalue="JUnit.DemoApplicationTests.generateAsciiDocs" />
+        <item itemvalue="JUnit.All in htdxjk (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration useDefault="false">$USER_HOME$/.subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+    <option name="sshConnectionType" value="PASSWORD" />
+    <option name="sshUserName" value="buweinan" />
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="910defcf-14e7-446e-bd8f-d796a23a7bd0" name="Default" comment="" />
+      <created>1550756172862</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1550756172862</updated>
+      <workItem from="1550756174064" duration="7346000" />
+      <workItem from="1550811608278" duration="7751000" />
+      <workItem from="1550831321237" duration="41861000" />
+      <workItem from="1550983708684" duration="1590000" />
+      <workItem from="1551061290942" duration="735000" />
+      <workItem from="1551066845882" duration="24439000" />
+      <workItem from="1551109833582" duration="118489000" />
+      <workItem from="1551590771458" duration="82644000" />
+      <workItem from="1552359285015" duration="4000" />
+      <workItem from="1552359300345" duration="66109000" />
+      <workItem from="1552883119321" duration="45057000" />
+      <workItem from="1553045952292" duration="64275000" />
+      <workItem from="1553248648136" duration="12478000" />
+      <workItem from="1553329266757" duration="3957000" />
+      <workItem from="1553333538022" duration="109000" />
+      <workItem from="1553333651969" duration="46138000" />
+      <workItem from="1553669402198" duration="1918000" />
+      <workItem from="1553673623088" duration="6113000" />
+      <workItem from="1553695928667" duration="3010000" />
+      <workItem from="1553750220684" duration="22830000" />
+      <workItem from="1553845714911" duration="16741000" />
+      <workItem from="1554001149764" duration="4275000" />
+    </task>
+    <task id="LOCAL-00100" summary="调整">
+      <created>1553254089030</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1553254089030</updated>
+    </task>
+    <task id="LOCAL-00101" summary="调整">
+      <created>1553320959028</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1553320959028</updated>
+    </task>
+    <task id="LOCAL-00102" summary="调整">
+      <created>1553322245031</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1553322245031</updated>
+    </task>
+    <task id="LOCAL-00103" summary="调整">
+      <created>1553322941030</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1553322941030</updated>
+    </task>
+    <task id="LOCAL-00104" summary="调整">
+      <created>1553323911034</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1553323911034</updated>
+    </task>
+    <task id="LOCAL-00105" summary="调整">
+      <created>1553324070034</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1553324070034</updated>
+    </task>
+    <task id="LOCAL-00106" summary="调整">
+      <created>1553327460028</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1553327460028</updated>
+    </task>
+    <task id="LOCAL-00107" summary="调整">
+      <created>1553482353031</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1553482353031</updated>
+    </task>
+    <task id="LOCAL-00108" summary="调整">
+      <created>1553483585032</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1553483585032</updated>
+    </task>
+    <task id="LOCAL-00109" summary="调整结构">
+      <created>1553501031034</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1553501031034</updated>
+    </task>
+    <task id="LOCAL-00110" summary="调整">
+      <created>1553501409059</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1553501409059</updated>
+    </task>
+    <task id="LOCAL-00111" summary="调整">
+      <created>1553504498036</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1553504498036</updated>
+    </task>
+    <task id="LOCAL-00112" summary="调整">
+      <created>1553506698032</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1553506698032</updated>
+    </task>
+    <task id="LOCAL-00113" summary="调整">
+      <created>1553507245034</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1553507245034</updated>
+    </task>
+    <task id="LOCAL-00114" summary="调整">
+      <created>1553507572034</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1553507572034</updated>
+    </task>
+    <task id="LOCAL-00115" summary="调整">
+      <created>1553510114030</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1553510114030</updated>
+    </task>
+    <task id="LOCAL-00116" summary="调整">
+      <created>1553514357965</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1553514357966</updated>
+    </task>
+    <task id="LOCAL-00117" summary="调整">
+      <created>1553515119390</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1553515119390</updated>
+    </task>
+    <task id="LOCAL-00118" summary="调整">
+      <created>1553573647639</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1553573647639</updated>
+    </task>
+    <task id="LOCAL-00119" summary="调整">
+      <created>1553586889033</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1553586889034</updated>
+    </task>
+    <task id="LOCAL-00120" summary="调整">
+      <created>1553589366037</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1553589366037</updated>
+    </task>
+    <task id="LOCAL-00121" summary="调整">
+      <created>1553593546035</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1553593546035</updated>
+    </task>
+    <task id="LOCAL-00122" summary="调整">
+      <created>1553597311034</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1553597311034</updated>
+    </task>
+    <task id="LOCAL-00123" summary="调整">
+      <created>1553602118029</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1553602118029</updated>
+    </task>
+    <task id="LOCAL-00124" summary="调整">
+      <created>1553668668564</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1553668668564</updated>
+    </task>
+    <task id="LOCAL-00125" summary="调整">
+      <created>1553669715040</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1553669715041</updated>
+    </task>
+    <task id="LOCAL-00126" summary="调整">
+      <created>1553673871033</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1553673871034</updated>
+    </task>
+    <task id="LOCAL-00127" summary="调整">
+      <created>1553680155031</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1553680155032</updated>
+    </task>
+    <task id="LOCAL-00128" summary="调整">
+      <created>1553684431030</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1553684431030</updated>
+    </task>
+    <task id="LOCAL-00129" summary="调整">
+      <created>1553696305037</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1553696305037</updated>
+    </task>
+    <task id="LOCAL-00130" summary="调整">
+      <created>1553752393031</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1553752393032</updated>
+    </task>
+    <task id="LOCAL-00131" summary="调整">
+      <created>1553760173036</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1553760173036</updated>
+    </task>
+    <task id="LOCAL-00132" summary="调整">
+      <created>1553763268031</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1553763268031</updated>
+    </task>
+    <task id="LOCAL-00133" summary="调整">
+      <created>1553763632030</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1553763632030</updated>
+    </task>
+    <task id="LOCAL-00134" summary="调整">
+      <created>1553774073031</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1553774073031</updated>
+    </task>
+    <task id="LOCAL-00135" summary="调整">
+      <created>1553837524035</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1553837524035</updated>
+    </task>
+    <task id="LOCAL-00136" summary="调整">
+      <created>1553837838027</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1553837838027</updated>
+    </task>
+    <task id="LOCAL-00137" summary="调整">
+      <created>1553839993030</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1553839993030</updated>
+    </task>
+    <task id="LOCAL-00138" summary="调整">
+      <created>1553850166028</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1553850166029</updated>
+    </task>
+    <task id="LOCAL-00139" summary="调整">
+      <created>1553854852029</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1553854852030</updated>
+    </task>
+    <task id="LOCAL-00140" summary="调整">
+      <created>1553858788035</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1553858788035</updated>
+    </task>
+    <task id="LOCAL-00141" summary="调整">
+      <created>1553933795032</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1553933795032</updated>
+    </task>
+    <task id="LOCAL-00142" summary="添加小红旗功能">
+      <created>1553941065034</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1553941065034</updated>
+    </task>
+    <task id="LOCAL-00143" summary="添加小红旗功能">
+      <created>1553941163029</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1553941163029</updated>
+    </task>
+    <task id="LOCAL-00144" summary="添加小红旗功能">
+      <created>1553941397026</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1553941397026</updated>
+    </task>
+    <task id="LOCAL-00145" summary="添加小红旗功能">
+      <created>1553950266034</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1553950266034</updated>
+    </task>
+    <task id="LOCAL-00146" summary="添加小红旗功能">
+      <created>1553967534033</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1553967534033</updated>
+    </task>
+    <task id="LOCAL-00147" summary="添加小红旗功能">
+      <created>1553967937030</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1553967937030</updated>
+    </task>
+    <task id="LOCAL-00148" summary="添加小红旗功能">
+      <created>1554003364038</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1554003364038</updated>
+    </task>
+    <option name="localTasksCounter" value="149" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="All_in_htdxjk_(1) - 2019.03.19 at 17h 22m 09s.xml">
+      <configuration name="All in htdxjk (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests_generateAsciiDocs - 2019.03.23 at 17h 37m 55s.xml">
+      <configuration name="DemoApplicationTests.generateAsciiDocs" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests_generateAsciiDocs - 2019.03.23 at 17h 48m 40s.xml">
+      <configuration name="DemoApplicationTests.generateAsciiDocs" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests - 2019.03.23 at 17h 52m 54s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests - 2019.03.23 at 17h 56m 48s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests - 2019.03.23 at 17h 59m 00s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests - 2019.03.25 at 11h 42m 04s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests - 2019.03.25 at 15h 18m 08s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests - 2019.03.26 at 16h 02m 54s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DemoApplicationTests - 2019.03.27 at 12h 43m 19s.xml">
+      <configuration name="DemoApplicationTests" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="577869000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.50143063" side_tool="true" weight="0.25939393" />
+      <window_info anchor="right" id="Maven Projects" order="9" weight="0.3297568" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Database" order="5" weight="0.3297568" />
+      <window_info id="Structure" order="1" sideWeight="0.48076922" side_tool="true" weight="0.29041487" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24964234" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32969698" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.32969698" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info id="Image Layers" order="3" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32969698" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="Version Control" order="13" weight="0.32848486" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4985694" weight="0.36969697" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="CheckStyle" order="10" weight="0.32969698" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32969698" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5192308" visible="true" weight="0.29470673" />
+      <window_info anchor="right" id="Bean Validation" order="8" weight="0.3297568" />
+      <window_info id="Web" order="6" side_tool="true" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info id="Favorites" order="5" sideWeight="0.50176054" side_tool="true" weight="0.25250357" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32969698" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info id="Image Layers" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4985694" visible="true" weight="0.36969697" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24964234" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" sideWeight="0.50176054" side_tool="true" weight="0.25250357" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32969698" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="CheckStyle" order="10" weight="0.32969698" />
+      <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.50143063" side_tool="true" weight="0.25939393" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.32969698" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32969698" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32969698" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="13" weight="0.32848486" />
+      <window_info anchor="right" id="Maven Projects" order="9" weight="0.3297568" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.52115387" weight="0.29041487" />
+      <window_info anchor="right" id="Database" order="5" weight="0.3297568" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Web" order="6" side_tool="true" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info id="Structure" order="1" sideWeight="0.47884616" side_tool="true" weight="0.28612304" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32969698" />
+      <window_info anchor="right" id="Bean Validation" order="8" weight="0.3297568" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="权限接口" />
+    <MESSAGE value="将删除操作改成批量删除" />
+    <MESSAGE value="ftp集成" />
+    <MESSAGE value="登录、日志 拦截器" />
+    <MESSAGE value="调整结构" />
+    <MESSAGE value="调整" />
+    <MESSAGE value="添加小红旗功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加小红旗功能" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="17" />
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/mapper/BalarmfxMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="23" column="31" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/impl/BalarmfxServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="159" column="36" lean-forward="true" selection-start-line="159" selection-start-column="36" selection-end-line="159" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BalarmfxMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="435" column="23" lean-forward="true" selection-start-line="435" selection-start-column="23" selection-end-line="435" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/IBxxrjlService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-extension/3.0.7.1/mybatis-plus-extension-3.0.7.1.jar!/com/baomidou/mybatisplus/extension/service/impl/ServiceImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="247" column="13" selection-start-line="247" selection-start-column="13" selection-end-line="247" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/impl/BxxrjlServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/mapper/BxxrjlMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="16" column="29" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/IBsatService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/xsrjgl/classifyManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="944">
+          <caret line="73" column="37" lean-forward="true" selection-start-line="73" selection-start-column="37" selection-end-line="73" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/config/WebSocketConfig.java" />
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="189" column="51" selection-start-line="189" selection-start-column="51" selection-end-line="189" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/htdxjk/index/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="42" column="14" lean-forward="true" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/htdxjk/alarmConfirm/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/requestParam/AlarmAnalysisRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/entity/Spageconfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="38" column="32" lean-forward="true" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/SpageconfigMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/mapper/SpageconfigMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/ISpageconfigService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/impl/SpageconfigServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="32" column="52" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/baojingfenleifenxi/baojingfenleifenxi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="204" lean-forward="true" selection-start-line="204" selection-end-line="204" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BalarmfxController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="594" column="88" selection-start-line="594" selection-start-column="68" selection-end-line="594" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/requestParam/AlarmIdAndSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/SconfigController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="33" column="3" lean-forward="true" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BxxrjlMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="56" column="34" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BsatMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="186" column="13" lean-forward="true" selection-start-line="186" selection-start-column="13" selection-end-line="186" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/mapper/BsatMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="212" column="45" selection-start-line="212" selection-start-column="23" selection-end-line="212" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/impl/BsatServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="75" column="39" selection-start-line="75" selection-start-column="39" selection-end-line="75" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/requestParam/SpageconfigRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/requestParam/SpageConfigParam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/SpageconfigController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="32" column="6" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/config/LoginInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BxxrjlController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="153" column="19" selection-start-line="153" selection-start-column="19" selection-end-line="153" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/utils/CodeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="40" column="27" lean-forward="true" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="52" column="28" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/impl/SuserflagServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/ISuserflagService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/mapper/SuserflagMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/SuserflagMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BckplanController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1840">
+          <caret line="270" column="75" selection-start-line="270" selection-start-column="69" selection-end-line="270" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/SuserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="165" selection-start-line="165" selection-end-line="190" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/entity/AlarmModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="86" column="25" selection-start-line="86" selection-start-column="25" selection-end-line="86" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/entity/Suserflag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/entity/Suser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-805">
+          <caret line="31" column="32" selection-start-line="31" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BxhzcdwController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/entity/Bxhzcdw.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BsatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="869" column="52" selection-start-line="869" selection-start-column="52" selection-end-line="869" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/BsjmxssController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="136" column="70" selection-start-line="136" selection-start-column="70" selection-end-line="136" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/service/impl/BsjmxssServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="48" column="63" selection-start-line="48" selection-start-column="63" selection-end-line="48" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/mapper/BsjmxssMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="20" column="30" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/htdxjk/BsjmxssMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/htzh/htdxjk/controller/SuserflagController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BsatMapper">
+
+    <!--查询所有卫星的型号 by boris_deng-->
+    <select id="getSatelliteCodeList" resultType="map">
+
+        select bsat_code as code from htdxjk_bsat
+
+    </select>
+
+
+    <!--根据卫星型号(code)更新卫星分类(domain) by boris_deng-->
+    <select id="updateSatelliteDomainByBsatAtpid" parameterType="map" resultType="int">
+
+        update htdxjk_bsat
+        <set>
+
+            <if test="domain!=null">
+
+                bsat_bxxrjl_id=#{domain}
+
+            </if>
+
+        </set>
+
+        <where>
+
+            <if test="codes!=null">
+
+                bsat_atpid in
+                <foreach collection="codes" item="code" index="i" open="(" close=")" separator=",">
+
+                    #{code}
+
+                </foreach>
+
+            </if>
+
+        </where>
+
+
+    </select>
+
+    <select id="deleteSateDomainByDomainIds" parameterType="map" resultType="int">
+        UPDATE
+            htdxjk_bsat bs
+        SET
+            bs.bsat_bxxrjl_id=''
+        WHERE
+            bs.bsat_bxxrjl_id=#{domain}
+    </select>
+
+    <!--根据卫星分类(domain)列出所属型号(code) by boris_deng-->
+    <select id="getSatelliteCodesByDomain" parameterType="map" resultType="map">
+        SELECT
+            group_concat(bs.bsat_code) codes
+        FROM
+            htdxjk_bxxrjl bx
+        LEFT JOIN
+            htdxjk_bsat bs
+        ON
+            bx.bxxrjl_atpid=bs.bsat_bxxrjl_id
+        WHERE
+            bx.bxxrjl_app_group=#{domain}
+    </select>
+
+
+    <select id="getDistDomain" resultType="String">
+        SELECT DISTINCT(bsat_domain) as domain FROM htdxjk_bsat
+    </select>
+
+
+    <select id="selectBySatId" parameterType="String" resultType="map">
+        SELECT
+        b.*,
+        u1.su_chinesename as dutyname,
+        u1.su_tele_phone_num as dutytel,
+        u1.su_work_phone_num as dutyworkphone,
+        u2.su_chinesename  as replacename,
+        u2.su_tele_phone_num as  replacetel,
+        u2.su_work_phone_num  as replcaeworkphone,
+        b.bsat_lifeyear as lifeyear,
+        b.bsat_launch_time as launch_time,
+        CASE
+        WHEN b.bsat_launch_time IS NULL
+        OR b.bsat_launch_time = "" THEN '待发射'
+        WHEN TIMESTAMPDIFF(DAY,b.bsat_launch_time,CURDATE())-b.bsat_lifeyear*365 &lt; 0 THEN '未超寿'
+        WHEN TIMESTAMPDIFF(DAY,b.bsat_launch_time,CURDATE())-b.bsat_lifeyear*365 &gt; 0 THEN CONCAT('超寿 ：',
+        floor((TIMESTAMPDIFF(DAY,
+        b.bsat_launch_time,
+        CURDATE())- b.bsat_lifeyear*365)/365),
+        '年',
+        floor(mod((TIMESTAMPDIFF(DAY,
+        b.bsat_launch_time,
+        CURDATE())- b.bsat_lifeyear*365),
+        365)/30),
+        '月')
+        END valuestatus
+        FROM
+        htdxjk_bsat b
+        LEFT JOIN
+        htdxjk_suser u1
+        ON b.bsat_admin_subs_id=u1.su_atpid
+        LEFT JOIN
+        htdxjk_suser u2
+        ON b.bsat_admin_id=u2.su_atpid
+        WHERE
+        b.bsat_id = #{satId}
+    </select>
+
+
+    <select id="findByParamEzuiForBsat" resultType="AllBsatModel" parameterType="map">
+        <![CDATA[
+        SELECT
+            b.*,
+            bx.bxxrjl_minipic                                    bsatMinipic,
+            dw.bxhzcdw_name                                      zrrname,
+            concat(dw.bxhzcdw_phone, ',' , dw.bxhzcdw_telephone)   zrrdh,
+            dw1.bxhzcdw_name                                       tdrname,
+            concat(dw1.bxhzcdw_phone, ',' , dw1.bxhzcdw_telephone) tdrdh,
+            b.bsat_lifeyear                                        sjsm,
+            b.bsat_launch_time                                     fssj,
+            CASE
+                WHEN b.bsat_launch_time IS NULL
+                OR  b.bsat_launch_time = ""
+                THEN '待发射'
+                WHEN TIMESTAMPDIFF(DAY, b.bsat_launch_time, CURDATE())-b.bsat_lifeyear*365 < 0
+                THEN '未超寿'
+                WHEN TIMESTAMPDIFF(DAY, b.bsat_launch_time, CURDATE())-b.bsat_lifeyear*365 > 0
+                THEN CONCAT('超寿 ：', floor((TIMESTAMPDIFF(DAY, b.bsat_launch_time, CURDATE())-
+                    b.bsat_lifeyear*365)/365), '年', floor(mod((TIMESTAMPDIFF(DAY, b.bsat_launch_time,
+                    CURDATE())- b.bsat_lifeyear*365), 365)/30), '月')
+            END valuestatus
+        ]]>
+        FROM
+        htdxjk_bsat b
+        LEFT JOIN
+        htdxjk_bzgwxxhfzlxr zrr
+        ON
+        b.bsat_atpid=zrr.bzgwxxhfzlxr_satid
+        LEFT JOIN
+        htdxjk_bxhzcdw dw
+        ON
+        zrr.bzgwxxhfzlxr_fkbxhzcdwid=dw.bxhzcdw_atpid
+        LEFT JOIN
+        htdxjk_bxxrjl bx
+        ON
+        b.bsat_bxxrjl_id=bx.bxxrjl_atpid
+        LEFT JOIN
+        htdxjk_bxhzcdwrel dwr
+        ON
+        b.bsat_atpid=dwr.bxhzcdwrl_fkbsatid
+        LEFT JOIN
+        htdxjk_bxhzcdw dw1
+        ON
+        dwr.bxhzcdwrl_fkbxhzcdwid=dw1.bxhzcdw_atpid
+        WHERE
+        date_format(b.bsat_atplastmodifydatetime, '%Y-%m-%d %H:%i:%S') BETWEEN date_format('${startTime}','%Y-%m-%d
+        %H:%i:%S')
+        AND date_format('${endTime}', '%Y-%m-%d %H:%i:%S')
+
+        <if test="satCodes !=null and satCodes !=''">
+            AND b.bsat_code IN ('${satCodes}')
+        </if>
+        <if test="domain !=null and domain !=''">
+            AND bx.bxxrjl_app_group = #{domain}
+        </if>
+        <if test="keyword !=null and keyword !=''">
+            AND (
+            b.bsat_id LIKE '%${keyword}%'
+            OR b.bsat_last_modifed_time LIKE '%${keyword}%'
+            OR b.bsat_active LIKE '%${keyword}%'
+            OR b.bsat_code LIKE '%${keyword}%'
+            OR b.bsat_endoflife_time LIKE '%${keyword}%'
+            OR b.bsat_full_name LIKE '%${keyword}%'
+            OR b.bsat_launch_time LIKE '%${keyword}%'
+            OR b.bsat_lifeyear LIKE '%${keyword}%'
+            OR b.bsat_name LIKE '%${keyword}%'
+            OR b.bsat_outside_name LIKE '%${keyword}%'
+            OR b.bsat_remark LIKE '%${keyword}%'
+            )
+        </if>
+        ORDER BY ${sort} ${order}
+        <if test="offset !=null and offset !=''">
+            LIMIT ${offset},${rows}
+        </if>
+    </select>
+
+
+    <select id="countByParamEzuiForBsat" resultType="int" parameterType="map">
+        SELECT
+        count(1)
+        FROM
+        htdxjk_bsat b
+        LEFT JOIN
+        htdxjk_bzgwxxhfzlxr zrr
+        ON
+        b.bsat_atpid=zrr.bzgwxxhfzlxr_satid
+        LEFT JOIN
+        htdxjk_bxhzcdw dw
+        ON
+        zrr.bzgwxxhfzlxr_fkbxhzcdwid=dw.bxhzcdw_atpid
+        LEFT JOIN
+        htdxjk_bxxrjl bx
+        ON
+        b.bsat_bxxrjl_id=bx.bxxrjl_atpid
+        LEFT JOIN
+        htdxjk_bxhzcdwrel dwr
+        ON
+        b.bsat_atpid=dwr.bxhzcdwrl_fkbsatid
+        LEFT JOIN
+        htdxjk_bxhzcdw dw1
+        ON
+        dwr.bxhzcdwrl_fkbxhzcdwid=dw1.bxhzcdw_atpid
+        WHERE
+        date_format(b.bsat_atplastmodifydatetime, '%Y-%m-%d %H:%i:%S') BETWEEN date_format('${startTime}','%Y-%m-%d
+        %H:%i:%S')
+        AND date_format('${endTime}', '%Y-%m-%d %H:%i:%S')
+
+        <if test="satCodes !=null and satCodes !=''">
+            AND b.bsat_code IN ('${satCodes}')
+        </if>
+        <if test="domain !=null and domain !=''">
+            AND bx.bxxrjl_app_group = #{domain}
+        </if>
+        <if test="keyword !=null and keyword !=''">
+            AND (
+            b.bsat_id LIKE concat("%",#{keyword},"%")
+            OR b.bsat_last_modifed_time LIKE concat("%",#{keyword},"%")
+            OR b.bsat_active LIKE concat("%",#{keyword},"%")
+            OR b.bsat_code LIKE concat("%",#{keyword},"%")
+            OR b.bsat_endoflife_time LIKE concat("%",#{keyword},"%")
+            OR b.bsat_full_name LIKE concat("%",#{keyword},"%")
+            OR b.bsat_launch_time LIKE concat("%",#{keyword},"%")
+            OR b.bsat_lifeyear LIKE concat("%",#{keyword},"%")
+            OR b.bsat_name LIKE concat("%",#{keyword},"%")
+            OR b.bsat_outside_name LIKE concat("%",#{keyword},"%")
+            OR b.bsat_remark LIKE concat("%",#{keyword},"%")
+            )
+        </if>
+    </select>
+
+
+    <select id="countBsat" resultType="map" >
+            SELECT
+                b.bxxrjl_app_group type,
+                COUNT(1) count
+            FROM
+                htdxjk_bsat a
+            LEFT JOIN
+                htdxjk_bxxrjl b
+            ON
+                a.bsat_bxxrjl_id=b.bxxrjl_atpid
+            GROUP BY
+                b.bxxrjl_app_group
+    </select>
+
+    <select id="selectOneSatInfoById" resultType="AllBsatModel" parameterType="map">
+        <![CDATA[
+        SELECT
+        b.*,
+        bx.bxxrjl_minipic                                    bsatMinipic,
+        dw.bxhzcdw_name                                      zrrname,
+        concat(dw.bxhzcdw_phone, ',' , dw.bxhzcdw_telephone)   zrrdh,
+        dw1.bxhzcdw_name                                       tdrname,
+        concat(dw1.bxhzcdw_phone, ',' , dw1.bxhzcdw_telephone) tdrdh,
+        b.bsat_lifeyear                                        sjsm,
+        b.bsat_launch_time                                     fssj,
+        CASE
+        WHEN b.bsat_launch_time IS NULL
+        OR  b.bsat_launch_time = ""
+        THEN '待发射'
+        WHEN TIMESTAMPDIFF(DAY, b.bsat_launch_time, CURDATE())-b.bsat_lifeyear*365 < 0
+        THEN '未超寿'
+        WHEN TIMESTAMPDIFF(DAY, b.bsat_launch_time, CURDATE())-b.bsat_lifeyear*365 > 0
+        THEN CONCAT('超寿 ：', floor((TIMESTAMPDIFF(DAY, b.bsat_launch_time, CURDATE())-
+        b.bsat_lifeyear*365)/365), '年', floor(mod((TIMESTAMPDIFF(DAY, b.bsat_launch_time,
+        CURDATE())- b.bsat_lifeyear*365), 365)/30), '月')
+        END valuestatus
+        FROM
+        htdxjk_bsat b
+        LEFT JOIN
+        htdxjk_bzgwxxhfzlxr zrr
+        ON
+        b.bsat_atpid=zrr.bzgwxxhfzlxr_satid
+        LEFT JOIN
+        htdxjk_bxhzcdw dw
+        ON
+        zrr.bzgwxxhfzlxr_fkbxhzcdwid=dw.bxhzcdw_atpid
+        LEFT JOIN
+        htdxjk_bxxrjl bx
+        ON
+        b.bsat_bxxrjl_id=bx.bxxrjl_atpid
+        LEFT JOIN
+        htdxjk_bxhzcdwrel dwr
+        ON
+        b.bsat_atpid=dwr.bxhzcdwrl_fkbsatid
+        LEFT JOIN
+        htdxjk_bxhzcdw dw1
+        ON
+        dwr.bxhzcdwrl_fkbxhzcdwid=dw1.bxhzcdw_atpid
+        ]]>
+        WHERE
+        b.bsat_atpid=#{atpid}
+    </select>
+</mapper>

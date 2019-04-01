@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.htzh.htdxjk.mapper.BzbjlMapper">
+    <!--0为下一班值班人 1为今日值班-->
+    <select id="findNextDuty" resultType="Bzbjl" parameterType="int">
+        SELECT * FROM htdxjk_bzbjl
+        <where>
+            <if test="param == 0">
+                DATE_FORMAT(bzbjl_dutydate,'%Y-%m-%d') > DATE_FORMAT(NOW(),'%Y-%m-%d')
+            </if>
+            <if test="param == 1">
+                DATE_FORMAT(bzbjl_dutydate,'%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')
+            </if>
+        </where>
+       ORDER BY bzbjl_dutydate DESC  limit 1
+    </select>
+
+    <select id="getCount" parameterType="map" resultType="int">
+        select count(1)
+        <include refid="condition"></include>
+    </select>
+
+    <select id="findBzbjlListByParamEzui" parameterType="map" resultType="map">
+        SELECT
+            bzbjl.*,
+            s.su_atpid as dutyAtpId1,
+            s.su_chinesename as dutyName1,
+            s.su_account as dutyAccount1,
+            s1.su_atpid as dutyAtpId2,
+            s1.su_chinesename as dutyName2,
+            s1.su_account as dutyAccount2,
+            s2.su_atpid as addId,
+            s2.su_chinesename as addName,
+            s2.su_account as addAccount
+          <include refid="condition"></include>
+          ORDER BY
+        <if test="'dutydate' == sort ">
+            bzbjl.bzbjl_dutydate
+        </if>
+        <if test="'createdate' == sort">
+            bzbjl.bzbjl_atpcreatedatetime
+        </if>
+        <if test="modifydate == sort">
+            bzbjl_atplastmodifydatetime
+        </if>
+        <if test="'desc' == order">
+            DESC
+        </if>
+        <if test="'asc' == order">
+            ASC
+        </if>
+        limit #{offset},#{rows}
+    </select>
+
+    <sql id="condition">
+        FROM
+            htdxjk_bzbjl bzbjl
+            LEFT JOIN htdxjk_suser s ON bzbjl.bzbjl_person1 = s.su_atpid
+            LEFT JOIN htdxjk_suser s1 ON bzbjl.bzbjl_person2 = s1.su_atpid
+            LEFT JOIN htdxjk_suser s2 ON bzbjl.bzbjl_addperson = s2.su_atpid
+        <where>
+            <if test="dutyTime != null and dutyTime != ''">
+                bzbjl.bzbjl_dutydate = #{dutyTime}
+            </if>
+            <if test="dutyPerson1 != null and dutyPerson1 != ''">
+                and bzbjl.bzbjl_person1 = #{dutyPerson1}
+            </if>
+            <if test="dutyPerson2 != null and dutyPerson2 != ''">
+               and  bzbjl.bzbjl_person1 = #{dutyPerson2}
+            </if>
+            <if test="addPerson != null and addPerson != ''">
+              and bzbjl.bzbjl_addperson = #{addPerson}
+            </if>
+            <if test="keyWord != null and keyWord != ''">
+                and (s1.su_chinesename like concat("%",#{keyWord},"%") or
+                s.su_chinesename like concat("%",#{keyWord},"%") or
+                bzbjl.bzbjl_dutydate like concat("%",#{keyWord},"%") or
+                bzbjl.bzbjl_week like concat("%",#{keyWord},"%") or
+                s2.su_chinesename like concat("%",#{keyWord},"%") or
+                bzbjl.bzbjl_atpcreatedatetime LIKE  concat("%",#{keyWord},"%") or
+                bzbjl.bzbjl_atplastmodifydatetime LIKE  concat("%",#{keyWord},"%"))
+            </if>
+        </where>
+
+
+    </sql>
+</mapper>
